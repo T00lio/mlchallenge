@@ -1,15 +1,16 @@
-import SearchResult from './pages/SearchResult';
-import Header from './components/header';
-import Breadcrumb from './components/Breadcumb';
+import Header from './components/Header/index';
+import Breadcrumbs from './components/breadcrumb/index';
+import SearchResult from './components/searchresult/index';
 
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Header/>
-        <Breadcrumb/>
+        <Header />
+        <Breadcrumbs />
         <SearchResult />
+
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>

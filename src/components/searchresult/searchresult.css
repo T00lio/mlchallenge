@@ -1,0 +1,12 @@
+.sr {
+    display: flex;
+    background-color: red;
+    justify-content: center;
+    align-items: center;
+    width: 1fr;
+    height: 100vh;
+}
+
+.Container {
+    min-height: fit-content;
+}
