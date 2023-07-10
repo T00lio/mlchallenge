@@ -1,5 +1,6 @@
 import Header from './components/Header/index';
 import Breadcrumbs from './components/breadcrumb/index';
+import SearchResultItem from './components/searchResultItem/searchResultItem';
 import SearchResult from './components/searchresult/index';
 import busqueda from './shared/endpoint';
 
@@ -10,8 +11,9 @@ function App() {
       <header className="App-header">
         <Header />
         <Breadcrumbs />
-        <SearchResult />
-
+        <SearchResult>
+          <SearchResultItem/>
+        </SearchResult>
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
