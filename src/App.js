@@ -11,9 +11,9 @@ function App() {
       <header className="App-header">
         <Header />
         <Breadcrumbs />
-        <SearchResult>
-          <SearchResultItem/>
-        </SearchResult>
+        <SearchResult />
+        
+
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>

@@ -6,7 +6,7 @@ const SearchResult = () => {
   return (
   <div className='sr'>
     <Container>
-          
+      <SearchResultItem/>      
     </Container>
   </div>
    
