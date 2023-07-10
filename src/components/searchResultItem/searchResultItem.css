@@ -1,0 +1,23 @@
+.productResult {
+    display: flex;
+    flex-direction: row;
+}
+
+
+.fi1 {
+    min-height: 100px;
+    flex-grow: 0;
+    margin: auto;
+}
+
+ .fi2 {
+    min-height: 100px;
+    flex-grow: 2;
+    margin-left: 1rem;
+ }
+ 
+.fi3 .h1 {
+    min-height: 100px;
+    flex-grow: 1;
+    margin: auto;
+}

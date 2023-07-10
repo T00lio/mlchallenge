@@ -1,10 +1,5 @@
 .sr {
-    display: grid;
     place-items: center;
-    align-self: auto;
-    background-color: red;
-    justify-content: center;
-    align-items: center;
     width: 90vh;
     height: 100vh;
     margin-left: auto;
