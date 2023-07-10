@@ -1,6 +1,7 @@
 import Header from './components/Header/index';
 import Breadcrumbs from './components/breadcrumb/index';
 import SearchResult from './components/searchresult/index';
+import busqueda from './shared/endpoint';
 
 
 function App() {
@@ -26,5 +27,5 @@ function App() {
     </div>
   );
 }
-
+console.log(busqueda);
 export default App;
