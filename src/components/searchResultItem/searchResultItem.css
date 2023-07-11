@@ -12,7 +12,8 @@
 
  .fi2 {
     min-height: 100px;
-    flex-grow: 2;
+    width: auto;
+    flex-grow: 1;
     margin-left: 1rem;
  }
  
