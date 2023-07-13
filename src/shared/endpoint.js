@@ -1,10 +1,10 @@
-const endpoint = 'https://api.mercadolibre.com/sites/MLA/search?q=​zapatos'
+// const endpoint = 'https://api.mercadolibre.com/sites/MLA/search?q=​zapatos'
 
-let busqueda = [];
+// let busqueda = [];
 
-fetch (endpoint) 
-    .then(blob => blob.json())
-    .then(data => console.log(data))
+// fetch (endpoint) 
+//     .then(blob => blob.json())
+//     .then(data => console.log(data))
 
 
-export default busqueda;
+// export default busqueda;
