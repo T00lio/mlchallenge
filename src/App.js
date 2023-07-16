@@ -3,14 +3,17 @@ import Breadcrumbs from "./components/breadcrumb/index";
 // import SearchResultItem from './components/searchResultItem/searchResultItem';
 import SearchResult from "./components/searchresult/index";
 import busqueda from "./shared/endpoint";
+import { SearchContextProvider } from "./contexts/searchContext";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Header />
-        <Breadcrumbs />
-        <SearchResult />
+        <SearchContextProvider>
+          <Header />
+          <Breadcrumbs />
+          <SearchResult />
+        </SearchContextProvider>
 
         <p>
           Edit <code>src/App.js</code> and save to reload.
