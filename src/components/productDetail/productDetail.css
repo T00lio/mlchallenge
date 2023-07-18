@@ -1,5 +1,7 @@
 .pd {
     place-items: center;
+    align-items: flex-start;
+    display: flex;
     width: 90vh;
     height: 100vh;
     margin-left: auto;
@@ -7,3 +9,12 @@
     background-color: darkgray;
 }
 
+.pdes {
+    display: flex;
+    flex-direction: column;
+    padding-left: 2rem;
+}
+ 
+.pdeet {
+    display: flexbox;
+}
