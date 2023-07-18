@@ -1,8 +1,9 @@
 import Header from "./components/Header/index";
 import Breadcrumbs from "./components/breadcrumb/index";
-// import SearchResultItem from './components/searchResultItem/searchResultItem';
+import SearchResultItem from './components/searchResultItem/searchResultItem';
 import SearchResult from "./components/searchresult/index";
 import { SearchContextProvider } from "./context/searchContext";
+import  ProductDetail from './components/productDetail/index'
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
         <SearchContextProvider>
           <Header />
           <Breadcrumbs />
-          <SearchResult />
+          <ProductDetail />
+          {/* <SearchResult /> */}
         </SearchContextProvider>
         <p>
           Edit <code>src/App.js</code> and save to reload.
