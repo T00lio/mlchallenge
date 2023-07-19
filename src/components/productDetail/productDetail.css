@@ -6,13 +6,17 @@
     height: 100vh;
     margin-left: auto;
     margin-right: auto;
-    background-color: darkgray;
+    
+}
+#Button {
+
 }
 
 .pdes {
     display: flex;
     flex-direction: column;
-    padding-left: 2rem;
+    place-items: center;
+    
 }
  
 .pdeet {

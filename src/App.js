@@ -12,8 +12,8 @@ function App() {
         <SearchContextProvider>
           <Header />
           <Breadcrumbs />
-          <ProductDetail />
-          {/* <SearchResult /> */}
+          {/* <ProductDetail /> */}
+          <SearchResult />
         </SearchContextProvider>
         <p>
           Edit <code>src/App.js</code> and save to reload.

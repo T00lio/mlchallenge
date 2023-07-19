@@ -7,7 +7,7 @@ import { useSearchContext } from '../../context/searchContext';
 
 const SearchResult = () => {
   const { queryResult } = useSearchContext(); 
-  console.log(queryResult);
+
   return (
   <div className='sr'>
     <Container>
@@ -17,7 +17,8 @@ const SearchResult = () => {
            imageUrl={result.thumbnail} 
            price={result.price} 
            title={result.title} 
-           location={result.address.state_name}/>)
+           location={result.address.state_name}
+           />)
         )
       ) : (
         <p>no result found...</p>
