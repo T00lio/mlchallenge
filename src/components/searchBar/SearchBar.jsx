@@ -10,24 +10,18 @@ const SearchBar = () => {
 
   const handleSearchChange = (event) => {
     const query = event.target.value;
-    JSON.stringify(query);
     setSearchQuery(query);
   };
 
-  const fetchSearchResults = (query) => {
-    const endpoint = `https://api.mercadolibre.com/sites/MLA/search?q=${query}`;
-    return fetch(endpoint)
-      .then((response) => response.json())
-      .then((data) => setQueryResult(data.results))
-      .catch((error) => {
-        console.error("Error fetching search results:", error);
-        return [];
-      });
-  };
-
-  const handleSearchClick = () => {
-    fetchSearchResults(searchQuery);
-    console.log(fetchSearchResults(searchQuery));
+  // async/await approach
+  const fetchSearchResults = async () => {
+    try {
+      const response = await fetch(`https://api.mercadolibre.com/sites/MLA/search?q=${searchQuery}`);
+      const jsonResponse = await response.json();
+      setQueryResult(jsonResponse.results);
+    } catch (error) {
+      console.error("Error fetching search results:", error);
+    }
   };
 
   return (
@@ -39,7 +33,7 @@ const SearchBar = () => {
         value={searchQuery}
         onChange={handleSearchChange}
       />
-      <button className="search-button" onClick={handleSearchClick}>
+      <button className="search-button" onClick={fetchSearchResults}>
         <i>
           <FontAwesomeIcon icon={faMagnifyingGlass} />
         </i>

@@ -4,7 +4,7 @@ import { createContext, useContext, useState } from "react";
 // Paso 1: Crear el contexto
 const SearchContext = createContext();
 
-// Paso: Crear el context provider
+// Paso 2: Crear el context provider
 export const SearchContextProvider = ({ children }) => {
   const [queryResult, setQueryResult] = useState([]);
 
