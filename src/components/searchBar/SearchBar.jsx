@@ -27,7 +27,7 @@ const SearchBar = () => {
 
   const handleSearchClick = () => {
     fetchSearchResults(searchQuery);
-    console.log(fetchSearchResults(searchQuery));
+  
   };
 
   return (
