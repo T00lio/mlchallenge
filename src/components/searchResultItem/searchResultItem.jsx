@@ -2,7 +2,8 @@ import { Container } from "reactstrap";
 import "./searchResultItem.css";
 import { useSearchContext } from "../../context/searchContext";
 
-const SearchResultItem = ({imageUrl, price, title, location}) => {
+
+const SearchResultItem = ({imageUrl, price, title, Id, location}) => {
 
   const {searchQuery} = useSearchContext();
  

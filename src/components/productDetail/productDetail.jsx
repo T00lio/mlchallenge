@@ -4,6 +4,7 @@ import Logo from '../../images/iphone.jpeg'
 import {  Button } from 'reactstrap';
 import { Grid, Stack } from '@mui/material';
 import { useSearchContext } from '../../context/searchContext';
+import {Container} from 'reactstrap';
 
 
 
@@ -13,7 +14,7 @@ const ProductDetail = () => {
     
 
     return (
-
+        <Container>
           <div className='pd'>  
             <Grid container>
                 <Grid item xs={8}>
@@ -34,6 +35,7 @@ const ProductDetail = () => {
                 </Stack>
             </Grid>
           </div>
+        </Container>
         
     )
 };

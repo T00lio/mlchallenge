@@ -1,5 +1,18 @@
+
+import Breadcrumbs from "../components/breadcrumb/Breadcumb";
+import SearchResult from "../components/searchresult";
+
+
+
 const HomePage = () => {
-    return <div>Home</div>
+    return (
+    <>    
+        <Breadcrumbs />
+        <SearchResult />
+      
+            
+    </>
+    );    
 };
 
 export default HomePage;

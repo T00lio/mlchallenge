@@ -1,9 +1,14 @@
+import Breadcrumbs from "../components/breadcrumb"
+import SearchResultItem from "../components/searchResultItem/searchResultItem"
+
 
 
 const ProductDetail = () => {
-  return (
-    <div>ProductDetail</div>
-  )
+  return 
+  <>
+    <Breadcrumbs/>
+    <SearchResultItem/>
+  </>
 }
 
-export default ProductDetail;
+export default ProductDetail; 

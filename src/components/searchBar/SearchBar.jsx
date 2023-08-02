@@ -3,9 +3,11 @@ import "../searchBar/SearchBar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useState } from "react";
 import { useSearchContext } from "../../context/searchContext.js";
+import { Link } from "react-router-dom";
 
 const SearchBar = () => {
-  const { setQueryResult } = useSearchContext();
+  
+  const { setQueryResult } = useSearchContext(); 
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleSearchChange = (event) => {
@@ -27,6 +29,7 @@ const SearchBar = () => {
 
   const handleSearchClick = () => {
     fetchSearchResults(searchQuery);
+    console.log(searchQuery);
   
   };
 
@@ -38,12 +41,14 @@ const SearchBar = () => {
         placeholder="Busqueda..."
         value={searchQuery}
         onChange={handleSearchChange}
-      />
-      <button className="search-button" onClick={handleSearchClick}>
-        <i>
-          <FontAwesomeIcon icon={faMagnifyingGlass} />
-        </i>
-      </button>
+      /> 
+      <Link to='/home'>
+        <button className="search-button" onClick={handleSearchClick}>
+          <i>
+            <FontAwesomeIcon icon={faMagnifyingGlass} />
+          </i>
+        </button>
+      </Link>
     </div>
   );
 };

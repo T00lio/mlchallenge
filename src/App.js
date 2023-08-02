@@ -4,17 +4,20 @@ import { SearchContextProvider } from "./context/searchContext";
 import  ProductDetail from './components/productDetail/index';
 import ResultList from './pages/ResultList';
 import HomePage from "./pages/HomePage";
+import ResultNotFound from "./pages/ResultNotFound";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <SearchContextProvider>
-          <Header />
+          <Header /> 
           <Routes>
+             
             <Route path='/' element={<HomePage/>}></Route>
-            <Route path='/result' element={<ResultList/>}></Route>
-            <Route path='/item' element={<ProductDetail/>}></Route>
+            <Route path='/home' element={<ResultList/>}></Route>
+            <Route path='/item/:id' element={<ProductDetail/>}></Route>
+            <Route path='*' element={<ResultNotFound/>}></Route>
           </Routes>
         </SearchContextProvider>
         <p>
