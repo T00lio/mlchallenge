@@ -4,11 +4,12 @@ import SearchResultItem from "../components/searchResultItem/searchResultItem"
 
 
 const ProductDetail = () => {
-  return 
-  <>
+  return ( 
+  <>  
     <Breadcrumbs/>
     <SearchResultItem/>
   </>
+  );
 }
 
 export default ProductDetail; 
