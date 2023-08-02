@@ -6,6 +6,7 @@ import { createContext } from "react";
  export const SearchContextProvider = ({ children }) => {
     const [queryResult, setQueryResult] = useState([]);
 
+
     return (
         <SearchContext.Provider value={{ queryResult, setQueryResult }}>
             {children}
