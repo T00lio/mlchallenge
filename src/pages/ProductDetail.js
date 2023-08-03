@@ -10,7 +10,6 @@ const ProductDetail = () => {
   const params = useParams();
   return ( 
   <>  
-   
     <Container>  
           <div className='pd'>  
             <Grid container>
@@ -22,8 +21,7 @@ const ProductDetail = () => {
                     <h1>{params.title}</h1>
                     <h1>{params.price}</h1>
                     <Button>Comprar</Button>
-                </Stack>
-            
+                </Stack>      
             
                 <Stack item className='pdeet'> 
                     <h1>{params.title} </h1>
