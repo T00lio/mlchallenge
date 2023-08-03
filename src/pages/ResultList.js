@@ -1,6 +1,4 @@
-
 import Breadcrumbs from '../components/breadcrumb';
-
 import SearchResult from '../components/searchresult';
 
 

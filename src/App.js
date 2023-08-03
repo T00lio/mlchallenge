@@ -1,10 +1,10 @@
 import Header from "./components/Header/index";
 import {Route, Routes } from 'react-router-dom';
 import { SearchContextProvider } from "./context/searchContext";
-import  ProductDetail from './components/productDetail/index';
 import ResultList from './pages/ResultList';
 import HomePage from "./pages/HomePage";
 import ResultNotFound from "./pages/ResultNotFound";
+import ProductDetail from "./pages/ProductDetail";
 
 function App() {
   return (

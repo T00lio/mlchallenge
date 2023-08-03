@@ -10,8 +10,6 @@ const HomePage = () => {
     <>    
         <Breadcrumbs />
         <SearchResult />
-      
-            
     </>
     );    
 };
