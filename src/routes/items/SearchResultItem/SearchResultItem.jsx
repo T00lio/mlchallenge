@@ -1,12 +1,8 @@
+import { NavLink } from "react-router-dom";
 import { Container } from "reactstrap";
-import "./searchResultItem.css";
-import { useSearchContext } from "../../context/searchContext";
+import "./SearchResultItem.css";
 
-const SearchResultItem = ({imageUrl, price, title, location}) => {
-
-  const {searchQuery} = useSearchContext();
- 
-
+const SearchResultItem = ({ id, imageUrl, price, title, location }) => {
   return (
     <Container className="productResult">
       <div className="fi1">
@@ -14,7 +10,9 @@ const SearchResultItem = ({imageUrl, price, title, location}) => {
       </div>
       <div className="fi2">
         <h1>{price}</h1>
-        <p> {title} </p>
+        <NavLink to={`/items/${id}`}>
+          <p> {title} </p>
+        </NavLink>
       </div>
       <div className="fi3">
         <h1>{location}</h1>
