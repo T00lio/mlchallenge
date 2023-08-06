@@ -1,4 +1,9 @@
-.bc { 
-    margin-left: 50px;
-    list-style: none;
+.bc {
+  margin-left: 50px;
+  list-style: none;
+}
+
+.bbc {
+  display: flex;
+  flex-direction: column;
 }

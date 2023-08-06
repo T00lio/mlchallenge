@@ -1,23 +1,25 @@
 import Header from "./components/Header/index";
-import {Route, Routes } from 'react-router-dom';
+import { Route, Routes } from "react-router-dom";
 import { SearchContextProvider } from "./context/searchContext";
-import ResultList from './pages/ResultList';
+import ResultList from "./pages/ResultList";
 import HomePage from "./pages/HomePage";
 import ResultNotFound from "./pages/ResultNotFound";
-import ProductDetail from "./pages/ProductDetail";
+import ProductDetailPage from "./pages/ProductDetailPage";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <SearchContextProvider>
-          <Header /> 
+          <Header />
           <Routes>
-             
-            <Route path='/' element={<HomePage/>}></Route>
-            <Route path='/home' element={<ResultList/>}></Route>
-            <Route path='/item/:id' element={<ProductDetail/>}></Route>
-            <Route path='*' element={<ResultNotFound/>}></Route>
+            <Route path="/" element={<HomePage />}></Route>
+            <Route path="/home" element={<ResultList />}></Route>
+            <Route
+              path="/home/item/:id"
+              element={<ProductDetailPage />}
+            ></Route>
+            <Route path="*" element={<ResultNotFound />}></Route>
           </Routes>
         </SearchContextProvider>
         <p>
@@ -25,11 +27,11 @@ function App() {
         </p>
         <a
           className="App-link"
-          href="https://reactjs.org"
+          href="/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          MELI Challenge
         </a>
       </header>
     </div>

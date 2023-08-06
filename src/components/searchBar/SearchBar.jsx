@@ -7,8 +7,7 @@ import { Link } from "react-router-dom";
 import { get } from "../../utils/httpsClient";
 
 const SearchBar = () => {
-  
-  const { setQueryResult } = useSearchContext(); 
+  const { setQueryResult } = useSearchContext();
   const [searchQuery, setSearchQuery] = useState(" ");
 
   const handleSearchChange = (event) => {
@@ -17,7 +16,7 @@ const SearchBar = () => {
   };
 
   const fetchSearchResults = (query) => {
-    get(`/api/items?q=${query}`)
+    get(`sites/MLA/search?q=${query}`)
       .then((data) => setQueryResult(data.results))
       .catch((error) => {
         console.error("Error fetching search results:", error);
@@ -27,7 +26,6 @@ const SearchBar = () => {
 
   const handleSearchClick = () => {
     fetchSearchResults(searchQuery);
-   
   };
 
   return (
@@ -38,8 +36,8 @@ const SearchBar = () => {
         placeholder="Busqueda..."
         value={searchQuery}
         onChange={handleSearchChange}
-      /> 
-      <Link to='/home'>
+      />
+      <Link to="/home">
         <button className="search-button" onClick={handleSearchClick}>
           <i>
             <FontAwesomeIcon icon={faMagnifyingGlass} />
