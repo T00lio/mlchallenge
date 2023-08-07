@@ -1,4 +1,3 @@
-import { Row, Col, Breadcrumb, BreadcrumbItem } from "reactstrap";
 import { Link, useLocation } from "react-router-dom";
 import "./Breadcrumb.css";
 
@@ -14,12 +13,12 @@ const Breadcrumbs = ({ current, detail }) => {
       currentLink += `/${crumb}`;
       return (
         <div className="crumb" key={crumb}>
-          <Link to={currentLink}>{crumb}</Link>
+          <Link to={currentLink}>{crumb}</Link> >
         </div>
       );
     });
 
-  return <div>{crumbs}</div>;
+  return <div className="bc">{crumbs}</div>;
 };
 
 export default Breadcrumbs;

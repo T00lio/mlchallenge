@@ -1,9 +1,11 @@
 .bc {
-  margin-left: 50px;
-  list-style: none;
+  max-width: 1200px;
+  margin: 20px auto;
 }
-
-.bbc {
-  display: flex;
-  flex-direction: column;
+.bc > * {
+  display: inline-block;
+  margin-right: 10px;
+}
+.bc .crumb:last-child:after {
+  display: none;
 }
