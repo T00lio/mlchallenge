@@ -4,7 +4,7 @@ import SearchResult from "../components/searchresult";
 function ResultList() {
   return (
     <>
-      <Breadcrumbs current="/home" detail={true} />
+      <Breadcrumbs />
       <SearchResult />
     </>
   );

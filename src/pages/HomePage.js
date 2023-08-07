@@ -4,6 +4,7 @@ import SearchResult from "../components/searchresult";
 const HomePage = () => {
   return (
     <>
+      <Breadcrumbs />
       <SearchResult />
     </>
   );
