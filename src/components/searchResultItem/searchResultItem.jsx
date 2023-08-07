@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const SearchResultItem = ({ id, imageUrl, price, title, location }) => {
   return (
     <Container className="productResult">
-      <Link to={`/home/item/${id}`}>
+      <Link to={`/item/${id}`}>
         <div className="fi1">
           <img src={imageUrl} height={100} width={100} alt="Search" />
         </div>

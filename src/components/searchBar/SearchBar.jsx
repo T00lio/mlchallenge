@@ -26,6 +26,7 @@ const SearchBar = () => {
 
   const handleSearchClick = () => {
     fetchSearchResults(searchQuery);
+    console.log(searchQuery);
   };
 
   return (
@@ -37,7 +38,7 @@ const SearchBar = () => {
         value={searchQuery}
         onChange={handleSearchChange}
       />
-      <Link to="/home">
+      <Link to="/items">
         <button className="search-button" onClick={handleSearchClick}>
           <i>
             <FontAwesomeIcon icon={faMagnifyingGlass} />

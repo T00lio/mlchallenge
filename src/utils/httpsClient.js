@@ -1,8 +1,7 @@
-const searchAPI = "https://api.mercadolibre.com/";
-export const DeetAPI = "https://api.mercadolibre.com/items/";
+export const API = "https://api.mercadolibre.com/";
 
 export function get(query) {
-  return fetch(searchAPI + `${query}`).then((res) => res.json());
+  return fetch(API + `${query}`).then((res) => res.json());
 }
 
 export let ProductDetailLoader = async ({ params }) => {

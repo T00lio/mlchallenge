@@ -14,11 +14,8 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={<HomePage />}></Route>
-            <Route path="/home" element={<ResultList />}></Route>
-            <Route
-              path="/home/item/:id"
-              element={<ProductDetailPage />}
-            ></Route>
+            <Route path="/items" element={<ResultList />}></Route>
+            <Route path="/item/:id" element={<ProductDetailPage />}></Route>
             <Route path="*" element={<ResultNotFound />}></Route>
           </Routes>
         </SearchContextProvider>
