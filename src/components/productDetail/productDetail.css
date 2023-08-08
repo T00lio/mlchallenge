@@ -1,21 +1,22 @@
 .pd {
-    place-items: center;
-    align-items: flex-start;
-    display: flex;
-    width: 90vh;
-    height: 100vh;
-    margin-left: auto;
-    margin-right: auto;
+  display: flex;
+  flex-wrap: wrap;
+  grid-template-columns: auto;
+  place-items: center;
+  align-items: flex-start;
+  display: flex;
+  width: 90vh;
+  height: 100vh;
+  margin-left: auto;
+  margin-right: auto;
 }
-
 
 .pdes {
-    display: flex;
-    flex-direction: column;
-    place-items: center;
-    
+  display: flex;
+  flex-direction: row;
+  place-items: center;
 }
- 
+
 .pdeet {
-    display: flexbox;
+  display: flexbox;
 }

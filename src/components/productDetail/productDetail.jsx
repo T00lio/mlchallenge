@@ -1,6 +1,7 @@
 import React from "react";
 import "../productDetail/productDetail.css";
-import { Button } from "reactstrap";
+import Button from "react-bootstrap/Button";
+import "bootstrap/dist/css/bootstrap.min.css";
 import { Grid, Stack } from "@mui/material";
 import { Container } from "reactstrap";
 import { useParams } from "react-router";
@@ -16,12 +17,12 @@ const ProductDetail = () => {
     console.log(details);
   };
 
-  const description = async () => {
-    fetch(API + "/products/" + id + "/description")
-      .then((res) => res.json())
-      .then((description) => description);
-    console.log(description);
-  };
+  // const description = async () => {
+  //   fetch(API + "/products/" + id + "/description")
+  //     .then((res) => res.json())
+  //     .then((description) => description);
+  //   console.log(description);
+  // };
 
   return (
     <Container>
@@ -40,7 +41,6 @@ const ProductDetail = () => {
           <Stack item className="pdeet">
             <h1>title </h1>
             <p>
-              {description.toString()}
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               Suspendisse pulvinar tellus eu justo porta dignissim. Aenean vel
               quam at lacus ultrices accumsan et non nunc. Cras luctus libero

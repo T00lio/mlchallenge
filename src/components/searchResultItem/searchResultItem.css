@@ -1,24 +1,27 @@
 .productResult {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 2rem;
 }
-
 
 .fi1 {
-    min-height: 100px;
-    flex-grow: 0;
-    margin: auto;
+  min-height: 100px;
+  flex-grow: 0;
+  margin: auto;
+  text-decoration: none;
+  color: black;
 }
 
- .fi2 {
-    min-height: 100px;
-    width: auto;
-    flex-grow: 1;
-    margin-left: 1rem;
- }
- 
+.fi2 {
+  min-height: 100px;
+  width: auto;
+  flex-grow: 1;
+  margin-left: 1rem;
+}
+
 .fi3 .h1 {
-    min-height: 100px;
-    flex-grow: 1;
-    margin: auto;
+  min-height: 100px;
+  flex-grow: 1;
+  margin: auto;
 }
