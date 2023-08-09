@@ -1,7 +1,12 @@
 export const API = "https://api.mercadolibre.com/";
 
-export function get(query) {
-  return fetch(API + `${query}`).then((res) => res.json());
+export async function getData(endpoint) {
+  try {
+    const response = await fetch(`https://api.mercadolibre.com/${endpoint}`);
+    return response.json();
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 export let ProductDetailLoader = async ({ params }) => {

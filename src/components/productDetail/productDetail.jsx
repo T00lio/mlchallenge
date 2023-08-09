@@ -2,20 +2,17 @@ import React from "react";
 import "../productDetail/productDetail.css";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Grid, Stack } from "@mui/material";
-import { Container } from "reactstrap";
-import { useParams } from "react-router";
+
 import Iphone from "../../assets/images/iphone.jpeg";
-import { API } from "../../utils/httpsClient";
 
 const ProductDetail = () => {
-  const { id } = useParams();
-  const details = async () => {
-    fetch(API + "/products/" + id)
-      .then((res) => res.json())
-      .then((details) => details);
-    console.log(details);
-  };
+  //   const { id } = useParams();
+  //   const details = async () => {
+  //     fetch(API + "/products/" + id)
+  //       .then((res) => res.json())
+  //       .then((details) => details);
+  //     console.log(details);
+  //   };
 
   // const description = async () => {
   //   fetch(API + "/products/" + id + "/description")
@@ -32,8 +29,9 @@ const ProductDetail = () => {
             <img src={Iphone} alt="productImage" width={500} height={500}></img>
           </Grid>
           <Stack xs={4} item className="pdes">
-            <p>Location</p>
-            <h1>{details.title}</h1>
+            <p>Condition</p>
+            <h5>Location</h5>
+            <h1>Title</h1>
             <h1>price</h1>
             <Button>Comprar</Button>
           </Stack>
