@@ -10,7 +10,6 @@ const SearchResultItem = ({ id, imageUrl, price, title, location }) => {
       <div className="fi2">
         <h5>{title}</h5>
         <p>
-          {" "}
           {Number(price).toLocaleString("en-US", {
             style: "currency",
             currency: "USD",

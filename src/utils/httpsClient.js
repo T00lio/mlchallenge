@@ -1,8 +1,8 @@
 export const API = "https://api.mercadolibre.com/";
 
-export async function getData(endpoint) {
+export async function getData(id) {
   try {
-    const response = await fetch(`https://api.mercadolibre.com/${endpoint}`);
+    const response = await fetch(`https://api.mercadolibre.com/${id}`);
     return response.json();
   } catch (error) {
     console.log(error);

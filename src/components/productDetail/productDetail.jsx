@@ -3,10 +3,12 @@ import "../productDetail/productDetail.css";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Grid, Stack } from "@mui/material";
-
+import { useParams } from "react-router-dom";
 import Iphone from "../../assets/images/iphone.jpeg";
 
 const ProductDetail = () => {
+  const { id } = useParams();
+
   return (
     <Container>
       <div className="pd">
@@ -15,7 +17,7 @@ const ProductDetail = () => {
             <img src={Iphone} alt="productImage" width={500} height={500}></img>
           </Grid>
           <Stack xs={4} item className="pdes">
-            <p>Condition</p>
+            <p>{id.name}</p>
             <h5>Location</h5>
             <h1>Title</h1>
             <h1>price</h1>
