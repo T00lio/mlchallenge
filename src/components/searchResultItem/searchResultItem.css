@@ -1,43 +1,24 @@
 .productResult {
-  grid-template-columns: auto;
-  place-items: center;
-  align-items: flex-start;
   display: flex;
-  flex-direction: column;
-  width: 90vh;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.fi0 {
-  display: flex;
-  background-color: red;
+  flex-direction: row;
 }
 
 .fi1 {
   min-height: 100px;
-  flex-grow: 1;
+  flex-grow: 0;
   margin: auto;
-  text-decoration: none;
-  border-color: red 1px solid;
 }
 
 .fi2 {
   min-height: 100px;
   width: auto;
-  flex-grow: 2;
+  flex-grow: 1;
   margin-left: 1rem;
-  border-color: red 1px solid;
 }
 
 .fi3 {
   min-height: 100px;
   flex-grow: 1;
   margin: auto;
-  border-color: red 1px solid;
-}
-
-.Link {
-  text-decoration: none;
-  color: black;
+  align-items: end;
 }

@@ -1,6 +1,6 @@
 import { NavLink } from "react-bootstrap";
 import { Container } from "reactstrap";
-import "./SearchResultItem.css";
+import "..SearchResultItem/SearchResultItem.css";
 
 const SearchResultItem = ({ id, imageUrl, price, title, location }) => {
   return (

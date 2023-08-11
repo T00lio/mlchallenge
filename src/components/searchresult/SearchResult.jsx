@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 
 const SearchResult = () => {
   const { queryResult } = useSearchContext();
-  console.log(queryResult);
 
   return (
     <Container className="sr">

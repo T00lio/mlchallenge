@@ -5,7 +5,9 @@ import {
 } from "react-router-dom";
 import RootPage, { IndexRoot } from "./root";
 import ItemsPage, { itemsLoader } from "./items";
-import ItemDescriptionPage, { itemDescriptionLoader } from "./item-description";
+import ItemDescriptionPage, {
+  itemDescriptionLoader,
+} from "../routes/item-description";
 
 const router = createBrowserRouter(
   createRoutesFromElements(

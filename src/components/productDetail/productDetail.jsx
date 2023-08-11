@@ -2,25 +2,11 @@ import React from "react";
 import "../productDetail/productDetail.css";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Container, Grid, Stack } from "@mui/material";
 
 import Iphone from "../../assets/images/iphone.jpeg";
 
 const ProductDetail = () => {
-  //   const { id } = useParams();
-  //   const details = async () => {
-  //     fetch(API + "/products/" + id)
-  //       .then((res) => res.json())
-  //       .then((details) => details);
-  //     console.log(details);
-  //   };
-
-  // const description = async () => {
-  //   fetch(API + "/products/" + id + "/description")
-  //     .then((res) => res.json())
-  //     .then((description) => description);
-  //   console.log(description);
-  // };
-
   return (
     <Container>
       <div className="pd">

@@ -1,3 +1,3 @@
-import { Breadcrumbs } from "react-bootstrap";
+import { Breadcrumb } from "react-bootstrap";
 
-export default Breadcrumbs;
+export default Breadcrumb;

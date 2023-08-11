@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import Header from "routes/root/Header";
+import Header from "../Header";
 
 function Root() {
   return (

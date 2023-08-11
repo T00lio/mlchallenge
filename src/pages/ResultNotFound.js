@@ -1,10 +1,11 @@
 import Breadcrumbs from "../components/breadcrumb/Breadcumb";
-import SearchResultItem from "../components/searchResultItem/searchResultItem";
+import NotFound from "../components/notFound";
+
 function ResultNotFound() {
   return (
     <>
       <Breadcrumbs />
-      <SearchResultItem />
+      <NotFound />
     </>
   );
 }

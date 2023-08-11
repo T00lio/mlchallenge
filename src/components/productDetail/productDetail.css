@@ -1,7 +1,4 @@
 .pd {
-  display: flex;
-  flex-wrap: wrap;
-  grid-template-columns: auto;
   place-items: center;
   align-items: flex-start;
   display: flex;
@@ -13,7 +10,7 @@
 
 .pdes {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   place-items: center;
 }
 

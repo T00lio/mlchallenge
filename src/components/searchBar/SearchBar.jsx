@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useState } from "react";
 import { useSearchContext } from "../../context/searchContext.js";
 import { Link } from "react-router-dom";
-import { get } from "../../utils/httpsClient";
 
 const SearchBar = () => {
   const { setQueryResult } = useSearchContext();
@@ -16,7 +15,9 @@ const SearchBar = () => {
   };
 
   const fetchSearchResults = (query) => {
-    get(`sites/MLA/search?q=${query}`)
+    const endpoint = `https://api.mercadolibre.com/sites/MLA/search?q=${query}`;
+    return fetch(endpoint)
+      .then((response) => response.json())
       .then((data) => setQueryResult(data.results))
       .catch((error) => {
         console.error("Error fetching search results:", error);

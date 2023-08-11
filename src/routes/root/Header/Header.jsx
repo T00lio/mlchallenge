@@ -1,7 +1,7 @@
 import React from "react";
-import SearchBar from "../../../components/SearchBar/SearchBar";
+import SearchBar from "../../../components/searchBar/index";
 import "./Header.css";
-import logo from "../../assets/logo.svg";
+import logo from "../../../assets/images/MELI.svg";
 
 const Header = () => {
   return (
