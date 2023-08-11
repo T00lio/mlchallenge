@@ -16,6 +16,11 @@
   margin-left: 1rem;
 }
 
+.fi2 p {
+  margin: 0;
+  text-decoration: none;
+}
+
 .fi3 {
   min-height: 100px;
   flex-grow: 1;
