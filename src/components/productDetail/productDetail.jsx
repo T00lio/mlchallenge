@@ -45,9 +45,14 @@ const ProductDetail = () => {
             ></img>
           </Grid>
           <Stack xs={4} item className="pdes">
-            <p>{data?.product?.title || ""}</p>
-            <h5>{data?.product?.seller_address?.state?.name || ""}</h5>
-            <h1>{data?.product?.price || ""}</h1>
+            <h5>{data?.product?.title || ""}</h5>
+            <h4>{data?.product?.seller_address?.state?.name || ""}</h4>
+            <h3>
+              {Number(data?.product?.price).toLocaleString("en-US", {
+                style: "currency",
+                currency: "USD",
+              })}{" "}
+            </h3>
             <hr />
             <Button>Comprar</Button>
           </Stack>
