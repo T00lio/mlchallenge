@@ -2,10 +2,14 @@
   place-items: center;
   align-items: flex-start;
   display: flex;
-  width: 90vh;
+  width: 85%;
   height: 100vh;
   margin-left: auto;
   margin-right: auto;
+}
+
+.pic {
+  max-width: fit-content;
 }
 
 .pdes {
@@ -15,6 +19,7 @@
 }
 
 .pdeet {
+  margin-top: 5rem;
   display: flexbox;
 }
 

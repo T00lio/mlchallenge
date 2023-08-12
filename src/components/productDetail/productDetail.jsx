@@ -41,6 +41,7 @@ const ProductDetail = () => {
               alt="productImage"
               width={500}
               height={500}
+              className="pic"
             ></img>
           </Grid>
           <Stack xs={4} item className="pdes">
