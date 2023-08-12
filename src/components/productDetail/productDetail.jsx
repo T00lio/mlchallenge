@@ -21,7 +21,6 @@ const ProductDetail = () => {
         getData(`items/${params.id}/description`),
       ]);
       setData({ product, description });
-
       setLoading(false);
     };
 
@@ -29,7 +28,9 @@ const ProductDetail = () => {
   }, [params.id]);
 
   return loading ? (
-    <CircularProgress />
+    <div className="loader">
+      <CircularProgress size={80} />
+    </div>
   ) : (
     <Container>
       <div className="pd">
@@ -44,14 +45,14 @@ const ProductDetail = () => {
           </Grid>
           <Stack xs={4} item className="pdes">
             <p>{data?.product?.title || ""}</p>
-            <h5>Location</h5>
-            <h1>Title</h1>
-            <h1>price</h1>
+            <h5>{data?.product?.seller_address?.state?.name || ""}</h5>
+            <h1>{data?.product?.price || ""}</h1>
+            <hr />
             <Button>Comprar</Button>
           </Stack>
 
           <Stack item className="pdeet">
-            <h1>title </h1>
+            <h1>Descripción del producto</h1>
             <p>{data?.description?.plain_text || ""}</p>
           </Stack>
         </Grid>
