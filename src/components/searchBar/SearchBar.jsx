@@ -33,6 +33,7 @@ const SearchBar = () => {
   return (
     <div className="search-bar">
       <input
+        style={{ width: "75%" }}
         type="text"
         className="search-input"
         placeholder="Busqueda..."
@@ -41,7 +42,7 @@ const SearchBar = () => {
       />
       <Link to="/items">
         <button className="search-button" onClick={handleSearchClick}>
-          <i>
+          <i className="sb">
             <FontAwesomeIcon icon={faMagnifyingGlass} />
           </i>
         </button>
