@@ -21,7 +21,6 @@ const SearchBar = () => {
       .then((data) => setQueryResult(data.results))
       .catch((error) => {
         console.error("Error fetching search results:", error);
-
         return [useContext];
       });
   };
@@ -29,11 +28,6 @@ const SearchBar = () => {
   const handleSearchClick = () => {
     fetchSearchResults(searchQuery);
     console.log(searchQuery);
-  };
-  document.addEventListener.onkeydown = function (e) {
-    if (e.keyCode === "Enter" || e.keyCode === 13) {
-      handleSearchClick();
-    }
   };
 
   return (

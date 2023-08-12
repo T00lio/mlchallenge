@@ -21,10 +21,10 @@ const ProductDetail = () => {
         getData(`items/${params.id}/description`),
       ]);
       setData({ product, description });
-      setLoading(false);
     };
 
     fetchItemData();
+    setLoading(false);
   }, [params.id]);
 
   return loading ? (
@@ -44,8 +44,8 @@ const ProductDetail = () => {
               className="pic"
             ></img>
           </Grid>
-          <Stack xs={4} item className="pdes">
-            <h5>{data?.product?.title || ""}</h5>
+          <Stack xs={3} item className="pdes">
+            <p>{data?.product?.title || ""}</p>
             <h4>{data?.product?.seller_address?.state?.name || ""}</h4>
             <h3>
               {Number(data?.product?.price).toLocaleString("en-US", {
