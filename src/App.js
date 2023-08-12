@@ -11,7 +11,6 @@ function App() {
     <div className="App">
       <SearchContextProvider>
         <Header />
-
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
           <Route path="/items" element={<ResultList />}></Route>
