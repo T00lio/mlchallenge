@@ -11,7 +11,11 @@ const SearchResult = () => {
     <Container className="sr">
       {queryResult?.length > 0 ? (
         queryResult.map((result) => (
-          <Link to={`/item/${result.id}`} className="link">
+          <Link
+            to={`/item/${result.id}`}
+            className="link"
+            style={{ textDecoration: "none", color: "black" }}
+          >
             <SearchResultItem
               key={result.id}
               id={result.id}
