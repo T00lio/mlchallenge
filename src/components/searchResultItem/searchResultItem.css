@@ -3,34 +3,15 @@
   flex-direction: row;
 }
 
-.fi1 {
-  min-height: 100px;
-  flex-grow: 0;
-  margin: auto;
-}
-
 .fi2 {
   min-height: 100px;
-  width: auto;
-  flex-grow: 1;
+  flex-grow: 0.75;
   margin-left: 1rem;
 }
 
-.fi2 p {
-  margin: 0;
-  text-decoration: none;
-}
-
-.fi3 {
+.fi3 h5 {
   min-height: 100px;
   flex-grow: 1;
   margin: auto;
-}
-
-.fi3 h5 {
-  margin: 0;
-  text-decoration: none;
-  align-items: center;
-  display: flex;
-  justify-content: center;
+  align-items: end;
 }

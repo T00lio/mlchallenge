@@ -1,25 +1,30 @@
-import { Container } from "reactstrap";
+import { Grid } from "@mui/material";
 import "./searchResultItem.css";
 
 const SearchResultItem = ({ id, imageUrl, price, title, location }) => {
   return (
-    <Container className="productResult">
-      <div className="fi1" key={id}>
+    <Grid container spacing={3} style={{ margin: "5px" }}>
+      <Grid item xs>
         <img src={imageUrl} height={100} width={100} alt="Search" />
-      </div>
-      <div className="fi2">
-        <h5>{title}</h5>
+      </Grid>
+      <Grid item xs={7}>
+        <p>
+          {" "}
+          <strong>{title}</strong>
+        </p>
         <p>
           {Number(price).toLocaleString("en-US", {
             style: "currency",
             currency: "USD",
           })}{" "}
         </p>
-      </div>
-      <div className="fi3">
-        <h5>{location}</h5>
-      </div>
-    </Container>
+      </Grid>
+      <Grid item xs>
+        <p>
+          <strong>{location}</strong>
+        </p>
+      </Grid>
+    </Grid>
   );
 };
 
