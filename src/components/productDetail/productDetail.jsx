@@ -54,7 +54,7 @@ const ProductDetail = () => {
               })}{" "}
             </h3>
             <hr />
-            <Button>Comprar</Button>
+            <Button>Add to cart</Button>
           </Stack>
 
           <Stack item className="pdeet">
