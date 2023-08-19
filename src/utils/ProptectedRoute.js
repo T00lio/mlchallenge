@@ -1,21 +1,14 @@
-import { Redirect, Route } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import React from "react";
+import { UserAuth } from "../context/authContext";
 
-function ProptectedRoute({ isAuth: isAuth, component: Component, ...rest }) {
-  return (
-    <Route
-      {...rest}
-      render={(props) => {
-        if (isAuth) {
-          return <Component />;
-        } else {
-          return (
-            <Redirect to={{ pathname: "/", state: { from: props.location } }} />
-          );
-        }
-      }}
-    />
-  );
+function ProptectedRoute({ children }) {
+  const { user } = UserAuth();
+
+  if (!user) {
+    return <Navigate to="/signin" />;
+  }
+  return children;
 }
 
 export default ProptectedRoute;

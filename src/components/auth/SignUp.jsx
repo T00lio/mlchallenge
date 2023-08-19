@@ -1,41 +1,52 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import "./signin.css";
-import { auth } from "../../firebase";
+import { useNavigate } from "react-router-dom";
+import { UserAuth } from "../../context/authContext";
 
 function SignUp() {
+  const { createUser } = UserAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
-  const signUp = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        console.log(userCredential);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    setError("");
+    try {
+      await createUser(email, password);
+      navigate("/profile");
+    } catch (e) {
+      setError(e.message);
+      console.log(e.message);
+    }
   };
 
   return (
     <div className="singin-container">
-      <form className="form" onSubmit={signUp}>
-        <h1>Create account</h1>
+      <form className="form" onSubmit={handleSubmit}>
+        <h1 className="formTitle">Create account</h1>
+        <p>
+          Already have an account? <a href="/Singin">Sing In</a>
+        </p>
+        <label htmlFor="email">Email</label>
         <input
           type="email"
           placeholder="Enter your email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
+        <label htmlFor="password">Password</label>
         <input
           type="password"
           placeholder="Enter your password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <hr />
-        <button type="submit">Sign up</button>
+
+        <button className="submitButton" type="submit">
+          Sign up
+        </button>
       </form>
     </div>
   );
