@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "../productDetail/productDetail.css";
-import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Grid, Stack, CircularProgress } from "@mui/material";
 import { useParams } from "react-router-dom";
@@ -54,11 +53,11 @@ const ProductDetail = () => {
               })}{" "}
             </h3>
             <hr />
-            <Button>Add to cart</Button>
+            <button className="add">Add to cart</button>
           </Stack>
 
           <Stack item className="pdeet">
-            <h1>Descripción del producto</h1>
+            <h2>Descripción del producto</h2>
             <p>{data?.description?.plain_text || ""}</p>
           </Stack>
         </Grid>
