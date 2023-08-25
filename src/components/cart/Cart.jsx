@@ -1,29 +1,34 @@
 import React from "react";
 import Iphone from "../../assets/images/iphone.jpeg";
 import "./Cart.css";
+import IphoneMock from "../../assets/images/iphone.jpeg";
+import { useId } from "react";
 
-function Cart() {
+export const Cart = () => {
+  const cartCheckboxId = useId();
+
   return (
-    <div>
-      <h1 className="title">Shopping Cart</h1>
-      <hr />
-      <div className="cartItem">
-        <div>{}name</div>
-        <img src={Iphone} width={100} height={100} alt="mock"></img>
-        <div>{}price</div>
-        <div>
-          <button className="add">+</button>quantity
-          <button className="less">-</button>
-        </div>
-        <div>{}Total</div>
-        <button className="remove">Remove</button>
-      </div>
-      <hr />
-      <div className="cobtn">
-        <button className="checkout">Check out</button>
-      </div>
-    </div>
+    <>
+      <label className="title" htmlFor={cartCheckboxId}>
+        🛒
+      </label>
+      <input id={cartCheckboxId} type="checkbox" hidden />
+      <aside className="cart">
+        <ul>
+          <li>
+            <img src={IphoneMock} width={100} height={100} alt="mock"></img>
+            <div>
+              <strong>iPhone</strong> - $1000
+            </div>
+            <footer>
+              <small>Quantity: 1</small>
+              <button>+</button>
+            </footer>
+          </li>
+        </ul>
+      </aside>
+    </>
   );
-}
+};
 
 export default Cart;

@@ -11,6 +11,7 @@ import { AuthContextProvider } from "./context/authContext";
 import ProtectedRoute from "./utils/ProptectedRoute";
 import { CartProvider } from "./context/cartContext";
 import Cart from "./components/cart/index";
+import Footer from "./components/footer/Footer";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
                 }
               ></Route>
             </Routes>
+            <Footer />
           </SearchContextProvider>
         </AuthContextProvider>
       </CartProvider>

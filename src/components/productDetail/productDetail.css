@@ -8,6 +8,13 @@
   margin-right: auto;
 }
 
+.name {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 1rem;
+  width: fit-content;
+}
+
 .pdes {
   display: flex;
   flex-direction: column;
