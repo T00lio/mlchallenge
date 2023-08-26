@@ -4,8 +4,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Grid, Stack, CircularProgress } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { getData } from "../../utils/httpsClient";
-import { CartContext } from "../../../src/context/cartContext";
-import { useContext } from "react";
 import { useCart } from "../../context/useCart";
 
 const ProductDetail = () => {

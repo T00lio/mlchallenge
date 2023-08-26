@@ -36,7 +36,7 @@ function App() {
                 }
               ></Route>
             </Routes>
-            <Footer />
+            {/* <Footer /> */}
           </SearchContextProvider>
         </AuthContextProvider>
       </CartProvider>
