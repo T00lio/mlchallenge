@@ -1,8 +1,6 @@
 import { Grid } from "@mui/material";
 import "./searchResultItem.css";
 import { useCart } from "../../context/useCart";
-import { useContext } from "react";
-import { CartContext } from "../../context/cartContext.js";
 
 const SearchResultItem = ({ id, imageUrl, price, title, location }) => {
   const { addToCart } = useCart();

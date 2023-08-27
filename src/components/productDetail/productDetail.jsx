@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import "../productDetail/productDetail.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Grid, Stack, CircularProgress } from "@mui/material";
