@@ -1,7 +1,11 @@
 import { Grid } from "@mui/material";
 import "./searchResultItem.css";
+import { useCart } from "../../context/useCart";
+import { useContext } from "react";
+import { CartContext } from "../../context/cartContext.js";
 
 const SearchResultItem = ({ id, imageUrl, price, title, location }) => {
+  const { addToCart } = useCart();
   return (
     <Grid container spacing={3} style={{ margin: "5px" }}>
       <Grid item xs>
@@ -23,6 +27,9 @@ const SearchResultItem = ({ id, imageUrl, price, title, location }) => {
         <p>
           <strong>{location}</strong>
         </p>
+        <button className="buy-button" onClick={() => addToCart(id)}>
+          Buy
+        </button>
       </Grid>
     </Grid>
   );

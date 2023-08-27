@@ -11,6 +11,7 @@ const ProductDetail = (product) => {
   const [loading, setLoading] = useState(false);
   const { addToCart } = useCart();
   const params = useParams();
+  console.log(params.id);
 
   useEffect(() => {
     const fetchItemData = async () => {
@@ -37,7 +38,7 @@ const ProductDetail = (product) => {
         <Grid container>
           <Grid item xs={8}>
             <img
-              src={data?.product?.thumbnail || ""}
+              src={data?.product?.pictures[0].url || ""}
               alt="productImage"
               width={500}
               height={500}
@@ -54,7 +55,7 @@ const ProductDetail = (product) => {
               })}{" "}
             </h3>
             <hr />
-            <button className="add" onClick={() => addToCart(product)}>
+            <button className="add" onClick={() => addToCart(params.id)}>
               Add to cart
             </button>
           </Stack>
