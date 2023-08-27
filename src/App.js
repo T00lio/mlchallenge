@@ -9,9 +9,10 @@ import ProfilePage from "./pages/ProfilePage";
 import SignUp from "./pages/Login";
 import { AuthContextProvider } from "./context/authContext";
 import ProtectedRoute from "./utils/ProptectedRoute";
-import { CartProvider } from "./context/cartContext";
+import CartProvider from "./context/cartContext";
 import Cart from "./components/cart/index";
 import Footer from "./components/footer/Footer";
+import Subheader from "./components/subheader/index";
 
 function App() {
   return (
@@ -20,13 +21,14 @@ function App() {
         <AuthContextProvider>
           <SearchContextProvider>
             <Header />
+            <Subheader />
             <Routes>
-              <Route path="/" element={<Cart />}></Route>
+              <Route path="/" element={<HomePage />}></Route>
               <Route path="/items" element={<ResultList />}></Route>
               <Route path="/item/:id" element={<ProductDetailPage />}></Route>
               <Route path="*" element={<ResultNotFound />}></Route>
               <Route path="/signin" element={<SignUp />}></Route>
-              {/* <Route path="/cart" element={<Cart />}></Route> */}
+              <Route path="/cart" element={<Cart />}></Route>
               <Route
                 path="/profile"
                 element={
@@ -36,7 +38,7 @@ function App() {
                 }
               ></Route>
             </Routes>
-            {/* <Footer /> */}
+            <Footer />
           </SearchContextProvider>
         </AuthContextProvider>
       </CartProvider>

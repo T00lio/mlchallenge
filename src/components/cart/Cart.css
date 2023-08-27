@@ -65,8 +65,3 @@
   border-radius: 4px;
   cursor: pointer;
 }
-
-.cart-button input:checked ~ .cart {
-  height: 100%;
-  display: block;
-}

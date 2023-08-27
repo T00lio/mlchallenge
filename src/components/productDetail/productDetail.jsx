@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "../productDetail/productDetail.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Grid, Stack, CircularProgress } from "@mui/material";
@@ -6,13 +6,11 @@ import { useParams } from "react-router-dom";
 import { getData } from "../../utils/httpsClient";
 import { useCart } from "../../context/useCart";
 
-const ProductDetail = () => {
+const ProductDetail = (product) => {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(false);
-  const { addToCart, cart } = useCart();
-
+  const { addToCart } = useCart();
   const params = useParams();
-  console.log(params.id);
 
   useEffect(() => {
     const fetchItemData = async () => {
@@ -29,9 +27,6 @@ const ProductDetail = () => {
     setLoading(false);
   }, [params.id]);
 
-  const handleAddToCart = (data) => {
-    addToCart([...cart, data]);
-  };
   return loading ? (
     <div className="loader">
       <CircularProgress size={80} />
@@ -59,10 +54,7 @@ const ProductDetail = () => {
               })}{" "}
             </h3>
             <hr />
-            <button
-              className="add"
-              onClick={() => handleAddToCart(data?.product)}
-            >
+            <button className="add" onClick={() => addToCart(product)}>
               Add to cart
             </button>
           </Stack>

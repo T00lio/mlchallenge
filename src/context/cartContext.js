@@ -1,34 +1,54 @@
 import { createContext, useState } from "react";
 
-export const CartContext = createContext();
+export const CartContext = createContext({
+  product: [],
+  addToCart: () => {},
+  getProductQuantity: () => {},
+});
 
 export function CartProvider({ children }) {
   const [cart, setCart] = useState([]);
 
-  const addToCart = (product) => {
-    const productInCartIndex = cart.findIndex((item) => item.id === product.id);
+  function getProductQuantity(id) {
+    const quantity = cart.find((product) => product.id === id)?.quantity;
 
-    if (productInCartIndex > 0) {
-      const newCart = structuredClone(cart);
-      newCart[productInCartIndex].quantity += 1;
-      return setCart(newCart);
+    if (quantity === undefined) {
+      return 0;
     }
-    setCart((prevState) => [
-      ...prevState,
-      {
-        ...product,
-        quantity: 1,
-      },
-    ]);
+    return quantity;
+  }
+
+  const addToCart = (id) => {
+    const quantity = getProductQuantity(id);
+
+    if (quantity === 0) {
+      setCart([
+        ...cart,
+        {
+          id: id,
+          quantity: 1,
+        },
+      ]);
+    } else {
+      setCart(
+        cart.map((product) =>
+          product.id === id
+            ? { ...product, quantity: product.quantity + 1 }
+            : product
+        )
+      );
+    }
   };
 
-  const removeFromCart = (product) => {
-    setCart([]);
+  const contextValue = {
+    cart,
+    addToCart,
+    getProductQuantity,
   };
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>
-      {children}
-    </CartContext.Provider>
+    <CartContext.Provider value={contextValue}>{children}</CartContext.Provider>
   );
 }
+
+export default CartProvider;

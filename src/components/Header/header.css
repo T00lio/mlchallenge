@@ -1,11 +1,45 @@
 .header {
-    display: flex;
-    background-color: #fff600;
-    align-items: center;
-    justify-content: center;
-    height: 5rem;
+  display: flex;
+  background-color: #fff600;
+  align-items: center;
+  justify-content: center;
+  height: 5rem;
 }
 
 .logo {
-    margin-right: 10px;
+  margin-right: 10px;
+}
+
+.login-button {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  margin: 0.5rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cart-button {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  margin: 0.5rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.navbarbtn {
+  justify-content: end;
 }
