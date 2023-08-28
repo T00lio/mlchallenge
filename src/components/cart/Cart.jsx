@@ -1,31 +1,23 @@
 import React from "react";
-import { useId } from "react";
 import "./Cart.css";
-import { createContext, useState } from "react";
-import iphone from "../../assets/images/iphone.jpeg";
+import { useCart } from "../../context/useCart";
+import Iphone from "../../assets/images/iphone.jpeg";
 
-export const CartContext = createContext();
+const Cart = () => {
+  const { cart } = useCart();
 
-export const Cart = () => {
+  console.log(cart);
+
   return (
     <>
-      <label className="cart-button" htmlFor="cartCheckboxId">
-        carrito
-      </label>
-      <input type="checkbox" hidden />
-      <aside className="cart">
-        <ul>
-          <li>
-            <img src={iphone} height={100} width={100} alt="products" />
-            <h1>Iphone</h1>
-          </li>
-          <footer>
-            <small>Quantity: 1</small>
-            <p>Price</p>
-          </footer>
-          <button>Remove</button>
-        </ul>
-      </aside>
+      <div className="cartItem">
+        <img src={Iphone} width={70} height={70} alt="ihpone"></img>
+        <h5>{cart.id}</h5>
+        <h5>price</h5>
+        <button className="removebtn">Remove</button>
+        <p>Qty: {cart.quantity}</p>
+        <br />
+      </div>
     </>
   );
 };

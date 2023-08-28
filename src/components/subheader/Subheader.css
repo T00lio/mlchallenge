@@ -12,3 +12,11 @@
   margin-left: 10px;
   align-items: end;
 }
+
+.li {
+  text-decoration: none;
+  color: black;
+  list-style: none;
+  margin-left: 10px;
+  align-items: end;
+}

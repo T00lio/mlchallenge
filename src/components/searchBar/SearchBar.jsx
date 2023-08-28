@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useState } from "react";
 import { useSearchContext } from "../../context/searchContext.js";
 import { Link } from "react-router-dom";
-import { CircularProgress } from "@mui/material";
 
 const SearchBar = () => {
   const { setQueryResult } = useSearchContext();
@@ -28,7 +27,6 @@ const SearchBar = () => {
 
   const handleSearchClick = () => {
     fetchSearchResults(searchQuery);
-    console.log(searchQuery);
   };
 
   return (
@@ -40,7 +38,7 @@ const SearchBar = () => {
         placeholder="Busqueda..."
         value={searchQuery}
         onChange={handleSearchChange}
-        id
+        id="search-input"
       />
       <Link to="/items">
         <button className="search-button" onClick={handleSearchClick}>

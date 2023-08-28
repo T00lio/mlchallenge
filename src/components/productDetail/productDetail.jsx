@@ -11,19 +11,16 @@ const ProductDetail = (product) => {
   const [loading, setLoading] = useState(false);
   const { addToCart } = useCart();
   const params = useParams();
-  console.log(params.id);
 
   useEffect(() => {
     const fetchItemData = async () => {
       setLoading(true);
-
       const [product, description] = await Promise.all([
         getData(`items/${params.id}`),
         getData(`items/${params.id}/description`),
       ]);
       setData({ product, description });
     };
-
     fetchItemData();
     setLoading(false);
   }, [params.id]);
