@@ -1,25 +1,36 @@
-import React from "react";
-import "./Cart.css";
+import { Fragment } from "react";
+import { List, ListItem, ListItemAvatar, ListItemText, Avatar, Typography, Divider } from "@mui/material";
 import { useCart } from "../../context/useCart";
-import Iphone from "../../assets/images/iphone.jpeg";
 
-const Cart = () => {
-  const { cart } = useCart();
-
-  console.log(cart);
+const ShoppingCart = () => {
+  const { cartItems } = useCart();
 
   return (
-    <>
-      <div className="cartItem">
-        <img src={Iphone} width={70} height={70} alt="ihpone"></img>
-        <h5>{cart.id}</h5>
-        <h5>price</h5>
-        <button className="removebtn">Remove</button>
-        <p>Qty: {cart.quantity}</p>
-        <br />
-      </div>
-    </>
+    <List>
+      {cartItems.map((item) => (
+        <Fragment key={item.id}>
+          <ListItem alignItems="flex-start">
+            <ListItemAvatar>
+              <Avatar alt={item.title} src={item.imageUrl} />
+            </ListItemAvatar>
+            <ListItemText
+              primary={item.title}
+              secondary={
+                <>
+                  <Typography component="span" variant="body2" color="textPrimary">
+                    ${item.price.toFixed(2)}
+                  </Typography>
+                  {" - "}
+                  {item.quantity} items
+                </>
+              }
+            />
+          </ListItem>
+          <Divider variant="inset" component="li" />
+        </Fragment>
+      ))}
+    </List>
   );
 };
 
-export default Cart;
+export default ShoppingCart;

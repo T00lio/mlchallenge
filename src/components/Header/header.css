@@ -1,6 +1,6 @@
 .header {
   display: flex;
-  background-color: #fff600;
+  background-color: #fff600 !important;
   align-items: center;
   justify-content: center;
   height: 5rem;

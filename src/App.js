@@ -1,4 +1,3 @@
-import Header from "./components/Header/index";
 import { Route, Routes } from "react-router-dom";
 import { SearchContextProvider } from "./context/searchContext";
 import ResultList from "./pages/ResultList";
@@ -6,28 +5,27 @@ import HomePage from "./pages/HomePage";
 import ResultNotFound from "./pages/ResultNotFound";
 import ProductDetailPage from "./pages/ProductDetailPage";
 import ProfilePage from "./pages/ProfilePage";
-import SignUp from "./pages/Login";
+import Login from "./pages/Login";
+import SignUp from "./components/auth/SignUp";
 import { AuthContextProvider } from "./context/authContext";
 import ProtectedRoute from "./utils/ProptectedRoute";
 import CartProvider from "./context/cartContext";
 import Cart from "./components/cart/index";
 import Footer from "./components/footer/Footer";
-import Subheader from "./components/subheader/index";
 
 function App() {
   return (
     <div className="App">
-      <CartProvider>
-        <AuthContextProvider>
+      <AuthContextProvider>
+        <CartProvider>
           <SearchContextProvider>
-            <Header />
-            <Subheader />
             <Routes>
               <Route path="/" element={<HomePage />}></Route>
               <Route path="/items" element={<ResultList />}></Route>
               <Route path="/item/:id" element={<ProductDetailPage />}></Route>
               <Route path="*" element={<ResultNotFound />}></Route>
-              <Route path="/signin" element={<SignUp />}></Route>
+              <Route path="/login" element={<Login />}></Route>
+              <Route path="/signup" element={<SignUp />}></Route>
               <Route path="/cart" element={<Cart />}></Route>
               <Route
                 path="/profile"
@@ -40,8 +38,8 @@ function App() {
             </Routes>
             <Footer />
           </SearchContextProvider>
-        </AuthContextProvider>
-      </CartProvider>
+        </CartProvider>
+      </AuthContextProvider>
     </div>
   );
 }

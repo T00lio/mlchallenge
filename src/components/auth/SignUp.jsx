@@ -1,25 +1,17 @@
-import React, { useState } from "react";
-import "./signin.css";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import { UserAuth } from "../../context/authContext";
+import "./signin.css";
 
 function SignUp() {
   const { createUser } = UserAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setError("");
-    try {
-      await createUser(email, password);
-      navigate("/profile");
-    } catch (e) {
-      setError(e.message);
-      console.log(e.message);
-    }
+    createUser(email, password);
   };
 
   return (
@@ -27,15 +19,10 @@ function SignUp() {
       <form className="form" onSubmit={handleSubmit}>
         <h1 className="formTitle">Create account</h1>
         <p>
-          Already have an account? <a href="/Singin">Sing In</a>
+          Already have an account? <a href="/login">Log In</a>
         </p>
         <label htmlFor="email">Email</label>
-        <input
-          type="email"
-          placeholder="Enter your email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+        <input type="email" placeholder="Enter your email" value={email} onChange={(e) => setEmail(e.target.value)} />
         <label htmlFor="password">Password</label>
         <input
           type="password"

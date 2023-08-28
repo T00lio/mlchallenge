@@ -1,51 +1,63 @@
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import "../searchBar/SearchBar.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useContext, useState } from "react";
-import { useSearchContext } from "../../context/searchContext.js";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { CircularProgress, IconButton } from "@mui/material";
+import { Search as SearchIcon } from "@mui/icons-material";
+import { useSearchContext } from "../../context/searchContext.js";
+import { getData } from "../../utils/httpsClient";
+import "../searchBar/SearchBar.css";
 
 const SearchBar = () => {
   const { setQueryResult } = useSearchContext();
   const [searchQuery, setSearchQuery] = useState(" ");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSearchChange = (event) => {
     const query = event.target.value;
     setSearchQuery(query);
   };
 
-  const fetchSearchResults = (query) => {
-    const endpoint = `https://api.mercadolibre.com/sites/MLA/search?q=${query}`;
-    return fetch(endpoint)
-      .then((response) => response.json())
-      .then((data) => setQueryResult(data.results))
-      .catch((error) => {
-        console.error("Error fetching search results:", error);
-        return [useContext];
-      });
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      handleSearchClick();
+    }
   };
 
-  const handleSearchClick = () => {
-    fetchSearchResults(searchQuery);
+  const handleSearchClick = async () => {
+    setIsLoading(true);
+    const data = await getData(`sites/MLA/search?q=${searchQuery}`);
+    setQueryResult(data.results);
+    setIsLoading(false);
   };
 
   return (
     <div className="search-bar">
       <input
+        id="search-input"
         style={{ width: "75%" }}
         type="text"
         className="search-input"
         placeholder="Busqueda..."
         value={searchQuery}
         onChange={handleSearchChange}
-        id="search-input"
+        onKeyDown={handleKeyDown}
       />
+
       <Link to="/items">
-        <button className="search-button" onClick={handleSearchClick}>
-          <i className="sb">
-            <FontAwesomeIcon icon={faMagnifyingGlass} />
-          </i>
-        </button>
+        <IconButton
+          className="search-button"
+          size="large"
+          edge="end"
+          aria-label="search items"
+          aria-haspopup="true"
+          color="primary"
+          onClick={handleSearchClick}
+        >
+          {isLoading ? <CircularProgress /> : <SearchIcon />}
+        </IconButton>
+        {/* <button className="search-button" onClick={handleSearchClick}>
+          <i className="sb">{isLoading ? <CircularProgress /> : <FontAwesomeIcon icon={faMagnifyingGlass} />}</i>
+        </button> */}
       </Link>
     </div>
   );

@@ -1,44 +1,69 @@
-import React, { useEffect, useState } from "react";
-import { createContext } from "react";
-import { useContext } from "react";
-import { auth } from "../firebase.js";
-import {
-  createUserWithEmailAndPassword,
-  onAuthStateChanged,
-  signInWithEmailAndPassword,
-  signOut,
-} from "firebase/auth";
+import { createContext, useContext, useEffect, useState } from "react";
+import { auth, db } from "../firebase";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
+import Snackbar from "@mui/material/Snackbar";
+import { useNavigate } from "react-router-dom";
 
 const UserContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(null);
+  const [showSnackBar, setShowSnackbar] = useState("");
+  const navigate = useNavigate();
 
   const createUser = (email, password) => {
-    return createUserWithEmailAndPassword(auth, email, password);
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((createdUser) => {
+        setDoc(doc(db, "shoppingCart", createdUser.user.uid), {
+          cartItems: [],
+        });
+        navigate("/");
+      })
+      .catch((error) => {
+        setShowSnackbar(error.message);
+      });
   };
 
   const signIn = (email, password) => {
-    return signInWithEmailAndPassword(auth, email, password);
+    signInWithEmailAndPassword(auth, email, password).catch((error) => {
+      setShowSnackbar(error.message);
+    });
   };
 
   const logout = () => {
-    return signOut(auth);
+    signOut(auth).catch((error) => {
+      setShowSnackbar(error.message);
+    });
   };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      console.log(currentUser);
-      setUser(currentUser);
+      if (currentUser) {
+        setUser(currentUser);
+      } else {
+        setUser(null);
+      }
     });
+
     return () => {
       unsubscribe();
     };
   }, []);
 
+  console.log(user);
+
   return (
     <UserContext.Provider value={{ createUser, user, logout, signIn }}>
-      {children}
+      <>
+        <Snackbar
+          anchorOrigin={{ vertical: "top", horizontal: "center" }}
+          open={!!showSnackBar}
+          autoHideDuration={5000}
+          message={showSnackBar}
+        />
+        {children}
+      </>
     </UserContext.Provider>
   );
 };

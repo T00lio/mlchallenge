@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
-import "../productDetail/productDetail.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+import { useState, useEffect } from "react";
 import { Container, Grid, Stack, CircularProgress } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { getData } from "../../utils/httpsClient";
 import { useCart } from "../../context/useCart";
+import "../productDetail/productDetail.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-const ProductDetail = (product) => {
+const ProductDetail = () => {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(false);
   const { addToCart } = useCart();
@@ -15,15 +15,26 @@ const ProductDetail = (product) => {
   useEffect(() => {
     const fetchItemData = async () => {
       setLoading(true);
+
       const [product, description] = await Promise.all([
         getData(`items/${params.id}`),
         getData(`items/${params.id}/description`),
       ]);
       setData({ product, description });
     };
+
     fetchItemData();
     setLoading(false);
   }, [params.id]);
+
+  const handleAddToCartClick = () => {
+    addToCart({
+      productId: params.id,
+      imageUrl: data?.product?.thumbnail,
+      title: data?.product?.title,
+      price: data?.product?.price,
+    });
+  };
 
   return loading ? (
     <div className="loader">
@@ -35,7 +46,7 @@ const ProductDetail = (product) => {
         <Grid container>
           <Grid item xs={8}>
             <img
-              src={data?.product?.pictures[0].url || ""}
+              src={data?.product?.pictures?.[0]?.url || ""}
               alt="productImage"
               width={500}
               height={500}
@@ -52,7 +63,7 @@ const ProductDetail = (product) => {
               })}{" "}
             </h3>
             <hr />
-            <button className="add" onClick={() => addToCart(params.id)}>
+            <button className="add" onClick={handleAddToCartClick}>
               Add to cart
             </button>
           </Stack>
