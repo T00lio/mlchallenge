@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { UserAuth } from "../../context/authContext";
-import "./signin.css";
+import { UserAuth } from "../../../context/authContext";
+import "./signup.css";
 
 function SignUp() {
   const { createUser } = UserAuth();
@@ -21,10 +21,21 @@ function SignUp() {
         <p>
           Already have an account? <a href="/login">Log In</a>
         </p>
-        <label htmlFor="email">Email</label>
-        <input type="email" placeholder="Enter your email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        <label htmlFor="password">Password</label>
+        <label htmlFor="email" className="label">
+          Email
+        </label>
         <input
+          className="input"
+          type="email"
+          placeholder="Enter your email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <label htmlFor="password" className="label">
+          Password
+        </label>
+        <input
+          className="input"
           type="password"
           placeholder="Enter your password"
           value={password}

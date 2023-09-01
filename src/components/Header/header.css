@@ -1,9 +1,25 @@
 .header {
   display: flex;
-  background-color: #fff600 !important;
+  background-color: #ffffff !important;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  padding: 1rem;
   align-items: center;
   justify-content: center;
-  height: 5rem;
+  height: hug(108px);
+  border-radius: 8px;
+}
+
+.toolbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: hug(201px);
+  height: Hugo(30px);
+  gap: 2rem;
 }
 
 .logo {

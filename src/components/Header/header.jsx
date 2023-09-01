@@ -1,8 +1,19 @@
 import { useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import Logo from "../../assets/images/MELI.svg";
-import { AppBar, Toolbar, Box, Badge, IconButton, Link, Button } from "@mui/material";
-import { ShoppingCart as ShoppingCartIcon, AccountCircle as AccountCircleIcon } from "@mui/icons-material";
+import {
+  AppBar,
+  Toolbar,
+  Box,
+  Badge,
+  IconButton,
+  Link,
+  Button,
+} from "@mui/material";
+import {
+  ShoppingCart as ShoppingCartIcon,
+  AccountCircle as AccountCircleIcon,
+} from "@mui/icons-material";
 import { UserAuth } from "../../context/authContext";
 import { useCart } from "../../context/useCart";
 import SearchBar from "../searchBar";
@@ -21,9 +32,16 @@ const Header = () => {
   return (
     <>
       <AppBar position="static" className="header">
-        <Toolbar>
+        <Toolbar className="toolbar">
           <RouterLink to="/">
-            <img src={Logo} width={30} height={30} className="logo" alt="logo"></img>
+            <img
+              src={Logo}
+              width={30}
+              height={30}
+              className="logo"
+              alt="logo"
+            ></img>
+            <p className="title">Ecommerce</p>
           </RouterLink>
           <SearchBar />
           {user?.uid ? (

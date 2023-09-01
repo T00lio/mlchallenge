@@ -6,7 +6,7 @@ import ResultNotFound from "./pages/ResultNotFound";
 import ProductDetailPage from "./pages/ProductDetailPage";
 import ProfilePage from "./pages/ProfilePage";
 import Login from "./pages/Login";
-import SignUp from "./components/auth/SignUp";
+import SignUp from "./components/auth//signup/SignUp";
 import { AuthContextProvider } from "./context/authContext";
 import ProtectedRoute from "./utils/ProptectedRoute";
 import CartProvider from "./context/cartContext";

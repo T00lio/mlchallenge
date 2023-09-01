@@ -13,6 +13,7 @@ const SearchResult = () => {
         queryResult.map((result) => (
           <Link
             to={`/item/${result.id}`}
+            key={result.id}
             className="link"
             style={{ textDecoration: "none", color: "black" }}
           >

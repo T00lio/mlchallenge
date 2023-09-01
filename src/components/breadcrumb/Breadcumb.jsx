@@ -1,5 +1,6 @@
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import "./Breadcrumb.css";
+import { Link } from "react-router-dom";
 
 const Breadcrumbs = ({ current, detail }) => {
   const location = useLocation();
@@ -18,7 +19,7 @@ const Breadcrumbs = ({ current, detail }) => {
       );
     });
 
-  return <div className="bc">{crumbs}</div>;
+  return <Link>{crumbs}</Link>;
 };
 
 export default Breadcrumbs;

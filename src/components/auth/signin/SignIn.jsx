@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { UserAuth } from "../../context/authContext";
+import { UserAuth } from "../../../context/authContext";
 import "./signin.css";
 
 function SignIn() {
@@ -16,15 +16,30 @@ function SignIn() {
     <div className="singin-container">
       <form className="form" onSubmit={handleLogin}>
         <h2>Log into your account in</h2>
-        <input type="email" placeholder="Enter your email" value={email} onChange={(e) => setEmail(e.target.value)} />
+        <label htmlFor="email" className="label">
+          Email
+        </label>
         <input
+          className="input"
+          type="email"
+          placeholder="Enter your email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <label htmlFor="password" className="label">
+          Password
+        </label>
+        <input
+          className="input"
           type="password"
           placeholder="Enter your password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
         <hr />
-        <button type="submit">Log In</button>
+        <button type="submit" className="submitButton">
+          Log In
+        </button>
       </form>
     </div>
   );
