@@ -1,4 +1,3 @@
-import Breadcrumbs from "../components/breadcrumb/Breadcumb";
 import SearchResult from "../components/searchresult";
 import Header from "../components/Header";
 import Subheader from "../components/subheader";
@@ -8,7 +7,6 @@ const HomePage = () => {
     <>
       <Header />
       <Subheader />
-      <Breadcrumbs />
       <SearchResult />
     </>
   );
