@@ -19,7 +19,16 @@ const Breadcrumbs = ({ current, detail }) => {
       );
     });
 
-  return <Link>{crumbs}</Link>;
+  return (
+    <div className="breadcrumbs">
+      <div className="crumb">
+        <Link to="/">Home</Link> {">"}
+      </div>
+      {crumbs}
+      {current && <div className="crumb">{current}</div>}
+      {detail && <div className="crumb">{detail}</div>}
+    </div>
+  );
 };
 
 export default Breadcrumbs;

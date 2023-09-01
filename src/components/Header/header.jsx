@@ -9,11 +9,13 @@ import {
   IconButton,
   Link,
   Button,
+  Typography,
 } from "@mui/material";
 import {
   ShoppingCart as ShoppingCartIcon,
   AccountCircle as AccountCircleIcon,
 } from "@mui/icons-material";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import { UserAuth } from "../../context/authContext";
 import { useCart } from "../../context/useCart";
 import SearchBar from "../searchBar";
@@ -32,7 +34,7 @@ const Header = () => {
   return (
     <>
       <AppBar position="static" className="header">
-        <Toolbar className="toolbar">
+        <Toolbar>
           <RouterLink to="/">
             <img
               src={Logo}
@@ -41,21 +43,57 @@ const Header = () => {
               className="logo"
               alt="logo"
             ></img>
-            <p className="title">Ecommerce</p>
+            <Typography>
+              <Box
+                sx={{
+                  display: { xs: "flex-row", sm: "flex-row" },
+                  color: "#000000",
+                }}
+              >
+                Ecommerce
+              </Box>
+            </Typography>
           </RouterLink>
           <SearchBar />
           {user?.uid ? (
-            <Box sx={{ display: { xs: "none", md: "flex" } }}>
+            <Box sx={{ display: { xs: "flex", md: "flex" } }}>
               <IconButton
                 size="large"
                 aria-label="show 17 new notifications"
                 color="inherit"
                 onClick={handleOpenCartModal}
               >
-                <Badge badgeContent={cartItems.length} color="error">
-                  <ShoppingCartIcon color="primary" />
-                </Badge>
+                <ShoppingCartIcon color="primary" />
+                <Typography
+                  variant="h5"
+                  component="div"
+                  sx={{ color: "#000000" }}
+                  margin={2}
+                >
+                  Cart
+                </Typography>
+                <Badge
+                  badgeContent={cartItems.length}
+                  margin={1}
+                  color="error"
+                ></Badge>
               </IconButton>
+              <Box
+                sx={{ display: { xs: "none", sm: "block" } }}
+                className="wishlist"
+              >
+                <IconButton
+                  size="large"
+                  aria-label="show 4 new mails"
+                  color="inherit"
+                >
+                  <Link href="/wishlist">
+                    <Typography>Wishlist</Typography>
+                    <FavoriteIcon color="primary" />
+                  </Link>
+                </IconButton>
+              </Box>
+
               <IconButton
                 size="large"
                 edge="end"
@@ -65,13 +103,16 @@ const Header = () => {
                 color="primary"
               >
                 <AccountCircleIcon />
+                <Box sx={{ display: { xs: "none", sm: "block" } }}>
+                  <Button
+                    sx={{ color: "#000000" }}
+                    onClick={logout}
+                    margin-top={10}
+                  >
+                    Signed in as: {user.email}
+                  </Button>
+                </Box>
               </IconButton>
-
-              <Box sx={{ display: { xs: "none", sm: "block" } }}>
-                <Button sx={{ color: "#000000" }} onClick={logout}>
-                  Logout
-                </Button>
-              </Box>
             </Box>
           ) : (
             <Box sx={{ display: { xs: "none", md: "flex" } }}>

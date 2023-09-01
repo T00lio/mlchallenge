@@ -1,12 +1,10 @@
-.bc {
-  max-width: 1200px;
-  margin: 20px auto;
-  margin-left: 50px;
-}
-.bc > * {
-  display: inline-block;
-  margin-right: 10px;
-}
-.bc .crumb:last-child:after {
-  display: none;
+.breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin-left: 25rem;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #6c757d;
 }
