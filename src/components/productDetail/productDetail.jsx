@@ -21,6 +21,7 @@ const ProductDetail = () => {
         getData(`items/${params.id}/description`),
       ]);
       setData({ product, description });
+      console.log(product);
     };
 
     fetchItemData();

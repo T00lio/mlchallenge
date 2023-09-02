@@ -36,6 +36,7 @@ function App() {
                 }
               ></Route>
             </Routes>
+
             <Footer />
           </SearchContextProvider>
         </CartProvider>
