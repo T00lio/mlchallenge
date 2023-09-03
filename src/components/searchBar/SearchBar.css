@@ -1,17 +1,18 @@
 .search-bar {
-  display: flex;
-  width: 44rem;
+  display: grid;
+  width: 22rem;
   height: 3.375rem;
   padding: 0px 1.5rem 0px 1.5rem;
   justify-content: space-between;
   align-items: center;
   gap: 1.5rem;
   font-family: "montserrat", sans-serif;
+  flex-shrink: 0;
 }
 
 .search-input {
   display: flex;
-  width: 44rem;
+  width: 24rem;
   height: 3.375rem;
   padding-left: 2rem;
   justify-content: flex-end;
@@ -20,6 +21,7 @@
   flex-shrink: 0;
   border-radius: 2rem;
   border: 1.5px solid #b3b9c4;
+  margin-left: 10rem;
 }
 
 .search-button {
