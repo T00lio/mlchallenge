@@ -12,16 +12,16 @@
 
 .search-input {
   display: flex;
-  width: 24rem;
+  width: 22rem;
   height: 3.375rem;
   padding-left: 2rem;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
-  gap: 26.375rem;
+  gap: 13.375rem;
   flex-shrink: 0;
   border-radius: 2rem;
   border: 1.5px solid #b3b9c4;
-  margin-left: 10rem;
+  margin-left: 7rem;
 }
 
 .search-button {

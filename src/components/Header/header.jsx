@@ -33,7 +33,7 @@ const Header = () => {
       <AppBar position="static" className="header">
         <Toolbar sx={{ height: "6rem" }} display="flex">
           <Grid container>
-            <Grid item mt={1}>
+            <Grid item mt={1} xs={1} sm={2}>
               <RouterLink
                 style={{ textDecoration: "none", color: "#000000" }}
                 to="/"
@@ -48,7 +48,7 @@ const Header = () => {
                 </Typography>
               </RouterLink>
             </Grid>
-            <Grid item xs={12} sm={6} md={4} lg={3}>
+            <Grid item xs={3} sm={4}>
               <SearchBar />
             </Grid>
 
@@ -101,8 +101,11 @@ const Header = () => {
                     onClick={logout}
                     variant="outlined"
                     size="small"
+                    style={{ borderRadius: 24 }}
                   >
-                    {user.email}
+                    <Typography fontFamily={"Montserrat"}>
+                      {user.email}
+                    </Typography>
                   </Button>
                 </IconButton>
               </Grid>
@@ -115,12 +118,20 @@ const Header = () => {
                 sx={{ marginLeft: "auto" }}
               >
                 <Link href="/signup">
-                  <Button variant="outlined" sx={{ color: "#000000" }}>
+                  <Button
+                    variant="outlined"
+                    sx={{ color: "#000000" }}
+                    style={{ borderRadius: 24 }}
+                  >
                     <Typography fontFamily={"Montserrat"}>Sign up</Typography>
                   </Button>
                 </Link>
                 <Link href="/login">
-                  <Button variant="outlined" sx={{ color: "#000000" }}>
+                  <Button
+                    variant="outlined"
+                    sx={{ color: "#000000" }}
+                    style={{ borderRadius: 24 }}
+                  >
                     <Typography fontFamily={"Montserrat"}>Log in</Typography>
                   </Button>
                 </Link>
