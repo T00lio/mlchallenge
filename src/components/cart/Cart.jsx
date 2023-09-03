@@ -1,5 +1,13 @@
 import { Fragment } from "react";
-import { List, ListItem, ListItemAvatar, ListItemText, Avatar, Typography, Divider } from "@mui/material";
+import {
+  List,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
+  Avatar,
+  Typography,
+  Divider,
+} from "@mui/material";
 import { useCart } from "../../context/useCart";
 
 const ShoppingCart = () => {
@@ -17,8 +25,15 @@ const ShoppingCart = () => {
               primary={item.title}
               secondary={
                 <>
-                  <Typography component="span" variant="body2" color="textPrimary">
-                    ${item.price.toFixed(2)}
+                  <Typography
+                    component="span"
+                    variant="body2"
+                    color="textPrimary"
+                  >
+                    {Number(item.price).toLocaleString("en-US", {
+                      style: "currency",
+                      currency: "USD",
+                    })}{" "}
                   </Typography>
                   {" - "}
                   {item.quantity} items
