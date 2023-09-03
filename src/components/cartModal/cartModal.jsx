@@ -1,7 +1,16 @@
-import { Dialog, DialogContent, DialogTitle, DialogActions, Button } from "@mui/material";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogActions,
+  Button,
+} from "@mui/material";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import Cart from "../cart";
+import { useCart } from "../../context/useCart";
 
 const CartModal = ({ open, onClose }) => {
+  const { clearCart } = useCart();
   return (
     <Dialog open={open} onClose={onClose} closeAfterTransition>
       <DialogTitle sx={{ m: 0, p: 2 }}>Shopping Cart (beta)</DialogTitle>
@@ -9,6 +18,9 @@ const CartModal = ({ open, onClose }) => {
         <Cart />
       </DialogContent>
       <DialogActions>
+        <Button onClick={() => clearCart()} startIcon={<DeleteForeverIcon />}>
+          Clear Cart
+        </Button>
         <Button onClick={onClose}>Close</Button>
       </DialogActions>
     </Dialog>

@@ -7,6 +7,10 @@ export const CartContext = createContext({
   product: [],
   addToCart: () => {},
   getProductQuantity: () => {},
+  getCartTotal: () => {},
+  removeOneFromCart: () => {},
+  deleteFromCart: () => {},
+  clearCart: () => {},
 });
 
 export const CartProvider = ({ children }) => {
@@ -15,13 +19,16 @@ export const CartProvider = ({ children }) => {
 
   useEffect(() => {
     if (user?.uid) {
-      const unsubscribe = onSnapshot(doc(db, "shoppingCart", user.uid), (snapshot) => {
-        const data = snapshot.data();
+      const unsubscribe = onSnapshot(
+        doc(db, "shoppingCart", user.uid),
+        (snapshot) => {
+          const data = snapshot.data();
 
-        if (data) {
-          setCartItems(data.cartItems);
+          if (data) {
+            setCartItems(data.cartItems);
+          }
         }
-      });
+      );
 
       return () => {
         unsubscribe();
@@ -36,6 +43,13 @@ export const CartProvider = ({ children }) => {
       return 0;
     }
     return quantity;
+  };
+
+  const getCartTotal = () => {
+    return cartItems.reduce(
+      (total, product) => total + product.price * product.quantity,
+      0
+    );
   };
 
   const addToCart = ({ productId, imageUrl, title, price }) => {
@@ -54,18 +68,59 @@ export const CartProvider = ({ children }) => {
       });
     } else {
       updateDoc(userRef, {
-        cartItems: cartItems.concat({ id: productId, imageUrl, title, quantity: 1, price }),
+        cartItems: cartItems.concat({
+          id: productId,
+          imageUrl,
+          title,
+          quantity: 1,
+          price,
+        }),
       });
     }
+  };
+
+  const removeOneFromCart = ({ productId }) => {
+    const quantity = getProductQuantity(productId);
+
+    if (quantity === 1) {
+      deleteFromCart({ productId });
+    } else {
+      setCartItems((cartItems) =>
+        cartItems.map((item) => {
+          if (item.id === productId) {
+            return { ...item, quantity: item.quantity - 1 };
+          }
+          return item;
+        })
+      );
+    }
+  };
+
+  const clearCart = () => {
+    setCartItems([]);
+  };
+
+  const deleteFromCart = ({ productId }) => {
+    setCartItems((cartItems) =>
+      cartItems.filter((item) => {
+        return item.id !== productId;
+      })
+    );
   };
 
   const contextValue = {
     cartItems,
     addToCart,
     getProductQuantity,
+    getCartTotal,
+    removeOneFromCart,
+    deleteFromCart,
+    clearCart,
   };
 
-  return <CartContext.Provider value={contextValue}>{children}</CartContext.Provider>;
+  return (
+    <CartContext.Provider value={contextValue}>{children}</CartContext.Provider>
+  );
 };
 
 export default CartProvider;
