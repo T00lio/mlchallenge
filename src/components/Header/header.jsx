@@ -40,6 +40,7 @@ const Header = () => {
                 sx={{ marginLeft: "auto" }}
               >
                 <Typography
+                  marginLeft={3}
                   color={"#000"}
                   variant="h5"
                   fontFamily={"Montserrat"}
