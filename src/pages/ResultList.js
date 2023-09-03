@@ -1,9 +1,10 @@
-import Breadcrumbs from "../components/breadcrumb/Breadcumb";
+import React from "react";
+import Breadcrumbs from "../components/breadcrumb";
 import SearchResult from "../components/searchresult";
 import Header from "../components/Header";
 import Subheader from "../components/subheader";
 
-const HomePage = () => {
+function ResultList() {
   return (
     <>
       <Header />
@@ -12,6 +13,6 @@ const HomePage = () => {
       <SearchResult />
     </>
   );
-};
+}
 
-export default HomePage;
+export default ResultList;

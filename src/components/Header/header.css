@@ -1,11 +1,9 @@
 .header {
-    display: flex;
-    background-color: #fff600;
-    align-items: center;
-    justify-content: center;
-    height: 5rem;
+  background-color: #ffffff !important;
+  border-radius: 8px;
 }
 
-.logo {
-    margin-right: 10px;
+.sisoButton {
+  display: flex;
+  align-items: end;
 }
