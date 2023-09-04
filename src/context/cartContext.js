@@ -1,7 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 import { UserAuth } from "./authContext";
 import { db } from "../firebase";
-import { doc, onSnapshot, updateDoc } from "firebase/firestore";
+import { doc, setDoc, onSnapshot, updateDoc } from "firebase/firestore";
 
 export const CartContext = createContext({
   product: [],
@@ -9,10 +9,18 @@ export const CartContext = createContext({
   getProductQuantity: () => {},
   getCartTotal: () => {},
   removeOneFromCart: () => {},
-  deleteFromCart: () => {},
   clearCart: () => {},
+  user: null,
 });
 
+const updateCartInFirestore = (cartItems, userId) => {
+  const userCartRef = doc(db, "shoppingCart", userId);
+  setDoc(userCartRef, { cartItems })
+    .then(() => {})
+    .catch((error) => {
+      console.error("Error updating cart in Firestore: ", error);
+    });
+};
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
   const { user } = UserAuth();
@@ -67,45 +75,36 @@ export const CartProvider = ({ children }) => {
         }),
       });
     } else {
-      updateDoc(userRef, {
-        cartItems: cartItems.concat({
-          id: productId,
-          imageUrl,
-          title,
-          quantity: 1,
-          price,
-        }),
-      });
+      updateCartInFirestore(cartItems, user.uid);
     }
   };
 
   const removeOneFromCart = ({ productId }) => {
-    const quantity = getProductQuantity(productId);
+    const userRef = doc(db, "shoppingCart", user.uid);
 
-    if (quantity === 1) {
-      deleteFromCart({ productId });
-    } else {
-      setCartItems((cartItems) =>
-        cartItems.map((item) => {
-          if (item.id === productId) {
-            return { ...item, quantity: item.quantity - 1 };
-          }
-          return item;
-        })
-      );
+    // Find the index of the item to be modified
+    const itemIndex = cartItems.findIndex((item) => item.id === productId);
+
+    if (itemIndex !== -1) {
+      const updatedCartItems = [...cartItems];
+      const currentItem = updatedCartItems[itemIndex];
+
+      if (currentItem.quantity > 1) {
+        // Reduce the quantity if it's greater than 1
+        currentItem.quantity -= 1;
+      } else {
+        // Remove the item from the cart if the quantity is 1 or less
+        updatedCartItems.splice(itemIndex, 1);
+      }
+
+      // Update the Firestore document with the updated cart items
+      updateCartInFirestore(cartItems, user.uid);
     }
   };
 
   const clearCart = () => {
     setCartItems([]);
-  };
-
-  const deleteFromCart = ({ productId }) => {
-    setCartItems((cartItems) =>
-      cartItems.filter((item) => {
-        return item.id !== productId;
-      })
-    );
+    updateCartInFirestore(cartItems, user.uid);
   };
 
   const contextValue = {
@@ -114,7 +113,6 @@ export const CartProvider = ({ children }) => {
     getProductQuantity,
     getCartTotal,
     removeOneFromCart,
-    deleteFromCart,
     clearCart,
   };
 

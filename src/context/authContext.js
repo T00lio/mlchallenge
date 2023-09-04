@@ -1,6 +1,11 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { auth, db } from "../firebase";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
+} from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import Snackbar from "@mui/material/Snackbar";
 import { useNavigate } from "react-router-dom";
@@ -50,8 +55,6 @@ export const AuthContextProvider = ({ children }) => {
       unsubscribe();
     };
   }, []);
-
-  console.log(user);
 
   return (
     <UserContext.Provider value={{ createUser, user, logout, signIn }}>

@@ -10,10 +10,14 @@ import {
 } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
+
 import { useCart } from "../../context/useCart";
 
 const ShoppingCart = () => {
-  const { cartItems, removeOneFromCart } = useCart();
+  const { cartItems, removeOneFromCart, addToCart } = useCart();
+  const handleRemoveOne = (productId) => {
+    removeOneFromCart({ productId });
+  };
 
   return (
     <div className="cart">
@@ -39,12 +43,22 @@ const ShoppingCart = () => {
                       })}{" "}
                     </Typography>
                     {" - "}
+                    <IconButton
+                      variant="outlined"
+                      color="success"
+                      size="large"
+                      style={{ marginBottom: "10px" }}
+                      // onClick={() => addToCart(item.id)}
+                    >
+                      +
+                    </IconButton>
                     {item.quantity} items
                     <IconButton
                       aria-label="delete"
                       size="small"
                       color="error"
-                      onClick={() => removeOneFromCart()}
+                      style={{ marginBottom: "5px" }}
+                      onClick={() => handleRemoveOne(item.id)}
                     >
                       <DeleteIcon />
                     </IconButton>
