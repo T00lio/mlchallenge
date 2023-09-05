@@ -31,7 +31,9 @@ const SearchResult = () => {
         ))
       ) : (
         <>
-          <Typography variant="h1">Welcome</Typography>
+          <Typography variant="h1" fontFamily={"Montserrat"}>
+            Welcome
+          </Typography>
           <Carousel />
         </>
       )}
