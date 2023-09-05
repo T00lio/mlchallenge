@@ -11,11 +11,6 @@ const SearchResult = () => {
   const { queryResult } = useSearchContext();
   console.log("queryResult", queryResult);
 
-  const handleAddToCart = (resultId) => {
-    handleAddToCart(resultId);
-    console.log("resultId", resultId);
-  };
-
   const rating = 4.5; //placeholder
 
   return (
@@ -31,7 +26,6 @@ const SearchResult = () => {
               title={result.title}
               location={result.address.state_name}
               rating={rating}
-              // onAddToCart={(() => handleAddToCart(result.id), console.log())}
             />
           </Grid>
         ))

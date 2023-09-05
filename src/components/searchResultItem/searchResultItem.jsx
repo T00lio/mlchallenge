@@ -13,7 +13,12 @@ const SearchResultItem = ({ id, imageUrl, price, title, location, rating }) => {
   const { addToCart } = useCart();
 
   const handleAddToCart = () => {
-    addToCart({ id });
+    // Check if the 'id' is defined and not null
+    if (id) {
+      addToCart({ id });
+    } else {
+      console.error("Invalid 'id' value:", id);
+    }
   };
 
   const navigate = useNavigate();

@@ -23,20 +23,23 @@ const ProductDetail = ({ data: { product, description } }) => {
     <Container>
       <div className="pd">
         <Grid container>
-          <Grid item xs={8}>
-            <img
-              src={product?.pictures?.[0]?.url || ""}
-              alt="productImage"
-              width={500}
-              height={500}
+          <Grid item xs={7}>
+            <div
               className="pic"
-            ></img>
+              style={{
+                backgroundImage: `url("${product?.pictures?.[0]?.url || ""}")`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                width: "100%",
+                paddingTop: "100%", // 1:1 aspect ratio (adjust as needed)
+              }}
+            ></div>
           </Grid>
-          <Stack xs={3} item className="pdes">
+          <Stack xs={3} marginLeft={5} item className="pdes">
             <Typography variant="h6" fontFamily={"Montserrat"}>
               {product?.title || ""}
             </Typography>
-            <Typography variant="h5">
+            <Typography variant="h5" fontFamily={"Montserrat"}>
               {product?.seller_address?.state?.name || ""}
             </Typography>
             <Typography variant="h5" fontFamily={"Montserrat"}>
