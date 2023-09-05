@@ -56,20 +56,31 @@ const SearchResultItem = ({ id, imageUrl, price, title, location, rating }) => {
             currency: "USD",
           })}{" "}
         </Typography>
-        <IconButton
-          variant="outlined"
-          color="primary"
-          onClick={handleAddToCart}
-        >
-          <AddShoppingCartIcon />
-        </IconButton>
-        <Button
-          variant="primary"
-          endIcon={<NavigateNextIcon />}
-          onClick={handleViewDetails}
-        >
-          Details
-        </Button>
+        <div className="buttons">
+          <IconButton
+            variant="contained"
+            onClick={handleAddToCart}
+            sx={{
+              alignSelf: "flex-start",
+              borderRadius: "0.5rem",
+              background: "#1E65FF",
+              display: "flex",
+              width: "2.5rem",
+              height: "1.8rem",
+              color: "#ffffff",
+            }}
+          >
+            <AddShoppingCartIcon />
+          </IconButton>
+          <Button
+            variant="primary"
+            sx={{ alignSelf: "flex-end", marginLeft: "1rem" }}
+            endIcon={<NavigateNextIcon />}
+            onClick={handleViewDetails}
+          >
+            Details
+          </Button>
+        </div>
       </CardContent>
     </Card>
   );

@@ -8,7 +8,6 @@ function ResultList() {
   return (
     <>
       <Header />
-
       <Breadcrumbs />
       <SearchResult />
       <Footer />
