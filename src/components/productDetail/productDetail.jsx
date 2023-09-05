@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Grid, Stack, Typography } from "@mui/material";
+import { Container, Grid, Stack, Typography, IconButton } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { useCart } from "../../context/useCart";
 import "../productDetail/productDetail.css";
@@ -45,12 +45,12 @@ const ProductDetail = ({ data: { product, description } }) => {
               })}{" "}
             </Typography>
             <hr />
-            <button
+            <IconButton
               className="add"
               onClick={() => handleAddToCartClick(params.id)}
             >
               <Typography fontFamily={"Montserrat"}>Add to cart</Typography>
-            </button>
+            </IconButton>
           </Stack>
           <Stack item className="pdeet">
             <Typography variant="h4" fontFamily={"Montserrat"}>
