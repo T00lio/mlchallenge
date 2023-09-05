@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
@@ -11,8 +11,16 @@ import {
   Button,
   Typography,
   Grid,
+  Hidden,
+  Drawer,
+  ListItem,
+  ListItemText,
+  List,
 } from "@mui/material";
-import { AccountCircle as AccountCircleIcon } from "@mui/icons-material";
+import {
+  AccountCircle as AccountCircleIcon,
+  Menu as MenuIcon,
+} from "@mui/icons-material";
 import { UserAuth } from "../../context/authContext";
 import { useCart } from "../../context/useCart";
 import SearchBar from "../searchBar";
@@ -24,9 +32,13 @@ const Header = () => {
   const { user, logout } = UserAuth();
   const { cartItems } = useCart();
 
+  const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
   const handleOpenCartModal = () => setOpenCartModal(true);
   const handleCloseCartModal = () => setOpenCartModal(false);
   const handleProfileMenuOpen = () => {};
+
+  const handleMobileDrawerOpen = () => setMobileDrawerOpen(true);
+  const handleMobileDrawerClose = () => setMobileDrawerOpen(false);
 
   return (
     <>
@@ -36,6 +48,17 @@ const Header = () => {
         style={{ position: "fixed", top: 0, width: "100%", zIndex: 1000 }}
       >
         <Toolbar sx={{ height: "6rem" }} display="flex">
+          <Hidden smDown>
+            <IconButton
+              edge="start"
+              color="inherit"
+              aria-label="open drawer"
+              onClick={handleMobileDrawerOpen}
+              sx={{ mr: 2 }}
+            >
+              <MenuIcon />
+            </IconButton>
+          </Hidden>
           <Grid container>
             <Grid item mt={2} xs={1} sm={2}>
               <RouterLink
@@ -56,95 +79,121 @@ const Header = () => {
             <Grid item xs={3} sm={4}>
               <SearchBar />
             </Grid>
-
             {user?.uid ? (
-              <Grid item display={"flex"} marginLeft={"auto"} gap={2}>
-                <Button
-                  radius={10}
-                  size="small"
-                  aria-label="show 17 new notifications"
-                  color="primary"
-                  onClick={handleOpenCartModal}
-                  variant="text"
-                  startIcon={<ShoppingCartOutlinedIcon color="primary" />}
-                >
-                  <Badge
-                    badgeContent={cartItems.length}
-                    margin={7}
-                    color="error"
+              <Hidden xsDown>
+                <Grid item display={"flex"} marginLeft={"auto"} gap={2}>
+                  <Button
+                    radius={10}
                     size="small"
-                    anchorOrigin={{
-                      vertical: "top",
-                      horizontal: "right",
-                    }}
+                    aria-label="show 17 new notifications"
+                    color="primary"
+                    onClick={handleOpenCartModal}
+                    variant="text"
+                    startIcon={<ShoppingCartOutlinedIcon color="primary" />}
                   >
-                    <Typography fontFamily={"Montserrat"}>
-                      {cartItems.length > 0 ? "Cart" : "Empty Cart"}
-                    </Typography>
-                  </Badge>
-                </Button>
-                <Button
-                  size="small"
-                  className="wishlist"
-                  variant="text"
-                  startIcon={<FavoriteBorderOutlinedIcon color="primary" />}
-                >
-                  <Typography fontFamily={"Montserrat"}>Wishlist</Typography>
-                </Button>
-                <IconButton
-                  size="small"
-                  edge="end"
-                  aria-label="account of current user"
-                  aria-haspopup="true"
-                  onClick={handleProfileMenuOpen}
-                  color="#333333"
-                >
-                  <AccountCircleIcon aria-label="account" fontSize="inherit" />
+                    <Badge
+                      badgeContent={cartItems.length}
+                      margin={7}
+                      color="error"
+                      size="small"
+                      anchorOrigin={{
+                        vertical: "top",
+                        horizontal: "right",
+                      }}
+                    >
+                      <Typography fontFamily={"Montserrat"}>
+                        {cartItems.length > 0 ? "Cart" : "Empty Cart"}
+                      </Typography>
+                    </Badge>
+                  </Button>
+                  <Button
+                    size="small"
+                    className="wishlist"
+                    variant="text"
+                    startIcon={<FavoriteBorderOutlinedIcon color="primary" />}
+                  >
+                    <Typography fontFamily={"Montserrat"}>Wishlist</Typography>
+                  </Button>
+                  <IconButton
+                    size="small"
+                    edge="end"
+                    aria-label="account of current user"
+                    aria-haspopup="true"
+                    onClick={handleProfileMenuOpen}
+                    color="#333333"
+                  >
+                    <AccountCircleIcon
+                      aria-label="account"
+                      fontSize="inherit"
+                    />
 
-                  <Button
-                    sx={{ color: "#000000" }}
-                    onClick={logout}
-                    variant="outlined"
-                    size="small"
-                    style={{ borderRadius: 24 }}
-                  >
-                    <Typography fontFamily={"Montserrat"}>
-                      {user.email}
-                    </Typography>
-                  </Button>
-                </IconButton>
-              </Grid>
+                    <Button
+                      sx={{ color: "#000000" }}
+                      onClick={logout}
+                      variant="outlined"
+                      size="small"
+                      style={{ borderRadius: 24 }}
+                    >
+                      <Typography fontFamily={"Montserrat"}>
+                        {user.email}
+                      </Typography>
+                    </Button>
+                  </IconButton>
+                </Grid>
+              </Hidden>
             ) : (
-              <Grid
-                item
-                mt={1}
-                gap={1}
-                display={"flex"}
-                sx={{ marginLeft: "auto" }}
-              >
-                <Link href="/signup">
-                  <Button
-                    variant="outlined"
-                    sx={{ color: "#000000" }}
-                    style={{ borderRadius: 24 }}
-                  >
-                    <Typography fontFamily={"Montserrat"}>Sign up</Typography>
-                  </Button>
-                </Link>
-                <Link href="/login">
-                  <Button
-                    variant="outlined"
-                    sx={{ color: "#000000" }}
-                    style={{ borderRadius: 24 }}
-                  >
-                    <Typography fontFamily={"Montserrat"}>Log in</Typography>
-                  </Button>
-                </Link>
-              </Grid>
-            )}
+              <Hidden smDown>
+                <Grid
+                  item
+                  mt={1}
+                  gap={1}
+                  display={"flex"}
+                  sx={{ marginLeft: "auto" }}
+                >
+                  <Link href="/signup">
+                    <Button
+                      variant="outlined"
+                      sx={{ color: "#000000" }}
+                      style={{ borderRadius: 24 }}
+                    >
+                      <Typography fontFamily={"Montserrat"}>Sign up</Typography>
+                    </Button>
+                  </Link>
+                  <Link href="/login">
+                    <Button
+                      variant="outlined"
+                      sx={{ color: "#000000" }}
+                      style={{ borderRadius: 24 }}
+                    >
+                      <Typography fontFamily={"Montserrat"}>Log in</Typography>
+                    </Button>
+                  </Link>
+                </Grid>
+              </Hidden>
+            )}{" "}
           </Grid>
         </Toolbar>
       </AppBar>
+      <Drawer
+        anchor="left"
+        onClose={handleMobileDrawerClose}
+        open={mobileDrawerOpen}
+      >
+        <List>
+          <ListItem button component={RouterLink} to="/">
+            <ListItemText primary="Home" />
+          </ListItem>
+          <ListItem button component={RouterLink} to="/wishlist">
+            <ListItemText primary="Wishlist" />
+          </ListItem>
+          <ListItem button component={RouterLink} to="/login">
+            <ListItemText primary="Log In" />
+          </ListItem>
+          <ListItem button component={RouterLink} to="/signup">
+            <ListItemText primary="Sign Up" />
+          </ListItem>
+        </List>
+      </Drawer>
       <CartModal open={openCartModal} onClose={handleCloseCartModal} />
     </>
   );

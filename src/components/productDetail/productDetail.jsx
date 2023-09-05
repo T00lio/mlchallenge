@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Grid, Stack, Typography, IconButton } from "@mui/material";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { useParams } from "react-router-dom";
 import { useCart } from "../../context/useCart";
 import "../productDetail/productDetail.css";
@@ -48,6 +49,15 @@ const ProductDetail = ({ data: { product, description } }) => {
             <IconButton
               className="add"
               onClick={() => handleAddToCartClick(params.id)}
+              startIcon={<AddShoppingCartIcon />}
+              sx={{
+                borderRadius: "1rem",
+                background: "#1E65FF",
+                display: "flex",
+                width: "5rem",
+                height: "3.375rem",
+                color: "#ffffff",
+              }}
             >
               <Typography fontFamily={"Montserrat"}>Add to cart</Typography>
             </IconButton>
