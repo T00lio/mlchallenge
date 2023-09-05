@@ -11,8 +11,6 @@ const SearchResult = () => {
   const { queryResult } = useSearchContext();
   console.log("queryResult", queryResult);
 
-  const rating = 4.5; //placeholder
-
   return (
     <Grid container spacing={4} sx={{ margin: "10px", marginTop: "10rem" }}>
       {queryResult?.length > 0 ? (
@@ -25,7 +23,10 @@ const SearchResult = () => {
               price={result.price}
               title={result.title}
               location={result.address.state_name}
-              rating={rating}
+              rating={
+                result.seller.seller_reputation.transactions.ratings.positive *
+                5
+              }
             />
           </Grid>
         ))
