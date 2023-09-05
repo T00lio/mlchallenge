@@ -72,17 +72,36 @@ export const CartProvider = ({ children }) => {
   const removeFromCart = (productId) => {
     const userRef = doc(db, "shoppingCart", user.uid);
 
-    // Find the index of the item with the given productId in the cartItems array
-    const itemIndex = cartItems.findIndex((item) => item.id === productId);
+    // Find the item with the specified productId in the cartItems array
+    const itemToRemove = cartItems.find((item) => item.id === productId);
 
-    if (itemIndex !== -1) {
-      // Remove the item from cartItems by creating a new array without the item
-      const updatedCartItems = [
-        ...cartItems.slice(0, itemIndex),
-        ...cartItems.slice(itemIndex + 1),
-      ];
+    if (!itemToRemove) {
+      return; // If item not found, do nothing
+    }
 
-      // Update the cart in Firestore with the updated cartItems
+    // If the item has a quantity greater than 1, decrement the quantity
+    if (itemToRemove.quantity > 1) {
+      const updatedCartItems = cartItems.map((item) => {
+        if (item.id === productId) {
+          return { ...item, quantity: item.quantity - 1 };
+        }
+        return item;
+      });
+
+      // Update the document with the updated cartItems
+      updateDoc(userRef, {
+        cartItems: updatedCartItems,
+      });
+
+      // Update the local state with the updated cartItems
+      setCartItems(updatedCartItems);
+    } else {
+      // If the item has a quantity of 1, remove it from the cart
+      const updatedCartItems = cartItems.filter(
+        (item) => item.id !== productId
+      );
+
+      // Update the document with the updated cartItems
       updateDoc(userRef, {
         cartItems: updatedCartItems,
       });
