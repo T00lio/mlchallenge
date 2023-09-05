@@ -1,53 +1,30 @@
-import { useState, useEffect } from "react";
-import { Container, Grid, Stack, CircularProgress } from "@mui/material";
+import React from "react";
+import { Container, Grid, Stack, Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
-import { getData } from "../../utils/httpsClient";
 import { useCart } from "../../context/useCart";
 import "../productDetail/productDetail.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const ProductDetail = () => {
-  const [data, setData] = useState({});
-  const [loading, setLoading] = useState(false);
+const ProductDetail = ({ data: { product, description } }) => {
   const { addToCart } = useCart();
   const params = useParams();
-
-  useEffect(() => {
-    const fetchItemData = async () => {
-      setLoading(true);
-
-      const [product, description] = await Promise.all([
-        getData(`items/${params.id}`),
-        getData(`items/${params.id}/description`),
-      ]);
-      setData({ product, description });
-      console.log(product);
-    };
-
-    fetchItemData();
-    setLoading(false);
-  }, [params.id]);
 
   const handleAddToCartClick = () => {
     addToCart({
       productId: params.id,
-      imageUrl: data?.product?.thumbnail,
-      title: data?.product?.title,
-      price: data?.product?.price,
+      imageUrl: product?.thumbnail,
+      title: product?.title,
+      price: product?.price,
     });
   };
 
-  return loading ? (
-    <div className="loader">
-      <CircularProgress size={80} />
-    </div>
-  ) : (
+  return (
     <Container>
       <div className="pd">
         <Grid container>
           <Grid item xs={8}>
             <img
-              src={data?.product?.pictures?.[0]?.url || ""}
+              src={product?.pictures?.[0]?.url || ""}
               alt="productImage"
               width={500}
               height={500}
@@ -55,22 +32,33 @@ const ProductDetail = () => {
             ></img>
           </Grid>
           <Stack xs={3} item className="pdes">
-            <p className="name">{data?.product?.title || ""}</p>
-            <h4>{data?.product?.seller_address?.state?.name || ""}</h4>
-            <h3>
-              {Number(data?.product?.price).toLocaleString("en-US", {
+            <Typography variant="h6" fontFamily={"Montserrat"}>
+              {product?.title || ""}
+            </Typography>
+            <Typography variant="h5">
+              {product?.seller_address?.state?.name || ""}
+            </Typography>
+            <Typography variant="h5" fontFamily={"Montserrat"}>
+              {Number(product?.price).toLocaleString("en-US", {
                 style: "currency",
                 currency: "USD",
               })}{" "}
-            </h3>
+            </Typography>
             <hr />
-            <button className="add" onClick={handleAddToCartClick}>
-              Add to cart
+            <button
+              className="add"
+              onClick={() => handleAddToCartClick(params.id)}
+            >
+              <Typography fontFamily={"Montserrat"}>Add to cart</Typography>
             </button>
           </Stack>
           <Stack item className="pdeet">
-            <h2>Descripción del producto</h2>
-            <p>{data?.description?.plain_text || ""}</p>
+            <Typography variant="h4" fontFamily={"Montserrat"}>
+              Descripción del producto
+            </Typography>
+            <Typography fontFamily={"Montserrat"} textAlign={"justify"}>
+              {description?.plain_text || ""}
+            </Typography>
           </Stack>
         </Grid>
       </div>

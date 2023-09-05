@@ -1,7 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 import { UserAuth } from "./authContext";
 import { db } from "../firebase";
-import { doc, setDoc, onSnapshot, updateDoc } from "firebase/firestore";
+import { doc, onSnapshot, updateDoc } from "firebase/firestore";
 
 export const CartContext = createContext({
   product: [],
@@ -13,30 +13,19 @@ export const CartContext = createContext({
   user: null,
 });
 
-const updateCartInFirestore = (cartItems, userId) => {
-  const userCartRef = doc(db, "shoppingCart", userId);
-  setDoc(userCartRef, { cartItems })
-    .then(() => {})
-    .catch((error) => {
-      console.error("Error updating cart in Firestore: ", error);
-    });
-};
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
   const { user } = UserAuth();
 
   useEffect(() => {
     if (user?.uid) {
-      const unsubscribe = onSnapshot(
-        doc(db, "shoppingCart", user.uid),
-        (snapshot) => {
-          const data = snapshot.data();
+      const unsubscribe = onSnapshot(doc(db, "cart", user.uid), (snapshot) => {
+        const data = snapshot.data();
 
-          if (data) {
-            setCartItems(data.cartItems);
-          }
+        if (data) {
+          setCartItems(data.cartItems);
         }
-      );
+      });
 
       return () => {
         unsubscribe();
@@ -68,21 +57,27 @@ export const CartProvider = ({ children }) => {
       updateDoc(userRef, {
         cartItems: cartItems.map((item) => {
           if (item.id === productId) {
-            // Create a new object with the modified "quantity" property
             return { ...item, quantity: item.quantity + 1 };
           }
-          return item; // Keep unchanged objects
+          return item;
         }),
       });
     } else {
-      updateCartInFirestore(cartItems, user.uid);
+      updateDoc(userRef, {
+        cartItems: cartItems.concat({
+          id: productId,
+          imageUrl,
+          title,
+          quantity: 1,
+          price,
+        }),
+      });
     }
   };
 
   const removeOneFromCart = ({ productId }) => {
     const userRef = doc(db, "shoppingCart", user.uid);
 
-    // Find the index of the item to be modified
     const itemIndex = cartItems.findIndex((item) => item.id === productId);
 
     if (itemIndex !== -1) {
@@ -90,21 +85,19 @@ export const CartProvider = ({ children }) => {
       const currentItem = updatedCartItems[itemIndex];
 
       if (currentItem.quantity > 1) {
-        // Reduce the quantity if it's greater than 1
         currentItem.quantity -= 1;
       } else {
-        // Remove the item from the cart if the quantity is 1 or less
         updatedCartItems.splice(itemIndex, 1);
       }
 
-      // Update the Firestore document with the updated cart items
-      updateCartInFirestore(cartItems, user.uid);
+      updateDoc(userRef, {
+        cartItems: updatedCartItems,
+      });
     }
   };
 
   const clearCart = () => {
     setCartItems([]);
-    updateCartInFirestore(cartItems, user.uid);
   };
 
   const contextValue = {

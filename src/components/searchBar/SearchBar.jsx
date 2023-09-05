@@ -1,6 +1,12 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { CircularProgress } from "@mui/material";
+import {
+  CircularProgress,
+  TextField,
+  IconButton,
+  InputAdornment,
+  Box,
+} from "@mui/material";
 import { Search as SearchIcon } from "@mui/icons-material";
 import { useSearchContext } from "../../context/searchContext.js";
 import { getData } from "../../utils/httpsClient";
@@ -8,7 +14,7 @@ import "../searchBar/SearchBar.css";
 
 const SearchBar = () => {
   const { setQueryResult } = useSearchContext();
-  const [searchQuery, setSearchQuery] = useState(" ");
+  const [searchQuery, setSearchQuery] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSearchChange = (event) => {
@@ -31,24 +37,60 @@ const SearchBar = () => {
   };
 
   return (
-    <div className="search-bar">
-      <form className="search-form">
-        <input
-          className="search-input"
-          type="text"
-          placeholder="I'm Shopping for..."
-          value={searchQuery}
-          onChange={handleSearchChange}
-          onKeyDown={handleKeyDown}
-        />
-
-        <Link to="/items">
-          <button className="search-button" onClick={handleSearchClick}>
-            {isLoading ? <CircularProgress /> : <SearchIcon />}
-          </button>
-        </Link>
-      </form>
-    </div>
+    <Box
+      className="fixed-search-bar"
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      paddingX={2}
+      paddingY={1}
+      bgcolor="#ffffff"
+      position="sticky"
+      top={0}
+    >
+      <TextField
+        className="search-input"
+        type="text"
+        label="I'm Shopping for..."
+        variant="outlined"
+        value={searchQuery}
+        onChange={handleSearchChange}
+        onKeyDown={handleKeyDown}
+        InputProps={{
+          endAdornment: (
+            <InputAdornment position="end">
+              <IconButton
+                component={Link}
+                to="/items"
+                className="search-button"
+                onClick={handleSearchClick}
+                disabled={isLoading}
+                sx={{
+                  borderRadius: "0rem",
+                  background: "#1E65FF",
+                  display: "flex",
+                  width: "5rem",
+                  height: "3.375rem",
+                  color: "#ffffff",
+                }}
+              >
+                {isLoading ? <CircularProgress size={24} /> : <SearchIcon />}
+              </IconButton>
+            </InputAdornment>
+          ),
+          sx: {
+            "& input": {
+              fontFamily: "Montserrat, sans-serif",
+            },
+          },
+        }}
+        InputLabelProps={{
+          sx: {
+            fontFamily: "Montserrat, sans-serif",
+          },
+        }}
+      />
+    </Box>
   );
 };
 

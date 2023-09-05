@@ -1,12 +1,38 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { UserAuth } from "../../../context/authContext";
-import "./signup.css";
+import { Container, Typography, TextField, Button, Link } from "@mui/material";
 
 function SignUp() {
   const { createUser } = UserAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+
+  const containerStyle = {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    minHeight: "100vh",
+  };
+
+  const formContainerStyle = {
+    width: "100%",
+    maxWidth: "400px",
+    padding: "16px",
+    borderRadius: "8px",
+    backgroundColor: "#ffffff",
+    boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
+    textAlign: "center",
+  };
+
+  const formTitleStyle = {
+    marginBottom: "16px",
+  };
+
+  const formLinkStyle = {
+    marginTop: "16px",
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,37 +41,53 @@ function SignUp() {
   };
 
   return (
-    <div className="singin-container">
-      <form className="form" onSubmit={handleSubmit}>
-        <h1 className="formTitle">Create account</h1>
-        <p>
-          Already have an account? <a href="/login">Log In</a>
-        </p>
-        <label htmlFor="email" className="label">
-          Email
-        </label>
-        <input
-          className="input"
-          type="email"
-          placeholder="Enter your email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <label htmlFor="password" className="label">
-          Password
-        </label>
-        <input
-          className="input"
-          type="password"
-          placeholder="Enter your password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-
-        <button className="submitButton" type="submit">
-          Sign up
-        </button>
-      </form>
+    <div style={containerStyle}>
+      <Container style={formContainerStyle} component="main" maxWidth="xs">
+        <Typography variant="h5" style={formTitleStyle}>
+          Create account
+        </Typography>
+        <Typography variant="body2">
+          Already have an account?{" "}
+          <Link href="/login" style={formLinkStyle}>
+            Log In
+          </Link>
+        </Typography>
+        <form onSubmit={handleSubmit}>
+          <TextField
+            variant="outlined"
+            margin="normal"
+            fullWidth
+            id="email"
+            label="Email"
+            name="email"
+            autoComplete="email"
+            autoFocus
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            fullWidth
+            name="password"
+            label="Password"
+            type="password"
+            id="password"
+            autoComplete="current-password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            style={{ marginTop: "16px" }}
+          >
+            Sign up
+          </Button>
+        </form>
+      </Container>
     </div>
   );
 }

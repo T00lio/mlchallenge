@@ -30,17 +30,21 @@ const Header = () => {
 
   return (
     <>
-      <AppBar position="static" className="header">
+      <AppBar
+        position="static"
+        className="header"
+        style={{ position: "fixed", top: 0, width: "100%", zIndex: 1000 }}
+      >
         <Toolbar sx={{ height: "6rem" }} display="flex">
           <Grid container>
-            <Grid item mt={1} xs={1} sm={2}>
+            <Grid item mt={2} xs={1} sm={2}>
               <RouterLink
                 style={{ textDecoration: "none", color: "#000000" }}
                 to="/"
                 sx={{ marginLeft: "auto" }}
               >
                 <Typography
-                  marginLeft={3}
+                  marginLeft={1}
                   color={"#000"}
                   variant="h5"
                   fontFamily={"Montserrat"}

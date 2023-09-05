@@ -10,13 +10,21 @@ import {
 } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
-
 import { useCart } from "../../context/useCart";
+import { useParams } from "react-router-dom";
 
 const ShoppingCart = () => {
   const { cartItems, removeOneFromCart, addToCart } = useCart();
+  const params = useParams();
+
   const handleRemoveOne = (productId) => {
     removeOneFromCart({ productId });
+  };
+
+  const handleAddOne = () => {
+    addToCart({
+      productId: params.id,
+    });
   };
 
   return (
@@ -48,7 +56,7 @@ const ShoppingCart = () => {
                       color="success"
                       size="large"
                       style={{ marginBottom: "10px" }}
-                      // onClick={() => addToCart(item.id)}
+                      onClick={() => handleAddOne(item.id)}
                     >
                       +
                     </IconButton>
