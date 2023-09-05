@@ -14,11 +14,11 @@ import { useCart } from "../../context/useCart";
 import { useParams } from "react-router-dom";
 
 const ShoppingCart = () => {
-  const { cartItems, removeOneFromCart, addToCart } = useCart();
+  const { cartItems, removeFromCart, addToCart } = useCart();
   const params = useParams();
 
   const handleRemoveOne = (productId) => {
-    removeOneFromCart({ productId });
+    removeFromCart(productId);
   };
 
   const handleAddOne = () => {
