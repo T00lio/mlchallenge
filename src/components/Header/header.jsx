@@ -49,17 +49,15 @@ const Header = () => {
       >
         <Toolbar sx={{ height: "6rem" }} display="flex">
           <Hidden smDown>
-            <Grid item xs={1} sm={1}>
-              <IconButton
-                edge="start"
-                color="inherit"
-                aria-label="open drawer"
-                onClick={handleMobileDrawerOpen}
-                sx={{ mr: 2 }}
-              >
-                <MenuIcon />
-              </IconButton>
-            </Grid>
+            <IconButton
+              edge="start"
+              color="inherit"
+              aria-label="open drawer"
+              onClick={handleMobileDrawerOpen}
+              sx={{ mr: 2 }}
+            >
+              <MenuIcon />
+            </IconButton>
           </Hidden>
           <Grid container>
             <Grid item mt={2} xs={1} sm={2}>
@@ -90,6 +88,7 @@ const Header = () => {
                   xs={1}
                   sm={3}
                   gap={2}
+                  mt={1}
                 >
                   <Button
                     radius={10}
