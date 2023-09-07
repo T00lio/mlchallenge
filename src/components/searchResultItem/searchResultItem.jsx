@@ -1,13 +1,12 @@
 import React from "react";
 import "./searchResultItem.css";
-import { useNavigate } from "react-router-dom";
+
 import { useCart } from "../../context/useCart";
 import { Card, CardMedia, CardContent, Typography } from "@mui/material";
-import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import { IconButton } from "@mui/material";
+
 import StarRating from "../starRating";
 import Button from "@mui/material/Button";
-import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+
 import { Link } from "react-router-dom";
 
 const SearchResultItem = ({ id, imageUrl, price, title, location, rating }) => {
@@ -26,40 +25,42 @@ const SearchResultItem = ({ id, imageUrl, price, title, location, rating }) => {
     }
   };
 
-  const navigate = useNavigate();
-  const handleViewDetails = () => {
-    navigate(`/item/${id}`);
-  };
   return (
-    <Link
-      to={`/item/${id}`}
-      className="link"
-      style={{ textDecoration: "none", color: "inherit" }}
-    >
+    <>
       <Card className="searchResultItem" sx={{ maxWidth: 345 }}>
-        <CardMedia
-          component="img"
-          height="140"
-          width="150"
-          image={imageUrl}
-          alt={title}
-        />
+        <Link
+          to={`/item/${id}`}
+          className="link"
+          style={{ textDecoration: "none", color: "inherit" }}
+        >
+          <CardMedia
+            component="img"
+            height="140"
+            width="150"
+            image={imageUrl}
+            alt={title}
+          />
+        </Link>
         <CardContent>
-          <Typography
-            gutterBottom
-            variant="h5"
-            component="div"
-            sx={{ overflow: "hidden" }}
+          <Link
+            to={`/item/${id}`}
+            className="link"
+            style={{ textDecoration: "none", color: "inherit" }}
           >
-            {title}
-          </Typography>
-          {/* <Typography variant="body2" color="text.secondary">
-          {location}
-        </Typography> */}
-          <StarRating rating={rating} />
-          <Typography variant="body2" color="text.secondary">
-            Rating
-          </Typography>
+            <Typography
+              gutterBottom
+              variant="h5"
+              component="div"
+              sx={{ overflow: "hidden" }}
+            >
+              {title}
+            </Typography>
+
+            <StarRating rating={rating} />
+            <Typography variant="body2" color="text.secondary">
+              Rating
+            </Typography>
+          </Link>
 
           <div className="buttons">
             <Typography variant="h6" color="#000000">
@@ -75,12 +76,7 @@ const SearchResultItem = ({ id, imageUrl, price, title, location, rating }) => {
               onClick={handleAddToCart}
               sx={{
                 fontFamily: "Montserrat, sans-serif",
-
                 borderRadius: "0.5rem",
-                // background: "#1E65FF",
-                // display: "flex",
-                // width: "2.5rem",
-                // height: "1.8rem",
               }}
             >
               Add to Cart
@@ -88,7 +84,7 @@ const SearchResultItem = ({ id, imageUrl, price, title, location, rating }) => {
           </div>
         </CardContent>
       </Card>
-    </Link>
+    </>
   );
 };
 
