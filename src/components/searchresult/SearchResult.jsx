@@ -11,7 +11,11 @@ const SearchResult = () => {
   const { queryResult } = useSearchContext();
 
   return (
-    <Grid container spacing={4} sx={{ margin: "10px", marginTop: "10rem" }}>
+    <Grid
+      container
+      spacing={4}
+      sx={{ margin: "10px", marginTop: "10rem", backgroundColor: "#ffebee" }}
+    >
       {queryResult?.length > 0 ? (
         queryResult.map((result) => (
           <Grid item xs={12} sm={6} md={4} lg={3} key={result.id}>
