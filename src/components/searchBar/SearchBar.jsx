@@ -36,6 +36,7 @@ const SearchBar = () => {
         className="search-input"
         type="text"
         placeholder="I'm Shopping for..."
+        style={{ outline: "none" }}
         value={searchQuery}
         onChange={handleSearchChange}
         onKeyDown={handleKeyDown}
