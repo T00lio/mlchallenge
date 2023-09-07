@@ -12,6 +12,7 @@ import ProtectedRoute from "./utils/ProptectedRoute";
 import CartProvider from "./context/cartContext";
 import Cart from "./components/cart/index";
 import "./firetest.js";
+import "./styles.css";
 
 function App() {
   return (

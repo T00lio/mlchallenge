@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Grid, Stack, Typography, IconButton } from "@mui/material";
+import StarRating from "../starRating.js";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { useParams } from "react-router-dom";
 import { useCart } from "../../context/useCart";
@@ -42,12 +43,20 @@ const ProductDetail = ({ data: { product, description } }) => {
             <Typography variant="h5" fontFamily={"Montserrat"}>
               {product?.seller_address?.state?.name || ""}
             </Typography>
-            <Typography variant="h5" fontFamily={"Montserrat"}>
-              {Number(product?.price).toLocaleString("en-US", {
-                style: "currency",
-                currency: "USD",
-              })}{" "}
-            </Typography>
+            <div className="buttons">
+              <Typography variant="h5" fontFamily={"Montserrat"}>
+                {Number(product?.price).toLocaleString("en-US", {
+                  style: "currency",
+                  currency: "USD",
+                })}{" "}
+              </Typography>
+              <Stack direction="row" spacing={1}>
+                <StarRating
+                  rating={product?.seller?.seller_reputation?.level_id}
+                />
+              </Stack>
+            </div>
+
             <hr />
             <IconButton
               className="add"

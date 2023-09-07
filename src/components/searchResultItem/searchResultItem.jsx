@@ -63,14 +63,19 @@ const SearchResultItem = ({ id, imageUrl, price, title, location, rating }) => {
           </Link>
 
           <div className="buttons">
-            <Typography variant="h6" color="#000000">
-              <strong>
-                {Number(price).toLocaleString("en-US", {
-                  style: "currency",
-                  currency: "USD",
-                })}{" "}
-              </strong>
-            </Typography>
+            <Link
+              to={`/item/${id}`}
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              <Typography variant="h6" color="#000000">
+                <strong>
+                  {Number(price).toLocaleString("en-US", {
+                    style: "currency",
+                    currency: "USD",
+                  })}{" "}
+                </strong>
+              </Typography>
+            </Link>
             <Button
               variant="outlined"
               onClick={handleAddToCart}
