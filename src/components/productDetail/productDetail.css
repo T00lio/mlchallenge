@@ -1,40 +1,6 @@
-/* .pd {
-  place-items: center;
-  align-items: flex-start;
+.pd {
   display: flex;
-  width: 85%;
-  height: 100vh;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 2rem;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
-
-.name {
-  font-size: 0.75rem;
-  font-weight: bold;
-  margin-top: 1rem;
-  width: fit-content;
-}
-
-.pdes {
-  display: flex;
-  overflow: hidden;
-  flex-direction: column;
-  place-items: center;
-}
-
-.pdeet {
-  margin-top: 5rem;
-  display: flexbox;
-}
-
-.loader {
-  display: flex;
-  margin-top: 10rem;
-  margin-left: 50%;
-}
-
-.button {
-  background: #1e65ff;
-  color: #fff;
-} */

@@ -9,7 +9,6 @@ import Carousel from "../carousel/Carousel";
 
 const SearchResult = () => {
   const { queryResult } = useSearchContext();
-  console.log("queryResult", queryResult);
 
   return (
     <Grid container spacing={4} sx={{ margin: "10px", marginTop: "10rem" }}>
@@ -23,10 +22,7 @@ const SearchResult = () => {
               price={result.price}
               title={result.title}
               location={result.address.state_name}
-              rating={
-                result.seller.seller_reputation.transactions.ratings.positive *
-                5
-              }
+              rating={3}
             />
           </Grid>
         ))

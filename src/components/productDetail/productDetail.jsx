@@ -30,12 +30,12 @@ const ProductDetail = ({ data: { product, description } }) => {
                 backgroundImage: `url("${product?.pictures?.[0]?.url || ""}")`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
-                width: "100%",
-                paddingTop: "100%",
+                width: "700px",
+                height: "700px",
               }}
             ></div>
           </Grid>
-          <Stack xs={12} sm={4} marginLeft={2} item className="pdes">
+          <Grid item xs={12} sm={4} spacing={1} className="pdes">
             <Typography nowrap variant="h6" fontFamily={"Montserrat"}>
               {product?.title || ""}
             </Typography>
@@ -64,15 +64,15 @@ const ProductDetail = ({ data: { product, description } }) => {
             >
               <Typography fontFamily={"Montserrat"}>Add to cart</Typography>
             </IconButton>
-          </Stack>
-          <Stack sm={12} item className="pdeet">
+          </Grid>
+          <Grid item sm={12} className="pdeet">
             <Typography variant="h4" fontFamily={"Montserrat"}>
               Product Description
             </Typography>
             <Typography fontFamily={"Montserrat"} textAlign={"justify"}>
               {description?.plain_text || ""}
             </Typography>
-          </Stack>
+          </Grid>
         </Grid>
       </div>
     </Container>
