@@ -12,3 +12,9 @@
   display: flex;
   justify-content: space-between;
 }
+
+.pdeet {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

@@ -61,7 +61,6 @@ const ProductDetail = ({ data: { product, description } }) => {
             <IconButton
               className="add"
               onClick={() => handleAddToCartClick(params.id)}
-              startIcon={<AddShoppingCartIcon />}
               sx={{
                 borderRadius: "1rem",
                 background: "#1E65FF",
@@ -74,7 +73,7 @@ const ProductDetail = ({ data: { product, description } }) => {
               <Typography fontFamily={"Montserrat"}>Add to cart</Typography>
             </IconButton>
           </Grid>
-          <Grid item sm={12} className="pdeet">
+          <Grid item xs={12} mt={3} className="pdeet">
             <Typography variant="h4" fontFamily={"Montserrat"}>
               Product Description
             </Typography>
