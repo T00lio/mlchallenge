@@ -32,7 +32,7 @@ const SearchResultItem = ({ id, imageUrl, price, title, location, rating }) => {
         >
           <CardMedia
             component="img"
-            height="140"
+            height="150"
             width="150"
             image={imageUrl}
             alt={title}
@@ -45,6 +45,7 @@ const SearchResultItem = ({ id, imageUrl, price, title, location, rating }) => {
             style={{ textDecoration: "none", color: "inherit" }}
           >
             <Typography
+              fontFamily={"Montserrat"}
               gutterBottom
               variant="h5"
               component="div"
@@ -54,7 +55,11 @@ const SearchResultItem = ({ id, imageUrl, price, title, location, rating }) => {
             </Typography>
 
             <StarRating rating={rating} />
-            <Typography variant="body2" color="text.secondary">
+            <Typography
+              variant="body2"
+              color="text.secondary"
+              fontFamily={"Montserrat"}
+            >
               Rating
             </Typography>
           </Link>
@@ -64,7 +69,11 @@ const SearchResultItem = ({ id, imageUrl, price, title, location, rating }) => {
               to={`/item/${id}`}
               style={{ textDecoration: "none", color: "inherit" }}
             >
-              <Typography variant="h6" color="#000000">
+              <Typography
+                variant="h6"
+                color="#000000"
+                fontFamily={"Montserrat"}
+              >
                 <strong>
                   {Number(price).toLocaleString("en-US", {
                     style: "currency",
