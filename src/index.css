@@ -2,6 +2,10 @@ body,
 html {
   font-family: Montserrat, sans-serif;
   background-color: #ffebee;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
 }
 
 code {

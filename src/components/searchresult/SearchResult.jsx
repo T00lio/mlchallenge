@@ -1,5 +1,4 @@
 import React from "react";
-
 import Grid from "@mui/material/Grid";
 import "../searchresult/searchresult.css";
 import SearchResultItem from "../searchResultItem/searchResultItem";

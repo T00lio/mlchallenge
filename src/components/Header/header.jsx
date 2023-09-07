@@ -49,18 +49,20 @@ const Header = () => {
       >
         <Toolbar sx={{ height: "6rem" }} display="flex">
           <Hidden smDown>
-            <IconButton
-              edge="start"
-              color="inherit"
-              aria-label="open drawer"
-              onClick={handleMobileDrawerOpen}
-              sx={{ mr: 2 }}
-            >
-              <MenuIcon />
-            </IconButton>
+            <Grid item xs={1} sm={1}>
+              <IconButton
+                edge="start"
+                color="inherit"
+                aria-label="open drawer"
+                onClick={handleMobileDrawerOpen}
+                sx={{ mr: 2 }}
+              >
+                <MenuIcon />
+              </IconButton>
+            </Grid>
           </Hidden>
           <Grid container>
-            <Grid item mt={2} xs={1} sm={2}>
+            <Grid item mt={2} xs={1} sm={3}>
               <RouterLink
                 style={{ textDecoration: "none", color: "#000000" }}
                 to="/"
@@ -76,12 +78,19 @@ const Header = () => {
                 </Typography>
               </RouterLink>
             </Grid>
-            <Grid item xs={3} sm={4}>
+            <Grid item xs={6} sm={6}>
               <SearchBar />
             </Grid>
             {user?.uid ? (
               <Hidden xsDown>
-                <Grid item display={"flex"} marginLeft={"auto"} gap={2}>
+                <Grid
+                  item
+                  display={"flex"}
+                  marginLeft={"auto"}
+                  xs={1}
+                  sm={3}
+                  gap={2}
+                >
                   <Button
                     radius={10}
                     size="small"
@@ -93,13 +102,8 @@ const Header = () => {
                   >
                     <Badge
                       badgeContent={cartItems.length}
-                      margin={7}
-                      color="error"
+                      color="primary"
                       size="small"
-                      anchorOrigin={{
-                        vertical: "top",
-                        horizontal: "right",
-                      }}
                     >
                       <Typography fontFamily={"Montserrat"}>
                         {cartItems.length > 0 ? "Cart" : "Empty Cart"}
