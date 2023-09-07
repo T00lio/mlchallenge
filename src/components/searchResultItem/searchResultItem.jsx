@@ -8,6 +8,7 @@ import { IconButton } from "@mui/material";
 import StarRating from "../starRating";
 import Button from "@mui/material/Button";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+import { Link } from "react-router-dom";
 
 const SearchResultItem = ({ id, imageUrl, price, title, location, rating }) => {
   const { addToCart } = useCart();
@@ -30,59 +31,64 @@ const SearchResultItem = ({ id, imageUrl, price, title, location, rating }) => {
     navigate(`/item/${id}`);
   };
   return (
-    <Card className="searchResultItem" sx={{ maxWidth: 345 }}>
-      <CardMedia
-        component="img"
-        height="140"
-        width="150"
-        image={imageUrl}
-        alt={title}
-      />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          {title}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
+    <Link
+      to={`/item/${id}`}
+      className="link"
+      style={{ textDecoration: "none", color: "inherit" }}
+    >
+      <Card className="searchResultItem" sx={{ maxWidth: 345 }}>
+        <CardMedia
+          component="img"
+          height="140"
+          width="150"
+          image={imageUrl}
+          alt={title}
+        />
+        <CardContent>
+          <Typography
+            gutterBottom
+            variant="h5"
+            component="div"
+            sx={{ overflow: "hidden" }}
+          >
+            {title}
+          </Typography>
+          {/* <Typography variant="body2" color="text.secondary">
           {location}
-        </Typography>
-        <StarRating rating={rating} />
-        <Typography variant="body2" color="text.secondary">
-          Rating
-        </Typography>
-        <Typography variant="h6" color="#000000">
-          Price:{" "}
-          {Number(price).toLocaleString("en-US", {
-            style: "currency",
-            currency: "USD",
-          })}{" "}
-        </Typography>
-        <div className="buttons">
-          <IconButton
-            variant="contained"
-            onClick={handleAddToCart}
-            sx={{
-              alignSelf: "flex-start",
-              borderRadius: "0.5rem",
-              background: "#1E65FF",
-              display: "flex",
-              width: "2.5rem",
-              height: "1.8rem",
-              color: "#ffffff",
-            }}
-          >
-            <AddShoppingCartIcon />
-          </IconButton>
-          <Button
-            variant="primary"
-            sx={{ alignSelf: "flex-end", marginLeft: "1rem" }}
-            endIcon={<NavigateNextIcon />}
-            onClick={handleViewDetails}
-          >
-            Details
-          </Button>
-        </div>
-      </CardContent>
-    </Card>
+        </Typography> */}
+          <StarRating rating={rating} />
+          <Typography variant="body2" color="text.secondary">
+            Rating
+          </Typography>
+
+          <div className="buttons">
+            <Typography variant="h6" color="#000000">
+              <strong>
+                {Number(price).toLocaleString("en-US", {
+                  style: "currency",
+                  currency: "USD",
+                })}{" "}
+              </strong>
+            </Typography>
+            <Button
+              variant="outlined"
+              onClick={handleAddToCart}
+              sx={{
+                fontFamily: "Montserrat, sans-serif",
+
+                borderRadius: "0.5rem",
+                // background: "#1E65FF",
+                // display: "flex",
+                // width: "2.5rem",
+                // height: "1.8rem",
+              }}
+            >
+              Add to Cart
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+    </Link>
   );
 };
 

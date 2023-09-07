@@ -23,7 +23,7 @@ const ProductDetail = ({ data: { product, description } }) => {
     <Container>
       <div className="pd">
         <Grid container>
-          <Grid item xs={7}>
+          <Grid item xs={12} sm={8}>
             <div
               className="pic"
               style={{
@@ -31,12 +31,12 @@ const ProductDetail = ({ data: { product, description } }) => {
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 width: "100%",
-                paddingTop: "100%", // 1:1 aspect ratio (adjust as needed)
+                paddingTop: "100%",
               }}
             ></div>
           </Grid>
-          <Stack xs={3} marginLeft={5} item className="pdes">
-            <Typography variant="h6" fontFamily={"Montserrat"}>
+          <Stack xs={12} sm={4} marginLeft={2} item className="pdes">
+            <Typography nowrap variant="h6" fontFamily={"Montserrat"}>
               {product?.title || ""}
             </Typography>
             <Typography variant="h5" fontFamily={"Montserrat"}>
@@ -57,7 +57,7 @@ const ProductDetail = ({ data: { product, description } }) => {
                 borderRadius: "1rem",
                 background: "#1E65FF",
                 display: "flex",
-                width: "5rem",
+                width: "100%",
                 height: "3.375rem",
                 color: "#ffffff",
               }}
@@ -65,9 +65,9 @@ const ProductDetail = ({ data: { product, description } }) => {
               <Typography fontFamily={"Montserrat"}>Add to cart</Typography>
             </IconButton>
           </Stack>
-          <Stack item className="pdeet">
+          <Stack sm={12} item className="pdeet">
             <Typography variant="h4" fontFamily={"Montserrat"}>
-              Descripción del producto
+              Product Description
             </Typography>
             <Typography fontFamily={"Montserrat"} textAlign={"justify"}>
               {description?.plain_text || ""}
