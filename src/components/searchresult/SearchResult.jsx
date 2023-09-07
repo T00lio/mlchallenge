@@ -12,7 +12,7 @@ const SearchResult = () => {
   return (
     <Grid
       container
-      spacing={4}
+      spacing={3}
       sx={{ margin: "10px", marginTop: "10rem", backgroundColor: "#ffebee" }}
     >
       {queryResult?.length > 0 ? (

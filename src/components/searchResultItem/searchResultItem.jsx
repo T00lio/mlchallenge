@@ -28,6 +28,7 @@ const SearchResultItem = ({ id, imageUrl, price, title, location, rating }) => {
         <Link
           to={`/item/${id}`}
           className="link"
+          elevation={3}
           style={{ textDecoration: "none", color: "inherit" }}
         >
           <CardMedia
