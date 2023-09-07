@@ -1,12 +1,9 @@
 import React from "react";
 import "./searchResultItem.css";
-
 import { useCart } from "../../context/useCart";
 import { Card, CardMedia, CardContent, Typography } from "@mui/material";
-
 import StarRating from "../starRating";
 import Button from "@mui/material/Button";
-
 import { Link } from "react-router-dom";
 
 const SearchResultItem = ({ id, imageUrl, price, title, location, rating }) => {
