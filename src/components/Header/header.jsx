@@ -62,7 +62,7 @@ const Header = () => {
             </Grid>
           </Hidden>
           <Grid container>
-            <Grid item mt={2} xs={1} sm={3}>
+            <Grid item mt={2} xs={1} sm={2}>
               <RouterLink
                 style={{ textDecoration: "none", color: "#000000" }}
                 to="/"
