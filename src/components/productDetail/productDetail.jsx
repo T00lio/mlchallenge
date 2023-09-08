@@ -1,7 +1,6 @@
 import React from "react";
 import { Container, Grid, Stack, Typography, IconButton } from "@mui/material";
 import StarRating from "../starRating.js";
-import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { useParams } from "react-router-dom";
 import { useCart } from "../../context/useCart";
 import "../productDetail/productDetail.css";
