@@ -44,7 +44,7 @@ const SearchBar = () => {
       <Link to="/items" className="search-button-link">
         <button className="search-button" onClick={handleSearchClick}>
           {isLoading ? (
-            <CircularProgress />
+            <CircularProgress csx={{ color: "primary" }} />
           ) : (
             <SearchIcon sx={{ color: "white" }} />
           )}

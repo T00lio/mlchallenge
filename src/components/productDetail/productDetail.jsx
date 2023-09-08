@@ -77,7 +77,7 @@ const ProductDetail = ({ data: { product, description } }) => {
             <Typography variant="h4" fontFamily={"Montserrat"}>
               Product Description
             </Typography>
-            <Typography fontFamily={"Montserrat"} textAlign={"justify"}>
+            <Typography fontFamily={"Montserrat"} textAlign={"justify"} mt={3}>
               {description?.plain_text || ""}
             </Typography>
           </Grid>

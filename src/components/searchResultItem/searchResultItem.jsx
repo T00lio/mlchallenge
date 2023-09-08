@@ -24,7 +24,7 @@ const SearchResultItem = ({ id, imageUrl, price, title, location, rating }) => {
 
   return (
     <>
-      <Card className="searchResultItem" sx={{ maxWidth: 345 }}>
+      <Card className="searchResultItem" sx={{ maxWidth: 400 }}>
         <Link
           to={`/item/${id}`}
           className="link"
@@ -33,8 +33,8 @@ const SearchResultItem = ({ id, imageUrl, price, title, location, rating }) => {
         >
           <CardMedia
             component="img"
-            height="150"
-            width="150"
+            height="170"
+            width="170"
             image={imageUrl}
             alt={title}
           />

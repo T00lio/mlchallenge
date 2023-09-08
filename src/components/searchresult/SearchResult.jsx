@@ -12,8 +12,8 @@ const SearchResult = () => {
   return (
     <Grid
       container
-      spacing={3}
-      sx={{ margin: "10px", marginTop: "10rem", backgroundColor: "#ffebee" }}
+      spacing={2}
+      sx={{ margin: "10px", marginTop: "10rem", marginBottom: "10rem" }}
     >
       {queryResult?.length > 0 ? (
         queryResult.map((result) => (
