@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [15.x]
+        node-version: [16.x]
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js version ${{ matrix.node-version }}
@@ -19,7 +19,7 @@ jobs:
 
       - run: npm i
       - run: npm install -g firebase-tools
-      - run: npm run test --passWithNoTests
+      - run: npm run test
       - run: npm run build
       - name: Archive Build
         uses: actions/upload-artifact@v2
