@@ -6,6 +6,7 @@
 .pnp.js
 
 # testing
+SKIP_PREFLIGHT_CHECK=true
 /coverage
 
 # production
