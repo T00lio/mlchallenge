@@ -1,0 +1,33 @@
+.productResult {
+  display: flex;
+  flex-direction: row;
+}
+
+.fi2 {
+  min-height: 100px;
+  flex-grow: 0.75;
+  margin-left: 1rem;
+}
+
+.fi3 h5 {
+  min-height: 100px;
+  flex-grow: 1;
+  margin: auto;
+  align-items: end;
+}
+
+.button {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  margin-top: 1rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 0.5rem;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 50%;
+}

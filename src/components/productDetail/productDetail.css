@@ -1,0 +1,49 @@
+.pd {
+  place-items: center;
+  align-items: flex-start;
+  display: flex;
+  width: 85%;
+  height: 100vh;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.name {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 1rem;
+  width: fit-content;
+}
+
+.pdes {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+}
+
+.pdeet {
+  margin-top: 5rem;
+  display: flexbox;
+}
+
+.loader {
+  display: flex;
+  margin-top: 10rem;
+  margin-left: 50%;
+}
+
+.add {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  margin-top: 1rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}

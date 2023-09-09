@@ -1,3 +1,3 @@
-import Header from '../Header/header';
+import Header from "../Header/header";
 
 export default Header;
