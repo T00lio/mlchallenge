@@ -13,7 +13,7 @@ const CartModal = ({ open, onClose }) => {
   const { clearCart } = useCart();
   return (
     <Dialog open={open} onClose={onClose} closeAfterTransition>
-      <DialogTitle sx={{ m: 0, p: 2 }}>Shopping Cart (beta)</DialogTitle>
+      <DialogTitle sx={{ m: 0, p: 2 }}>Shopping Cart</DialogTitle>
       <DialogContent>
         <Cart />
       </DialogContent>

@@ -55,7 +55,7 @@ const ShoppingCart = () => {
                       variant="outlined"
                       color="success"
                       size="large"
-                      style={{ marginBottom: "10px" }}
+                      style={{ marginBottom: "5px" }}
                       onClick={() => handleAddOne(item.id)}
                     >
                       +
@@ -79,7 +79,7 @@ const ShoppingCart = () => {
         ))}
       </List>
 
-      <Typography style={{}}>
+      <Typography>
         Total:{" "}
         {Number(
           cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0)

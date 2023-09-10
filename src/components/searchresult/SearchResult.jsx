@@ -32,7 +32,7 @@ const SearchResult = () => {
       ) : (
         <>
           <Typography variant="h1" fontFamily={"Montserrat"}>
-            Welcome
+            Welcome to my Ecommerce App
           </Typography>
           <Carousel />
         </>

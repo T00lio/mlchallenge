@@ -88,7 +88,7 @@ const Header = () => {
                   xs={1}
                   sm={3}
                   gap={2}
-                  mt={1}
+                  mt={1.5}
                 >
                   <Button
                     radius={10}
