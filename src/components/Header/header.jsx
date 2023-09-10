@@ -87,13 +87,11 @@ const Header = () => {
                   marginLeft={"auto"}
                   xs={1}
                   sm={3}
-                  gap={2}
+                  gap={3}
                   mt={1.5}
-                  spacing={10}
                 >
                   <Button
                     radius={10}
-                    marginRight={8}
                     size="small"
                     aria-label="show 17 new notifications"
                     color="primary"
@@ -115,7 +113,7 @@ const Header = () => {
                     size="small"
                     className="wishlist"
                     variant="text"
-                    startIcon={<FavoriteBorderOutlinedIcon color="primary" />}
+                    startIcon={<FavoriteBorderOutlinedIcon />}
                   >
                     <Typography>Wishlist</Typography>
                   </Button>
@@ -137,7 +135,6 @@ const Header = () => {
                       onClick={logout}
                       variant="outlined"
                       size="small"
-                      style={{ borderRadius: 24 }}
                     >
                       <Typography fontFamily={"Montserrat"}>
                         {user.email}
@@ -156,20 +153,12 @@ const Header = () => {
                   sx={{ marginLeft: "auto" }}
                 >
                   <Link href="/signup">
-                    <Button
-                      variant="outlined"
-                      sx={{ color: "#000000" }}
-                      style={{ borderRadius: 24 }}
-                    >
+                    <Button variant="outlined" sx={{ color: "#000000" }}>
                       <Typography fontFamily={"Montserrat"}>Sign up</Typography>
                     </Button>
                   </Link>
                   <Link href="/login">
-                    <Button
-                      variant="outlined"
-                      sx={{ color: "#000000" }}
-                      style={{ borderRadius: 24 }}
-                    >
+                    <Button variant="outlined" sx={{ color: "#000000" }}>
                       <Typography fontFamily={"Montserrat"}>Log in</Typography>
                     </Button>
                   </Link>

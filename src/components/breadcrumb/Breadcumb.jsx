@@ -1,6 +1,7 @@
 import "./Breadcrumb.css";
 
 const Breadcrumbs = ({ categories }) => {
+  console.log(categories);
   return (
     <div className="bc">
       {categories.map((category, index) => (

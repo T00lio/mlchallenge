@@ -31,13 +31,13 @@ const theme = createTheme({
     fontFamily: "Montserrat",
     borderRadius: "1.5rem",
   },
-  spacing: 8,
+  spacing: 10,
   card: {
-    borderRadius: "1.5rem",
+    borderRadius: "1rem",
     elevation: 50,
   },
   grid: {
-    spacing: 2,
+    spacing: 4,
   },
   shape: {
     borderRadius: "1.5rem",

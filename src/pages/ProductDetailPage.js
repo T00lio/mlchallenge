@@ -10,7 +10,7 @@ import Footer from "../components/footer/Footer";
 const ProductDetailPage = () => {
   const params = useParams();
   const [data, setData] = useState({});
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -45,7 +45,7 @@ const ProductDetailPage = () => {
       ) : (
         <>
           <Breadcrumbs categories={categories} />
-          <ProductDetail data={data} />;
+          {/* <ProductDetail data={data} />; */}
           <Footer />
         </>
       )}
