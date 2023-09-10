@@ -4,8 +4,7 @@ import "../searchresult/searchresult.css";
 import SearchResultItem from "../searchResultItem/searchResultItem";
 import { useSearchContext } from "../../context/searchContext";
 import { Typography } from "@mui/material";
-import Carousel from "../carousel/Carousel";
-
+import Welcome from "../../assets/video/welcome.mp4";
 const SearchResult = () => {
   const { queryResult } = useSearchContext();
 
@@ -31,10 +30,16 @@ const SearchResult = () => {
         ))
       ) : (
         <>
-          <Typography variant="h1" fontFamily={"Montserrat"}>
-            Welcome to my Ecommerce App
-          </Typography>
-          <Carousel />
+          <div className="bgVideo">
+            <Typography
+              variant="h1"
+              fontFamily={"Montserrat"}
+              className="content"
+            >
+              Welcome to my Ecommerce App
+            </Typography>
+            <video src={Welcome} autoPlay loop muted />
+          </div>
         </>
       )}
     </Grid>
