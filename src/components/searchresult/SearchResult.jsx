@@ -44,8 +44,8 @@ const SearchResult = () => {
               </Typography>
               <video
                 src={Welcome}
-                width={1200}
-                height={1200}
+                width={900}
+                height={900}
                 autoPlay
                 loop
                 muted
