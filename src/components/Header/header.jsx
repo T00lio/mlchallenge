@@ -92,7 +92,7 @@ const Header = () => {
                 >
                   <Button
                     radius={10}
-                    size="small"
+                    size="large"
                     aria-label="show 17 new notifications"
                     color="primary"
                     onClick={handleOpenCartModal}
@@ -101,8 +101,13 @@ const Header = () => {
                   >
                     <Badge
                       badgeContent={cartItems.length}
-                      color="primary"
+                      margin={7}
+                      color="error"
                       size="small"
+                      anchorOrigin={{
+                        vertical: "top",
+                        horizontal: "right",
+                      }}
                     >
                       <Typography fontFamily={"Montserrat"}>
                         {cartItems.length > 0 ? "Cart" : "Empty Cart"}
@@ -110,37 +115,37 @@ const Header = () => {
                     </Badge>
                   </Button>
                   <Button
-                    size="small"
+                    size="large"
                     className="wishlist"
                     variant="text"
-                    startIcon={<FavoriteBorderOutlinedIcon />}
+                    startIcon={<FavoriteBorderOutlinedIcon color="primary" />}
                   >
-                    <Typography>Wishlist</Typography>
+                    <Typography fontFamily={"Montserrat"}>Wishlist</Typography>
                   </Button>
-                  <IconButton
-                    size="small"
-                    edge="end"
-                    aria-label="account of current user"
-                    aria-haspopup="true"
-                    onClick={handleProfileMenuOpen}
-                    color="#333333"
+                  <Button
+                    sx={{ color: "#000000" }}
+                    onClick={logout}
+                    variant="text"
+                    size="large"
                   >
-                    <AccountCircleIcon
-                      aria-label="account"
-                      fontSize="inherit"
-                    />
-
-                    <Button
-                      sx={{ color: "#000000" }}
-                      onClick={logout}
-                      variant="outlined"
+                    <IconButton
                       size="small"
+                      edge="end"
+                      aria-label="account of current user"
+                      aria-haspopup="true"
+                      onClick={handleProfileMenuOpen}
+                      color="#333333"
                     >
+                      <AccountCircleIcon
+                        aria-label="account"
+                        fontSize="inherit"
+                      />
+
                       <Typography fontFamily={"Montserrat"}>
                         {user.email}
                       </Typography>
-                    </Button>
-                  </IconButton>
+                    </IconButton>
+                  </Button>
                 </Grid>
               </Hidden>
             ) : (

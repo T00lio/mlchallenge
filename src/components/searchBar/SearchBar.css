@@ -1,5 +1,6 @@
 .search-bar {
   display: flex;
+  margin-top: 0.5rem;
   align-items: center;
   border: 1px solid #ccc;
   border-radius: 2rem;

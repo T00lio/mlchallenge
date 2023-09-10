@@ -33,6 +33,7 @@ const SearchBar = () => {
   return (
     <span className="search-bar">
       <input
+        id="search-input"
         className="search-input"
         type="text"
         placeholder="I'm Shopping for..."

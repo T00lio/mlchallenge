@@ -42,9 +42,6 @@ const theme = createTheme({
   shape: {
     borderRadius: 10,
   },
-  avatar: {
-    borderRadius: "1.5rem",
-  },
 });
 
 function App() {
