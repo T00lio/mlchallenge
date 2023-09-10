@@ -8,32 +8,6 @@ function SignUp() {
   const [password, setPassword] = useState("");
   const [, setError] = useState("");
 
-  const containerStyle = {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    minHeight: "100vh",
-  };
-
-  const formContainerStyle = {
-    width: "100%",
-    maxWidth: "400px",
-    padding: "16px",
-    borderRadius: "8px",
-    backgroundColor: "#ffffff",
-    boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
-    textAlign: "center",
-  };
-
-  const formTitleStyle = {
-    marginBottom: "16px",
-  };
-
-  const formLinkStyle = {
-    marginTop: "16px",
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setError("");
@@ -41,16 +15,11 @@ function SignUp() {
   };
 
   return (
-    <div style={containerStyle}>
-      <Container style={formContainerStyle} component="main" maxWidth="xs">
-        <Typography variant="h5" style={formTitleStyle}>
-          Create account
-        </Typography>
+    <div>
+      <Container component="main" maxWidth="xs">
+        <Typography variant="h5">Create account</Typography>
         <Typography variant="body2">
-          Already have an account?{" "}
-          <Link href="/login" style={formLinkStyle}>
-            Log In
-          </Link>
+          Already have an account? <Link href="/login">Log In</Link>
         </Typography>
         <form onSubmit={handleSubmit}>
           <TextField
