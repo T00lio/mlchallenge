@@ -32,17 +32,26 @@ const SearchResult = () => {
         ))
       ) : (
         <>
-          <div className="overlay"></div>
-          <div className="bgVideo">
-            <Typography
-              variant="h1"
-              fontFamily={"Montserrat"}
-              className="content"
-            >
-              Welcome to my Ecommerce App
-            </Typography>
-            <video src={Welcome} autoPlay loop muted />
-          </div>
+          <Grid item>
+            <div className="overlay"></div>
+            <div className="bgVideo">
+              <Typography
+                variant="h2"
+                fontFamily={"Montserrat"}
+                className="content"
+              >
+                Welcome to my Ecommerce App
+              </Typography>
+              <video
+                src={Welcome}
+                width={1200}
+                height={1200}
+                autoPlay
+                loop
+                muted
+              />
+            </div>
+          </Grid>
         </>
       )}
     </Grid>
