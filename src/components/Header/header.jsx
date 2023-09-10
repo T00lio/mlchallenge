@@ -89,9 +89,11 @@ const Header = () => {
                   sm={3}
                   gap={2}
                   mt={1.5}
+                  spacing={10}
                 >
                   <Button
                     radius={10}
+                    marginRight={8}
                     size="small"
                     aria-label="show 17 new notifications"
                     color="primary"
@@ -115,7 +117,7 @@ const Header = () => {
                     variant="text"
                     startIcon={<FavoriteBorderOutlinedIcon color="primary" />}
                   >
-                    <Typography fontFamily={"Montserrat"}>Wishlist</Typography>
+                    <Typography>Wishlist</Typography>
                   </Button>
                   <IconButton
                     size="small"

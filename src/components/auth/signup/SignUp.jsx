@@ -81,7 +81,7 @@ function SignUp() {
             type="submit"
             fullWidth
             variant="contained"
-            color="primary"
+            color="secondary"
             style={{ marginTop: "16px" }}
           >
             Sign up
