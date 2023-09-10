@@ -4,7 +4,7 @@ import { useCart } from "../../context/useCart";
 import { Card, CardMedia, CardContent, Typography } from "@mui/material";
 import StarRating from "../starRating";
 import Button from "@mui/material/Button";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const SearchResultItem = ({ id, imageUrl, price, title, rating }) => {
   const { addToCart } = useCart();
@@ -18,7 +18,6 @@ const SearchResultItem = ({ id, imageUrl, price, title, rating }) => {
         price: price,
       });
     } else {
-      Navigate("/signin");
       console.error("Invalid 'id' value:", id);
     }
   };
@@ -90,6 +89,7 @@ const SearchResultItem = ({ id, imageUrl, price, title, rating }) => {
               sx={{
                 fontFamily: "Montserrat, sans-serif",
                 borderRadius: "0.5rem",
+                color: "secondary",
               }}
             >
               Add to Cart

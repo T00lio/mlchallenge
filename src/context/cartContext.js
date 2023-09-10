@@ -2,6 +2,7 @@ import { createContext, useState, useEffect } from "react";
 import { UserAuth } from "./authContext";
 import { db } from "../firebase";
 import { doc, onSnapshot, updateDoc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
 export const CartContext = createContext({
   cartItems: [],
@@ -12,6 +13,7 @@ export const CartContext = createContext({
 });
 
 export const CartProvider = ({ children }) => {
+  const Navigate = useNavigate();
   const [cartItems, setCartItems] = useState([]);
   const { user } = UserAuth();
 
@@ -37,13 +39,19 @@ export const CartProvider = ({ children }) => {
   const getProductQuantity = (id) => {
     const quantity = cartItems.find((product) => product.id === id)?.quantity;
 
-    if (quantity === undefined) {
+    if (!cartItems) {
       return 0;
     }
     return quantity;
   };
 
   const addToCart = ({ productId, imageUrl, title, price }) => {
+    if (!user) {
+      Navigate("/login");
+    } else {
+      console.log(user.uid);
+    }
+
     const userRef = doc(db, "shoppingCart", user.uid);
     const isInCartItems = cartItems.find((obj) => obj.id === productId);
 

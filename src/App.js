@@ -29,7 +29,7 @@ const theme = createTheme({
   },
   button: {
     fontFamily: "Montserrat",
-    borderRadius: "1.5rem",
+    borderRadius: "1rem",
   },
   spacing: 10,
   card: {
@@ -40,7 +40,7 @@ const theme = createTheme({
     spacing: 4,
   },
   shape: {
-    borderRadius: "1.5rem",
+    borderRadius: 10,
   },
   avatar: {
     borderRadius: "1.5rem",
