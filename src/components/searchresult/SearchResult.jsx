@@ -30,6 +30,7 @@ const SearchResult = () => {
         ))
       ) : (
         <>
+          <div className="overlay"></div>
           <div className="bgVideo">
             <Typography
               variant="h1"
