@@ -44,7 +44,7 @@ const ProductDetailPage = () => {
         </div>
       ) : (
         <>
-          {/* <Breadcrumbs categories={categories} /> */}
+          <Breadcrumbs categories={categories} />
           <ProductDetail data={data} />;
           <Footer />
         </>

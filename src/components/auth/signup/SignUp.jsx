@@ -6,7 +6,7 @@ function SignUp() {
   const { createUser } = UserAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [, setError] = useState("");
 
   const containerStyle = {
     display: "flex",
