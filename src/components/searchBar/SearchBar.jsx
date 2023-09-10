@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { CircularProgress } from "@mui/material";
 import { Search as SearchIcon } from "@mui/icons-material";
@@ -8,7 +8,7 @@ import "../searchBar/SearchBar.css";
 
 const SearchBar = () => {
   const { setQueryResult } = useSearchContext();
-  const [searchQuery, setSearchQuery] = useState(" ");
+  const [searchQuery, setSearchQuery] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSearchChange = (event) => {
@@ -31,24 +31,27 @@ const SearchBar = () => {
   };
 
   return (
-    <div className="search-bar">
-      <form className="search-form">
-        <input
-          className="search-input"
-          type="text"
-          placeholder="I'm Shopping for..."
-          value={searchQuery}
-          onChange={handleSearchChange}
-          onKeyDown={handleKeyDown}
-        />
-
-        <Link to="/items">
-          <button className="search-button" onClick={handleSearchClick}>
-            {isLoading ? <CircularProgress /> : <SearchIcon />}
-          </button>
-        </Link>
-      </form>
-    </div>
+    <span className="search-bar">
+      <input
+        id="search-input"
+        className="search-input"
+        type="text"
+        placeholder="I'm Shopping for..."
+        style={{ outline: "none" }}
+        value={searchQuery}
+        onChange={handleSearchChange}
+        onKeyDown={handleKeyDown}
+      />
+      <Link to="/items" className="search-button-link">
+        <button className="search-button" onClick={handleSearchClick}>
+          {isLoading ? (
+            <CircularProgress csx={{ color: "primary" }} />
+          ) : (
+            <SearchIcon sx={{ color: "white" }} />
+          )}
+        </button>
+      </Link>
+    </span>
   );
 };
 

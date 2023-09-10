@@ -1,6 +1,6 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { UserAuth } from "../../../context/authContext";
-import "./signup.css";
+import { Container, Typography, TextField, Button, Link } from "@mui/material";
 
 function SignUp() {
   const { createUser } = UserAuth();
@@ -15,37 +15,48 @@ function SignUp() {
   };
 
   return (
-    <div className="singin-container">
-      <form className="form" onSubmit={handleSubmit}>
-        <h1 className="formTitle">Create account</h1>
-        <p>
-          Already have an account? <a href="/login">Log In</a>
-        </p>
-        <label htmlFor="email" className="label">
-          Email
-        </label>
-        <input
-          className="input"
-          type="email"
-          placeholder="Enter your email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <label htmlFor="password" className="label">
-          Password
-        </label>
-        <input
-          className="input"
-          type="password"
-          placeholder="Enter your password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-
-        <button className="submitButton" type="submit">
-          Sign up
-        </button>
-      </form>
+    <div>
+      <Container component="main" maxWidth="xs">
+        <Typography variant="h5">Create account</Typography>
+        <Typography variant="body2">
+          Already have an account? <Link href="/login">Log In</Link>
+        </Typography>
+        <form onSubmit={handleSubmit}>
+          <TextField
+            variant="outlined"
+            margin="normal"
+            fullWidth
+            id="email"
+            label="Email"
+            name="email"
+            autoComplete="email"
+            autoFocus
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            fullWidth
+            name="password"
+            label="Password"
+            type="password"
+            id="password"
+            autoComplete="current-password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="secondary"
+            style={{ marginTop: "16px" }}
+          >
+            Sign up
+          </Button>
+        </form>
+      </Container>
     </div>
   );
 }

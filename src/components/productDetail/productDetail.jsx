@@ -1,77 +1,85 @@
-import { useState, useEffect } from "react";
-import { Container, Grid, Stack, CircularProgress } from "@mui/material";
+import React from "react";
+import { Container, Grid, Stack, Typography, IconButton } from "@mui/material";
+import StarRating from "../starRating.js";
 import { useParams } from "react-router-dom";
-import { getData } from "../../utils/httpsClient";
 import { useCart } from "../../context/useCart";
 import "../productDetail/productDetail.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const ProductDetail = () => {
-  const [data, setData] = useState({});
-  const [loading, setLoading] = useState(false);
+const ProductDetail = ({ data: { product, description } }) => {
   const { addToCart } = useCart();
   const params = useParams();
-
-  useEffect(() => {
-    const fetchItemData = async () => {
-      setLoading(true);
-
-      const [product, description] = await Promise.all([
-        getData(`items/${params.id}`),
-        getData(`items/${params.id}/description`),
-      ]);
-      setData({ product, description });
-      console.log(product);
-    };
-
-    fetchItemData();
-    setLoading(false);
-  }, [params.id]);
 
   const handleAddToCartClick = () => {
     addToCart({
       productId: params.id,
-      imageUrl: data?.product?.thumbnail,
-      title: data?.product?.title,
-      price: data?.product?.price,
+      imageUrl: product?.thumbnail,
+      title: product?.title,
+      price: product?.price,
     });
   };
 
-  return loading ? (
-    <div className="loader">
-      <CircularProgress size={80} />
-    </div>
-  ) : (
+  return (
     <Container>
       <div className="pd">
         <Grid container>
-          <Grid item xs={8}>
-            <img
-              src={data?.product?.pictures?.[0]?.url || ""}
-              alt="productImage"
-              width={500}
-              height={500}
+          <Grid item xs={12} sm={8}>
+            <div
               className="pic"
-            ></img>
+              style={{
+                backgroundImage: `url("${product?.pictures?.[0]?.url || ""}")`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                width: "700px",
+                height: "700px",
+              }}
+            ></div>
           </Grid>
-          <Stack xs={3} item className="pdes">
-            <p className="name">{data?.product?.title || ""}</p>
-            <h4>{data?.product?.seller_address?.state?.name || ""}</h4>
-            <h3>
-              {Number(data?.product?.price).toLocaleString("en-US", {
-                style: "currency",
-                currency: "USD",
-              })}{" "}
-            </h3>
+          <Grid item xs={12} sm={4} spacing={1} className="pdes">
+            <Typography nowrap variant="h6" fontFamily={"Montserrat"}>
+              {product?.title || ""}
+            </Typography>
+            <Typography variant="h5" fontFamily={"Montserrat"}>
+              {product?.seller_address?.state?.name || ""}
+            </Typography>
+            <div className="buttons">
+              <Typography variant="h5" fontFamily={"Montserrat"}>
+                {Number(product?.price).toLocaleString("en-US", {
+                  style: "currency",
+                  currency: "USD",
+                })}{" "}
+              </Typography>
+              <Stack direction="row" spacing={1}>
+                <StarRating
+                  rating={product?.seller?.seller_reputation?.level_id}
+                />
+              </Stack>
+            </div>
+
             <hr />
-            <button className="add" onClick={handleAddToCartClick}>
-              Add to cart
-            </button>
-          </Stack>
-          <Stack item className="pdeet">
-            <h2>Descripción del producto</h2>
-            <p>{data?.description?.plain_text || ""}</p>
-          </Stack>
+            <IconButton
+              className="add"
+              onClick={() => handleAddToCartClick(params.id)}
+              sx={{
+                borderRadius: "1rem",
+                background: "#1E65FF",
+                display: "flex",
+                width: "100%",
+                height: "3.375rem",
+                color: "#ffffff",
+              }}
+            >
+              <Typography fontFamily={"Montserrat"}>Add to cart</Typography>
+            </IconButton>
+          </Grid>
+          <Grid item xs={12} mt={3} className="pdeet">
+            <Typography variant="h4" fontFamily={"Montserrat"}>
+              Product Description
+            </Typography>
+            <Typography fontFamily={"Montserrat"} textAlign={"justify"} mt={3}>
+              {description?.plain_text || ""}
+            </Typography>
+          </Grid>
         </Grid>
       </div>
     </Container>

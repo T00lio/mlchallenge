@@ -1,32 +1,16 @@
-import { useLocation } from "react-router-dom";
 import "./Breadcrumb.css";
-import { Link } from "react-router-dom";
 
-const Breadcrumbs = ({ current, detail }) => {
-  const location = useLocation();
-
-  let currentLink = "";
-
-  const crumbs = location.pathname
-    .split("/")
-    .filter((crumb) => crumb !== "")
-    .map((crumb) => {
-      currentLink += `/${crumb}`;
-      return (
-        <div className="crumb" key={crumb}>
-          <Link to={currentLink}>{crumb}</Link> {">"}
-        </div>
-      );
-    });
-
+const Breadcrumbs = ({ categories }) => {
+  if (!categories) return null;
+  console.log(categories);
   return (
-    <div className="breadcrumbs">
-      <div className="crumb">
-        <Link to="/">Home</Link> {">"}
-      </div>
-      {crumbs}
-      {current && <div className="crumb">{current}</div>}
-      {detail && <div className="crumb">{detail}</div>}
+    <div className="bc">
+      {categories.map((category, index) => (
+        <div className="crumb" key={category.id}>
+          <span>{category.name}</span>{" "}
+          {categories.length - 1 === index ? "" : ">"}
+        </div>
+      ))}
     </div>
   );
 };
