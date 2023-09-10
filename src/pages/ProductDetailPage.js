@@ -10,7 +10,7 @@ import Footer from "../components/footer/Footer";
 const ProductDetailPage = () => {
   const params = useParams();
   const [data, setData] = useState({});
-  const [categories, setCategories] = useState({});
+  const [, setCategories] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
