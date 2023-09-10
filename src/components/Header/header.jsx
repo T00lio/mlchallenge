@@ -148,8 +148,8 @@ const Header = () => {
               <Hidden smDown>
                 <Grid
                   item
-                  mt={1}
-                  gap={1}
+                  mt={1.5}
+                  gap={2}
                   display={"flex"}
                   sx={{ marginLeft: "auto" }}
                 >
