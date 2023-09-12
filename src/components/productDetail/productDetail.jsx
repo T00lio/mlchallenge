@@ -30,13 +30,13 @@ const ProductDetail = ({ data: { product, description } }) => {
                 backgroundImage: `url("${product?.pictures?.[0]?.url || ""}")`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
-                width: "700px",
-                height: "700px",
+                width: "500px",
+                height: "500px",
               }}
             ></div>
           </Grid>
-          <Grid item xs={12} sm={4} spacing={1} className="pdes">
-            <Typography nowrap variant="h6" fontFamily={"Montserrat"}>
+          <Grid item xs={12} sm={4} className="pdes">
+            <Typography nowrap="true" variant="h6" fontFamily={"Montserrat"}>
               {product?.title || ""}
             </Typography>
             <Typography variant="h5" fontFamily={"Montserrat"}>
@@ -49,7 +49,7 @@ const ProductDetail = ({ data: { product, description } }) => {
                   currency: "USD",
                 })}{" "}
               </Typography>
-              <Stack direction="row" spacing={1}>
+              <Stack direction="row">
                 <StarRating
                   rating={product?.seller?.seller_reputation?.level_id}
                 />

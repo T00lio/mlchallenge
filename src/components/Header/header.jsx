@@ -65,10 +65,8 @@ const Header = () => {
                 alignItems={"center"}
               >
                 <Grid item sm={2} md={2}>
-                  <RouterLink>
-                    <Typography variant="h5" sx={{ textDecoration: "none" }}>
-                      Ecommerce
-                    </Typography>
+                  <RouterLink sx={{ textDecoration: "none" }} to={"/"}>
+                    <Typography variant="h5">Ecommerce</Typography>
                   </RouterLink>
                 </Grid>
                 <Grid item sm={6} xs={8} alignItems={"center"}>
@@ -143,7 +141,7 @@ const Header = () => {
                         <Button
                           variant="outlined"
                           sx={{ color: "#000000" }}
-                          marginLeft={1}
+                          // marginLeft={1}
                         >
                           <Typography>Sign up</Typography>
                         </Button>
@@ -152,7 +150,7 @@ const Header = () => {
                         <Button
                           variant="outlined"
                           sx={{ color: "#000000" }}
-                          marginLeft={1}
+                          // marginLeft={1}
                         >
                           <Typography>Log in</Typography>
                         </Button>

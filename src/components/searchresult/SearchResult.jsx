@@ -15,7 +15,6 @@ const SearchResult = () => {
       spacing={2}
       marginTop={"10rem"}
       sx={{ marginLeft: "auto", marginRight: "auto" }}
-      className="container"
     >
       {queryResult?.length > 0 ? (
         queryResult.map((result) => (

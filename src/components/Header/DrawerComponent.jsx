@@ -86,7 +86,7 @@ function DrawerComponent() {
         </List>
       </Drawer>
       <IconButton onClick={() => setOpen(!open)}>
-        <MenuIcon onOpen={open} onClose={() => setOpen(false)} />
+        <MenuIcon open={open} onClose={() => setOpen(false)} />
       </IconButton>
       <CartModal open={openCartModal} onClose={handleCloseCartModal} />
     </>
