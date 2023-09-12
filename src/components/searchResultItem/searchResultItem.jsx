@@ -24,7 +24,7 @@ const SearchResultItem = ({ id, imageUrl, price, title, rating }) => {
 
   return (
     <>
-      <Card className="searchResultItem" sx={{ maxWidth: 400 }}>
+      <Card className="searchResultItem" sx={{ maxWidth: 500 }}>
         <Link
           to={`/item/${id}`}
           className="link"
@@ -33,8 +33,7 @@ const SearchResultItem = ({ id, imageUrl, price, title, rating }) => {
         >
           <CardMedia
             component="img"
-            height="170"
-            width="170"
+            height="300"
             image={imageUrl}
             alt={title}
           />
@@ -48,7 +47,7 @@ const SearchResultItem = ({ id, imageUrl, price, title, rating }) => {
             <Typography
               fontFamily={"Montserrat"}
               gutterBottom
-              variant="h5"
+              variant="h"
               component="div"
               sx={{ overflow: "hidden" }}
             >
@@ -84,6 +83,7 @@ const SearchResultItem = ({ id, imageUrl, price, title, rating }) => {
               </Typography>
             </Link>
             <Button
+              size="small"
               variant="outlined"
               onClick={handleAddToCart}
               sx={{

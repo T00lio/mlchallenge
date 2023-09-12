@@ -4,7 +4,8 @@ import "../searchresult/searchresult.css";
 import SearchResultItem from "../searchResultItem/searchResultItem";
 import { useSearchContext } from "../../context/searchContext";
 import { Typography } from "@mui/material";
-import Welcome from "../../assets/video/welcome.mp4";
+import Welcome from "../../assets/images/welcom.jpeg";
+
 const SearchResult = () => {
   const { queryResult } = useSearchContext();
 
@@ -32,25 +33,30 @@ const SearchResult = () => {
         ))
       ) : (
         <>
-          <Grid item>
-            <div className="overlay"></div>
-            <div className="bgVideo">
-              <Typography
-                variant="h2"
-                fontFamily={"Montserrat"}
-                className="content"
-              >
-                Welcome to my Ecommerce App
-              </Typography>
-              <video
-                src={Welcome}
-                width={900}
-                height={900}
-                autoPlay
-                loop
-                muted
-              />
-            </div>
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            md={4}
+            lg={3}
+            display={"flex"}
+            flexDirection={"Row"}
+          >
+            <Typography
+              variant="h1"
+              fontFamily={"Montserrat"}
+              className="content"
+              sx={{ marginLeft: "auto", marginRight: "auto" }}
+            >
+              Welcome to my Ecommerce App
+            </Typography>
+            <img
+              src={Welcome}
+              width={500}
+              height={700}
+              alt="welcome"
+              className="welcome"
+            />
           </Grid>
         </>
       )}
