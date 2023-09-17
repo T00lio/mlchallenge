@@ -8,7 +8,7 @@ function ResultList() {
   return (
     <>
       <Header />
-      {/* <Breadcrumbs /> */}
+      <Breadcrumbs />
       <SearchResult />
       <Footer />
     </>

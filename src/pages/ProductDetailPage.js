@@ -10,7 +10,7 @@ import Footer from "../components/footer/Footer";
 const ProductDetailPage = () => {
   const params = useParams();
   const [data, setData] = useState({});
-  const [, setCategories] = useState({});
+  const [categories, setCategories] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -27,6 +27,7 @@ const ProductDetailPage = () => {
 
       setData({ product, description });
       setCategories(categoryDetails.path_from_root);
+      console.log(categoryDetails.path_from_root);
 
       setIsLoading(false);
     };
@@ -39,12 +40,20 @@ const ProductDetailPage = () => {
       <Header />
 
       {isLoading ? (
-        <div className="loader">
-          <CircularProgress size={80} />
+        <div
+          className="loader"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100vh",
+          }}
+        >
+          <CircularProgress size={160} color="secondary" />
         </div>
       ) : (
         <>
-          {/* <Breadcrumbs categories={categories} /> */}
+          <Breadcrumbs categories={categories} />
           <ProductDetail data={data} />;
           <Footer />
         </>

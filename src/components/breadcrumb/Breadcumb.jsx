@@ -1,7 +1,7 @@
 import "./Breadcrumb.css";
 
 const Breadcrumbs = ({ categories }) => {
-  if (!categories) return null;
+  if (!categories || !Array.isArray(categories)) return null;
   console.log(categories);
   return (
     <div className="bc">
