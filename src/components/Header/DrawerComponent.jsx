@@ -12,8 +12,6 @@ import {
   Typography,
   Badge,
 } from "@mui/material";
-import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
-import { AccountCircle as AccountCircleIcon } from "@mui/icons-material";
 import MenuIcon from "@mui/icons-material/Menu";
 
 function DrawerComponent() {
@@ -44,7 +42,6 @@ function DrawerComponent() {
               <Badge
                 badgeContent={cartItems.length}
                 margin={1}
-                color="error"
                 size="small"
                 anchorOrigin={{
                   vertical: "top",
@@ -57,11 +54,7 @@ function DrawerComponent() {
               </Badge>
             </ListItemText>
           </ListItemButton>
-          <ListItemButton
-            sx={{ marginLeft: "1" }}
-            variant="text"
-            startIcon={<FavoriteBorderOutlinedIcon color="primary" />}
-          >
+          <ListItemButton sx={{ marginLeft: "1" }} variant="text">
             <ListItemText>
               <Typography variant="p">Wishlist</Typography>
             </ListItemText>
@@ -71,7 +64,6 @@ function DrawerComponent() {
             onClick={logout}
             variant="text"
             size="large"
-            startIcon={<AccountCircleIcon color="primary" />}
           >
             <ListItemText>
               <Typography

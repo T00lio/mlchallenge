@@ -20,12 +20,8 @@ const AuthDetails = () => {
 
   const userSignOut = () => {
     signOut(auth)
-      .then(() => {
-        console.log("User signed out");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      .then(() => {})
+      .catch((error) => {});
   };
 
   return (

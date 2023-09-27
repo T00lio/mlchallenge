@@ -35,7 +35,6 @@ const Header = () => {
   const handleOpenCartModal = () => setOpenCartModal(true);
   const handleCloseCartModal = () => setOpenCartModal(false);
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
-  console.log(isMatch);
 
   return (
     <>
@@ -71,7 +70,13 @@ const Header = () => {
                     <Typography variant="h5">Ecommerce</Typography>
                   </RouterLink>
                 </Grid>
-                <Grid item sm={6} xs={8} alignItems={"center"}>
+                <Grid
+                  item
+                  sm={6}
+                  xs={8}
+                  alignItems={"center"}
+                  sx={{ margin: "auto" }}
+                >
                   <SearchBar />
                 </Grid>
                 {user?.uid ? (

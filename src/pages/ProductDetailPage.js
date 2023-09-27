@@ -5,7 +5,6 @@ import ProductDetail from "../components/productDetail";
 import Breadcrumbs from "../components/breadcrumb";
 import Header from "../components/Header";
 import { getData } from "../utils/httpsClient";
-import Footer from "../components/footer/Footer";
 
 const ProductDetailPage = () => {
   const params = useParams();
@@ -27,7 +26,6 @@ const ProductDetailPage = () => {
 
       setData({ product, description });
       setCategories(categoryDetails.path_from_root);
-      console.log(categoryDetails.path_from_root);
 
       setIsLoading(false);
     };
@@ -55,7 +53,6 @@ const ProductDetailPage = () => {
         <>
           <Breadcrumbs categories={categories} />
           <ProductDetail data={data} />;
-          <Footer />
         </>
       )}
     </>

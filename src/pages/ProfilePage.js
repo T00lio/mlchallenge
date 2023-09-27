@@ -10,10 +10,7 @@ const ProfilePage = () => {
     try {
       await logout();
       navigate("/");
-      console.log("you are logged out!");
-    } catch (e) {
-      console.log(e.message);
-    }
+    } catch (e) {}
   };
   return (
     <div>

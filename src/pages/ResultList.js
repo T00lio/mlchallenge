@@ -2,7 +2,6 @@ import React from "react";
 import Breadcrumbs from "../components/breadcrumb";
 import SearchResult from "../components/searchresult";
 import Header from "../components/Header";
-import Footer from "../components/footer/Footer";
 
 function ResultList() {
   return (
@@ -10,7 +9,6 @@ function ResultList() {
       <Header />
       <Breadcrumbs />
       <SearchResult />
-      <Footer />
     </>
   );
 }

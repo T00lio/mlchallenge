@@ -7,10 +7,7 @@ export const addTestDocument = async () => {
 
   try {
     await setDoc(testDocRef, { data: "Hello, Firestore!" });
-    console.log("Test document added to Firestore successfully.");
-  } catch (error) {
-    console.error("Error adding test document to Firestore: ", error);
-  }
+  } catch (error) {}
 };
 
 // Call the function to test Firestore connectivity

@@ -49,7 +49,6 @@ export const CartProvider = ({ children }) => {
     if (!user) {
       Navigate("/login");
     } else {
-      console.log(user.uid);
     }
 
     const userRef = doc(db, "shoppingCart", user.uid);

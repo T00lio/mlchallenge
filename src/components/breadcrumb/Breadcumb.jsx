@@ -2,7 +2,7 @@ import "./Breadcrumb.css";
 
 const Breadcrumbs = ({ categories }) => {
   if (!categories || !Array.isArray(categories)) return null;
-  console.log(categories);
+
   return (
     <div className="bc">
       {categories.map((category, index) => (
