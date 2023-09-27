@@ -1,0 +1,9 @@
+.header {
+  background-color: #ffffff !important;
+  position: sticky;
+}
+
+.sisoButton {
+  display: flex;
+  align-items: flex-end;
+}
