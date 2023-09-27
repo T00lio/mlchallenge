@@ -1,5 +1,4 @@
 import React from "react";
-
 import SearchResult from "../components/searchresult";
 import Header from "../components/Header";
 

@@ -32,7 +32,6 @@ const Header = () => {
   const { user, logout } = UserAuth();
   const { cartItems } = useCart();
   const theme = useTheme();
-
   const handleOpenCartModal = () => setOpenCartModal(true);
   const handleCloseCartModal = () => setOpenCartModal(false);
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
@@ -65,7 +64,10 @@ const Header = () => {
                 alignItems={"center"}
               >
                 <Grid item sm={2} md={2}>
-                  <RouterLink sx={{ textDecoration: "none" }} to={"/"}>
+                  <RouterLink
+                    to={"/"}
+                    style={{ textDecoration: "none", color: "black" }}
+                  >
                     <Typography variant="h5">Ecommerce</Typography>
                   </RouterLink>
                 </Grid>
@@ -140,18 +142,13 @@ const Header = () => {
                       <Link href="/signup">
                         <Button
                           variant="outlined"
-                          sx={{ color: "#000000" }}
-                          // marginLeft={1}
+                          sx={{ color: "#000000", marginRight: 1 }}
                         >
                           <Typography>Sign up</Typography>
                         </Button>
                       </Link>
                       <Link href="/login">
-                        <Button
-                          variant="outlined"
-                          sx={{ color: "#000000" }}
-                          // marginLeft={1}
-                        >
+                        <Button variant="outlined" sx={{ color: "#000000" }}>
                           <Typography>Log in</Typography>
                         </Button>
                       </Link>

@@ -26,7 +26,7 @@ const SearchBar = () => {
   const handleSearchClick = async () => {
     setIsLoading(true);
     const data = await getData(`sites/MLA/search?q=${searchQuery}`);
-    setQueryResult(data.results);
+    setQueryResult(data?.results);
     setIsLoading(false);
   };
 
@@ -45,7 +45,7 @@ const SearchBar = () => {
       <Link to="/items" className="search-button-link">
         <button className="search-button" onClick={handleSearchClick}>
           {isLoading ? (
-            <CircularProgress csx={{ color: "primary" }} />
+            <CircularProgress sx={{ color: "white" }} />
           ) : (
             <SearchIcon sx={{ color: "white" }} />
           )}
