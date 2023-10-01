@@ -14,31 +14,44 @@ const UserContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [showSnackBar, setShowSnackbar] = useState("");
+  const [snackBarInfo, setSnackBarInfo] = useState(null);
   const navigate = useNavigate();
 
   const createUser = (email, password) => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((createdUser) => {
-        setDoc(doc(db, "shoppingCart", createdUser.user.uid), {
-          cartItems: [],
-        });
-        navigate("/");
+        if (createdUser && createdUser.user && createdUser.user.uid) {
+          setDoc(doc(db, "shoppingCart", createdUser.user.uid), {
+            cartItems: [],
+          });
+          navigate("/");
+          setSnackBarInfo({
+            message: "User created successfully!",
+            severity: "success",
+          });
+        }
+        if (createdUser && createdUser.user && !createdUser.user.uid) {
+          setUser(null);
+          setSnackBarInfo({
+            message: "User creation failed. Please try again.",
+            severity: "error",
+          });
+        }
       })
       .catch((error) => {
-        setShowSnackbar(error.message);
+        setSnackBarInfo({ message: error.message, severity: "error" });
       });
   };
 
   const signIn = (email, password) => {
     signInWithEmailAndPassword(auth, email, password).catch((error) => {
-      setShowSnackbar(error.message);
+      setSnackBarInfo({ message: error.message, severity: "error" });
     });
   };
 
   const logout = () => {
     signOut(auth).catch((error) => {
-      setShowSnackbar(error.message);
+      setSnackBarInfo({ message: error.message, severity: "error" });
     });
   };
 
@@ -56,14 +69,20 @@ export const AuthContextProvider = ({ children }) => {
     };
   }, []);
 
+  const closeSnackBar = () => {
+    setSnackBarInfo(null);
+  };
+
   return (
     <UserContext.Provider value={{ createUser, user, logout, signIn }}>
       <>
         <Snackbar
           anchorOrigin={{ vertical: "top", horizontal: "right" }}
-          open={!!showSnackBar}
-          autoHideDuration={4000}
-          message={showSnackBar}
+          open={!!snackBarInfo}
+          autoHideDuration={3000}
+          message={snackBarInfo ? snackBarInfo.message : ""}
+          onClose={closeSnackBar}
+          severity={snackBarInfo ? snackBarInfo.severity : "info"}
         />
         {children}
       </>

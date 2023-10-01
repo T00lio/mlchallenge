@@ -18,7 +18,7 @@ const ShoppingCart = () => {
   const params = useParams();
 
   const handleRemoveOne = (productId) => {
-    removeFromCart(productId); // Pass the productId as an argument
+    removeFromCart(productId);
   };
 
   const handleAddOne = () => {

@@ -3,6 +3,7 @@ import { UserAuth } from "./authContext";
 import { db } from "../firebase";
 import { doc, onSnapshot, updateDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import Snackbar from "@mui/material/Snackbar";
 
 export const CartContext = createContext({
   cartItems: [],
@@ -16,6 +17,7 @@ export const CartProvider = ({ children }) => {
   const Navigate = useNavigate();
   const [cartItems, setCartItems] = useState([]);
   const { user } = UserAuth();
+  const [snackBarInfo, setSnackBarInfo] = useState(null);
 
   useEffect(() => {
     if (user?.uid) {
@@ -48,7 +50,7 @@ export const CartProvider = ({ children }) => {
   const addToCart = ({ productId, imageUrl, title, price }) => {
     if (!user) {
       Navigate("/login");
-    } else {
+      return;
     }
 
     const userRef = doc(db, "shoppingCart", user.uid);
@@ -74,19 +76,22 @@ export const CartProvider = ({ children }) => {
         }),
       });
     }
+
+    setSnackBarInfo({
+      message: "Item added to cart!",
+      severity: "success",
+    });
   };
 
   const removeFromCart = (productId) => {
     const userRef = doc(db, "shoppingCart", user.uid);
 
-    // Find the item with the specified productId in the cartItems array
     const itemToRemove = cartItems.find((item) => item.id === productId);
 
     if (!itemToRemove) {
-      return; // If item not found, do nothing
+      return;
     }
 
-    // If the item has a quantity greater than 1, decrement the quantity
     if (itemToRemove.quantity > 1) {
       const updatedCartItems = cartItems.map((item) => {
         if (item.id === productId) {
@@ -95,27 +100,27 @@ export const CartProvider = ({ children }) => {
         return item;
       });
 
-      // Update the document with the updated cartItems
       updateDoc(userRef, {
         cartItems: updatedCartItems,
       });
 
-      // Update the local state with the updated cartItems
       setCartItems(updatedCartItems);
     } else {
-      // If the item has a quantity of 1, remove it from the cart
       const updatedCartItems = cartItems.filter(
         (item) => item.id !== productId
       );
 
-      // Update the document with the updated cartItems
       updateDoc(userRef, {
         cartItems: updatedCartItems,
       });
 
-      // Update the local state with the updated cartItems
       setCartItems(updatedCartItems);
     }
+
+    setSnackBarInfo({
+      message: "Item removed from cart!",
+      severity: "success",
+    });
   };
 
   const clearCart = () => {
@@ -123,6 +128,11 @@ export const CartProvider = ({ children }) => {
     setCartItems([]);
     updateDoc(userRef, {
       cartItems: [],
+    });
+
+    setSnackBarInfo({
+      message: "Cart cleared!",
+      severity: "success",
     });
   };
 
@@ -134,8 +144,24 @@ export const CartProvider = ({ children }) => {
     clearCart,
   };
 
+  const closeSnackBar = () => {
+    setSnackBarInfo(null);
+  };
+
   return (
-    <CartContext.Provider value={contextValue}>{children}</CartContext.Provider>
+    <>
+      <Snackbar
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+        open={!!snackBarInfo}
+        autoHideDuration={3000}
+        message={snackBarInfo ? snackBarInfo.message : ""}
+        onClose={closeSnackBar}
+        severity={snackBarInfo ? snackBarInfo.severity : "info"}
+      />
+      <CartContext.Provider value={contextValue}>
+        {children}
+      </CartContext.Provider>
+    </>
   );
 };
 
