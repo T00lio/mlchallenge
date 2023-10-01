@@ -123,7 +123,7 @@ const Header = () => {
                         sx={{ marginLeft: "1" }}
                         onClick={logout}
                         variant="text"
-                        size="large"
+                        size="small"
                         startIcon={<AccountCircleIcon color="primary" />}
                       >
                         <Typography

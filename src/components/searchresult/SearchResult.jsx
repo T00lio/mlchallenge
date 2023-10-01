@@ -10,7 +10,7 @@ import ecomm from "../../assets/images/ecomm.svg";
 const SearchResult = () => {
   const { queryResult } = useSearchContext();
   const [currentPage, setCurrentPage] = useState(1);
-  const recordsPerPage = 8;
+  const recordsPerPage = 20;
   const lastIndex = currentPage * recordsPerPage;
   const firstIndex = lastIndex - recordsPerPage;
   const records = queryResult?.slice(firstIndex, lastIndex);

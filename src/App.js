@@ -16,6 +16,15 @@ import "./firetest.js";
 import "./styles.css";
 
 const theme = createTheme({
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 930,
+      lg: 1280,
+      xl: 1920,
+    },
+  },
   palette: {
     primary: {
       main: "#001018",
