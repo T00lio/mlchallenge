@@ -8,7 +8,7 @@ const Breadcrumbs = ({ categories }) => {
       {categories.map((category, index) => (
         <div className="crumb" key={category.id}>
           <span>{category.name}</span>{" "}
-          {categories.length - 1 === index ? "" : ">"}
+          {categories.length - 1 === index ? " " : " > "}
         </div>
       ))}
     </div>
