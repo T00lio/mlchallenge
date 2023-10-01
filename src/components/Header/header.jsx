@@ -72,8 +72,8 @@ const Header = () => {
                 </Grid>
                 <Grid
                   item
-                  sm={6}
-                  xs={8}
+                  sm={4}
+                  xs={4}
                   alignItems={"center"}
                   sx={{ margin: "auto" }}
                 >

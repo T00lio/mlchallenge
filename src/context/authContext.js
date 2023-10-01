@@ -60,9 +60,9 @@ export const AuthContextProvider = ({ children }) => {
     <UserContext.Provider value={{ createUser, user, logout, signIn }}>
       <>
         <Snackbar
-          anchorOrigin={{ vertical: "top", horizontal: "center" }}
+          anchorOrigin={{ vertical: "top", horizontal: "right" }}
           open={!!showSnackBar}
-          autoHideDuration={5000}
+          autoHideDuration={4000}
           message={showSnackBar}
         />
         {children}

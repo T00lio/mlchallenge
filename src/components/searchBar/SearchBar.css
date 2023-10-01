@@ -45,9 +45,9 @@
   flex-shrink: 0;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 999px) {
   .search-input {
-    flex: 2;
+    flex: 4;
   }
 
   .search-button {

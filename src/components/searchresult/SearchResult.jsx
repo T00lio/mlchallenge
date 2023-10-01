@@ -20,6 +20,7 @@ const SearchResult = () => {
   return (
     <>
       <Grid
+        className="search-result"
         container
         spacing={2}
         marginTop={"10rem"}
@@ -88,11 +89,12 @@ const SearchResult = () => {
                   variant="h6"
                   sx={{
                     marginTop: "2rem",
-                    maxWidth: "60%",
+                    maxWidth: "90%",
                     alignContent: "center",
                     justifyContent: "center",
                     textAlign: "justify",
                     fontSize: "1rem",
+                    textShadow: "0px 0px 10px 0px rgba(0,0,0,0.5)",
                   }}
                 >
                   This is a simple Ecommerce App that allows you to search for

@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
-import {  } from "../../firebase";
-import { onStateChanged, signOut } from "firebase/";
+import { auth } from "../../firebase";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 
-const Details = () => {
-  const [User, setUser] = useState(null);
+const AuthDetails = () => {
+  const [authUser, setAuthUser] = useState(null);
 
   useEffect(() => {
-    const listen = onStateChanged(, (user) => {
+    const listen = onAuthStateChanged(auth, (user) => {
       if (user) {
-        setUser(user);
+        setAuthUser(user);
       } else {
-        setUser(null);
+        setAuthUser(null);
       }
     });
     return () => {
@@ -19,16 +19,16 @@ const Details = () => {
   }, []);
 
   const userSignOut = () => {
-    signOut()
+    signOut(auth)
       .then(() => {})
       .catch((error) => {});
   };
 
   return (
     <div>
-      {User ? (
+      {authUser ? (
         <>
-          <p>{`Signed in as ${User.email}`}</p>
+          <p>{`Signed in as ${authUser.email}`}</p>
           <button onClick={userSignOut}>Sign Out?</button>
         </>
       ) : (
@@ -37,4 +37,4 @@ const Details = () => {
     </div>
   );
 };
-export default Details;
+export default AuthDetails;
