@@ -110,15 +110,7 @@ const Header = () => {
                           </Typography>
                         </Badge>
                       </Button>
-                      <Button
-                        sx={{ marginLeft: "1" }}
-                        variant="text"
-                        startIcon={
-                          <FavoriteBorderOutlinedIcon color="primary" />
-                        }
-                      >
-                        <Typography variant="p">Wishlist</Typography>
-                      </Button>
+
                       <Button
                         sx={{ marginLeft: "1" }}
                         onClick={logout}

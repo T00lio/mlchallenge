@@ -54,11 +54,7 @@ function DrawerComponent() {
               </Badge>
             </ListItemText>
           </ListItemButton>
-          <ListItemButton sx={{ marginLeft: "1" }} variant="text">
-            <ListItemText>
-              <Typography variant="p">Wishlist</Typography>
-            </ListItemText>
-          </ListItemButton>
+
           <ListItemButton
             sx={{ marginLeft: "1" }}
             onClick={logout}

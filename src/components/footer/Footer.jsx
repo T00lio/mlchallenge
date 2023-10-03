@@ -1,13 +1,12 @@
 import React from "react";
 import "./Footer.css";
-import { useCart } from "../../context/useCart";
 
 function Footer() {
-  const { cart } = useCart();
-
   return (
     <footer className="footer">
-      <small>{JSON.stringify(cart, null, 2)}</small>
+      <p className="footer-text">
+        coded by <strong>Tulio Salvatierra</strong>
+      </p>
     </footer>
   );
 }

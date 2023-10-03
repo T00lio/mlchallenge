@@ -1,3 +1,4 @@
+import React from "react";
 import "./Breadcrumb.css";
 
 const Breadcrumbs = ({ categories }) => {
@@ -7,8 +8,8 @@ const Breadcrumbs = ({ categories }) => {
     <div className="bc">
       {categories.map((category, index) => (
         <div className="crumb" key={category.id}>
-          <span>{category.name}</span>{" "}
-          {categories.length - 1 === index ? " " : " > "}
+          {index > 0 && <span> &gt; </span>} {` `}
+          <span> {category.name}</span>
         </div>
       ))}
     </div>

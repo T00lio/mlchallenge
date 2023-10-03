@@ -1,12 +1,15 @@
+/* Breadcrumb.css */
 .bc {
   display: flex;
   flex-wrap: wrap;
-  list-style: none;
-  padding: 0;
-  margin-left: 5rem;
-  font-size: 1rem;
-  font-weight: 100;
-  margin-top: 8rem;
-  color: #6c757d;
   font-family: "Montserrat", sans-serif;
+  margin-left: 1rem;
+  font-weight: 400;
+}
+
+.crumb {
+  display: flex;
+  align-items: center;
+  margin-top: 8rem;
+  margin-left: 10px; /* Adjust the spacing between breadcrumb items here */
 }
