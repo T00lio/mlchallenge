@@ -1,19 +1,20 @@
 .bc {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
+  text-justify: center;
   font-family: "Montserrat", sans-serif;
   margin-left: 1rem;
   font-weight: 400;
 }
 
 .crumb {
-  display: flex;
   align-items: center;
   margin-top: 8rem;
   margin-left: 10px;
 }
 
 .separator {
-  margin: 0 2px;
+  margin: 0 5px;
   color: #bfbfbf;
 }
