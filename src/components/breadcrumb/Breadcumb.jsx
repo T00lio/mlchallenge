@@ -6,12 +6,15 @@ const Breadcrumbs = ({ categories }) => {
 
   return (
     <div className="bc">
-      {categories.map((category, index) => (
-        <div className="crumb" key={category.id}>
-          {index > 0 && <span> &gt; </span>} {` `}
-          <span> {category.name}</span>
-        </div>
-      ))}
+      {categories.map(
+        (category, index) =>
+          category.name !== "Root" && (
+            <div className="crumb" key={category.id}>
+              {index > 0 && <span className="separator"> &gt; </span>} {` `}
+              <span> {category.name}</span>
+            </div>
+          )
+      )}
     </div>
   );
 };
