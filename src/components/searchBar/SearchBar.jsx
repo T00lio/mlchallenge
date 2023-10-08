@@ -28,7 +28,7 @@ const SearchBar = () => {
     setIsLoading(true);
     const data = await getData(`sites/MLA/search?q=${searchQuery}`);
     setQueryResult(data?.results);
-    const debouncedData = debounce(setQueryResult, 300);
+    const debouncedData = debounce(setQueryResult, 3000);
     setIsLoading(false);
   };
 
