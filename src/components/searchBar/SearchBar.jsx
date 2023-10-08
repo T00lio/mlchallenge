@@ -5,6 +5,7 @@ import { Search as SearchIcon } from "@mui/icons-material";
 import { useSearchContext } from "../../context/searchContext.js";
 import { getData } from "../../utils/httpsClient";
 import "../searchBar/SearchBar.css";
+import { debounce } from "lodash";
 
 const SearchBar = () => {
   const { setQueryResult } = useSearchContext();
@@ -27,6 +28,7 @@ const SearchBar = () => {
     setIsLoading(true);
     const data = await getData(`sites/MLA/search?q=${searchQuery}`);
     setQueryResult(data?.results);
+    const debouncedData = debounce(setQueryResult, 300);
     setIsLoading(false);
   };
 
