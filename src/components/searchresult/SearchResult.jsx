@@ -38,7 +38,6 @@ const SearchResult = () => {
                     imageUrl={result.thumbnail}
                     price={result.price}
                     title={result.title}
-                    // location={result.location.cit}
                     rating={3}
                   />
                 </Grid>
