@@ -80,7 +80,7 @@ const SearchResultItem = ({ id, imageUrl, price, title, rating }) => {
                   {Number(price).toLocaleString("en-US", {
                     style: "currency",
                     currency: "USD",
-                  })}{" "}
+                  })}
                 </strong>
               </Typography>
             </Link>

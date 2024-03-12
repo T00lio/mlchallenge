@@ -27,20 +27,23 @@ const SearchResult = () => {
         sx={{ marginLeft: "auto", marginRight: "auto" }}
       >
         {records.length > 0 ? (
-          (console.log(records),
-          records.map((result) => (
-            <Grid item xs={12} sm={6} md={4} lg={3} key={result.id}>
-              <SearchResultItem
-                key={result.id}
-                id={result.id}
-                imageUrl={result.thumbnail}
-                price={result.price}
-                title={result.title}
-                location={result.address.state_name}
-                rating={3}
-              />
-            </Grid>
-          )))
+          records.map(
+            (result) => (
+              console.log(result),
+              (
+                <Grid item xs={12} sm={6} md={4} lg={3} key={result.id}>
+                  <SearchResultItem
+                    key={result.id}
+                    id={result.id}
+                    imageUrl={result.thumbnail}
+                    price={result.price}
+                    title={result.title}
+                    rating={3}
+                  />
+                </Grid>
+              )
+            )
+          )
         ) : (
           <>
             <Grid
