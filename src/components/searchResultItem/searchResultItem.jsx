@@ -33,11 +33,9 @@ const SearchResultItem = ({ id, imageUrl, price, title, rating }) => {
         >
           <CardMedia
             component="img"
-            height="300"
-            width={"100%"}
+            className="cardImage"
             image={imageUrl}
             alt={title}
-            style={{ objectFit: "contain" }}
           />
         </Link>
         <CardContent>
