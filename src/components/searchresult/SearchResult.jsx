@@ -27,7 +27,6 @@ const SearchResult = () => {
         sx={{ marginLeft: "auto", marginRight: "auto" }}
       >
         {records.length > 0 ? (
-          (console.log(records),
           records.map((result) => (
             <Grid item xs={12} sm={6} md={4} lg={3} key={result.id}>
               <SearchResultItem
@@ -36,11 +35,11 @@ const SearchResult = () => {
                 imageUrl={result.thumbnail}
                 price={result.price}
                 title={result.title}
-                location={result.address.state_name}
+                location={result.location.city.name}
                 rating={3}
               />
             </Grid>
-          )))
+          ))
         ) : (
           <>
             <Grid
