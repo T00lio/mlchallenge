@@ -19,31 +19,20 @@ const SearchResult = () => {
 
   return (
     <>
-      <Grid
-        className="search-result"
-        container
-        spacing={2}
-        marginTop={"10rem"}
-        sx={{ marginLeft: "auto", marginRight: "auto" }}
-      >
+      <Grid className="search-result" container spacing={2} marginTop={"10rem"}>
         {records.length > 0 ? (
-          records.map(
-            (result) => (
-              console.log(result),
-              (
-                <Grid item xs={12} sm={6} md={4} lg={3} key={result.id}>
-                  <SearchResultItem
-                    key={result.id}
-                    id={result.id}
-                    imageUrl={result.thumbnail}
-                    price={result.price}
-                    title={result.title}
-                    rating={3}
-                  />
-                </Grid>
-              )
-            )
-          )
+          records.map((result) => (
+            <Grid item xs={12} sm={6} md={4} lg={3} key={result.id}>
+              <SearchResultItem
+                key={result.id}
+                id={result.id}
+                imageUrl={result.thumbnail}
+                price={result.price}
+                title={result.title}
+                rating={3}
+              />
+            </Grid>
+          ))
         ) : (
           <>
             <Grid

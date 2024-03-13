@@ -5,8 +5,9 @@ import { useParams } from "react-router-dom";
 import { useCart } from "../../context/useCart";
 import "../productDetail/productDetail.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Breadcrumbs from "../breadcrumb/Breadcumb.jsx";
 
-const ProductDetail = ({ data: { product, description } }) => {
+const ProductDetail = ({ data: { product, description }, categories }) => {
   const { addToCart } = useCart();
   const params = useParams();
 
@@ -20,26 +21,26 @@ const ProductDetail = ({ data: { product, description } }) => {
   };
 
   return (
-    <Container>
+    <Container className="pdGrid">
       <div className="pd">
         <Grid container>
+          <Grid item xs={12} sm={12} className="breadcrumb">
+            <Breadcrumbs categories={categories} />
+          </Grid>
+
           <Grid item xs={12} sm={8}>
-            <div
-              className="pic"
-              style={{
-                backgroundImage: `url("${product?.pictures?.[0]?.url || ""}")`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                width: "500px",
-                height: "500px",
-              }}
-            ></div>
+            <img className="pic" src={product?.pictures?.[0]?.url || ""}></img>
           </Grid>
           <Grid item xs={12} sm={4} className="pdes">
-            <Typography nowrap="true" variant="h6" fontFamily={"Montserrat"}>
+            <Typography
+              nowrap="true"
+              variant="h4"
+              fontWeight={500}
+              fontFamily={"Montserrat"}
+            >
               {product?.title || ""}
             </Typography>
-            <Typography variant="h5" fontFamily={"Montserrat"}>
+            <Typography variant="h4" fontWeight={700} fontFamily={"Montserrat"}>
               {product?.seller_address?.state?.name || ""}
             </Typography>
             <div className="buttons">
@@ -72,11 +73,18 @@ const ProductDetail = ({ data: { product, description } }) => {
               <Typography fontFamily={"Montserrat"}>Add to cart</Typography>
             </IconButton>
           </Grid>
-          <Grid item xs={12} mt={3} className="pdeet">
-            <Typography variant="h4" fontFamily={"Montserrat"}>
+
+          <Grid item xs={12}>
+            <Typography
+              variant="h4"
+              fontWeight="900"
+              fontFamily={"Montserrat"}
+              padding={1}
+              className="description-title"
+            >
               Product Description
             </Typography>
-            <Typography fontFamily={"Montserrat"} textAlign={"justify"} mt={3}>
+            <Typography mt={2} mb={2} lineHeight={2} padding={1}>
               {description?.plain_text || ""}
             </Typography>
           </Grid>
