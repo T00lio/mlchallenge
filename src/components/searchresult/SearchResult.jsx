@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Grid from "@mui/material/Grid";
 import "../searchresult/searchresult.css";
 import SearchResultItem from "../searchResultItem/searchResultItem";
+import Pagination from "../Pagination/Pagination";
 
 import { useSearchContext } from "../../context/searchContext";
 import { Typography, Box } from "@mui/material";
@@ -114,42 +115,12 @@ const SearchResult = () => {
       <br />
       {records?.length > 0 ? (
         <Box>
-          <nav>
-            <ul className="pagination">
-              <li className="page-item">
-                <button
-                  href="#"
-                  className="page-link-first"
-                  onClick={() => setCurrentPage(currentPage - 1)}
-                >
-                  Prev
-                </button>
-              </li>
-              {numbers.map((n, i) => (
-                <li
-                  className={`page-item ${currentPage === n ? "active" : ""}`}
-                  key={i}
-                >
-                  <button
-                    href="#"
-                    className="page-link-md"
-                    onClick={() => setCurrentPage(n)}
-                  >
-                    {n}
-                  </button>
-                </li>
-              ))}
-              <li>
-                <button
-                  href="#"
-                  className="page-link-end"
-                  onClick={() => setCurrentPage(currentPage + 1)}
-                >
-                  Next
-                </button>
-              </li>
-            </ul>
-          </nav>
+          <Pagination
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            totalRecords={queryResult?.length}
+            recordsPerPage={recordsPerPage}
+          />
         </Box>
       ) : null}
     </>
