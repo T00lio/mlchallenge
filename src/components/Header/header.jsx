@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import {
   AppBar,
   Toolbar,
@@ -67,7 +66,7 @@ const Header = () => {
                     to={"/"}
                     style={{ textDecoration: "none", color: "black" }}
                   >
-                    <Typography variant="h5">Ecommerce</Typography>
+                    <Typography variant="h5">TrendShop</Typography>
                   </RouterLink>
                 </Grid>
                 <Grid
