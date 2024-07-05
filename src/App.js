@@ -16,40 +16,13 @@ import "./firetest.js";
 import "./styles.css";
 
 const theme = createTheme({
-  breakpoints: {
-    values: {
-      xs: 0,
-      sm: 600,
-      md: 999,
-      lg: 1280,
-      xl: 1920,
-    },
-  },
   palette: {
     primary: {
-      main: "#001018",
+      main: "#ff6200",
     },
     secondary: {
-      main: "#1e65ff",
+      main: "#333",
     },
-  },
-  typography: {
-    fontFamily: "Montserrat",
-  },
-  button: {
-    fontFamily: "Montserrat",
-    borderRadius: "1rem",
-  },
-  spacing: 10,
-  card: {
-    borderRadius: "1rem",
-    elevation: 50,
-  },
-  grid: {
-    spacing: 4,
-  },
-  shape: {
-    borderRadius: 10,
   },
 });
 

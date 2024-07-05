@@ -24,7 +24,7 @@ const SearchResultItem = ({ id, imageUrl, price, title, rating }) => {
 
   return (
     <>
-      <Card className="searchResultItem" sx={{ maxWidth: 500 }}>
+      <Card className="searchResultItem" sx={{ minWidth: 300, minHeight: 500 }}>
         <Link
           to={`/item/${id}`}
           className="link"

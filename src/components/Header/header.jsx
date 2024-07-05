@@ -36,7 +36,7 @@ const Header = () => {
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
-    <>
+    <section>
       <AppBar
         sx={{ backgroundColor: "#ffffff", placeContent: "space-between" }}
       >
@@ -158,7 +158,7 @@ const Header = () => {
       </AppBar>
 
       <CartModal open={openCartModal} onClose={handleCloseCartModal} />
-    </>
+    </section>
   );
 };
 
