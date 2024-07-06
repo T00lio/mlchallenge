@@ -135,14 +135,6 @@ const Header = () => {
                       display={"flex"}
                       sx={{ marginLeft: "auto" }}
                     >
-                      <Link href="/signup">
-                        <Button
-                          variant="outlined"
-                          sx={{ color: "#000000", marginRight: 1 }}
-                        >
-                          <Typography>Sign up</Typography>
-                        </Button>
-                      </Link>
                       <Link href="/login">
                         <Button variant="outlined" sx={{ color: "#000000" }}>
                           <Typography>Log in</Typography>

@@ -6,12 +6,14 @@ import { useSearchContext } from "../../context/searchContext.js";
 import { getData } from "../../utils/httpsClient";
 import "../searchBar/SearchBar.css";
 import { debounce } from "lodash";
+import { useNavigate } from "react-router-dom";
 
 const SearchBar = () => {
   const { setQueryResult } = useSearchContext();
   const [searchQuery, setSearchQuery] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
+  const navigate = useNavigate();
   const handleSearchChange = (event) => {
     const query = event.target.value;
     setSearchQuery(query);
@@ -28,7 +30,9 @@ const SearchBar = () => {
     setIsLoading(true);
     const data = await getData(`sites/MLA/search?q=${searchQuery}`);
     setQueryResult(data?.results);
+    navigate("/items");
     const debouncedData = debounce(setQueryResult, 3000);
+
     setIsLoading(false);
   };
 
