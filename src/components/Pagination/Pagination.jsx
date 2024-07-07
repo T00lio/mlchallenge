@@ -1,15 +1,22 @@
-import React from "react";
+import { useEffect } from "react";
 import { Box } from "@mui/material";
-import "./pagination.css"; // Assuming you have some CSS for the pagination
+import "./pagination.css";
 
 const Pagination = ({
+  paginationLength,
+  recordsPerPage,
   currentPage,
   setCurrentPage,
-  totalRecords,
-  recordsPerPage,
 }) => {
+  const totalRecords = paginationLength;
   const npages = Math.ceil(totalRecords / recordsPerPage);
-  const numbers = [...Array(npages + 1).keys()].slice(1);
+  const numbers = Array.from({ length: npages }, (_, i) => i + 1);
+
+  useEffect(() => {
+    if (currentPage > npages) {
+      setCurrentPage(npages);
+    }
+  }, [npages, currentPage, setCurrentPage]);
 
   return (
     <Box>

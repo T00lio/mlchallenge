@@ -4,15 +4,20 @@ import SearchResult from "../components/searchresult";
 import Header from "../components/Header";
 import Footer from "../components/footer/Footer";
 
-function ResultList() {
+function ResultPage() {
   return (
     <>
-      <Header />
-      <Breadcrumbs />
-      <SearchResult />
-      <Footer />
+      <header>
+        <Header />
+      </header>
+      <main>
+        <SearchResult />
+      </main>
+      <footer>
+        <Footer />
+      </footer>
     </>
   );
 }
 
-export default ResultList;
+export default ResultPage;

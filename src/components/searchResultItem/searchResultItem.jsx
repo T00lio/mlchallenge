@@ -1,9 +1,6 @@
 import React from "react";
-import "./searchResultItem.css";
 import { useCart } from "../../context/useCart";
-import { Card, CardMedia, CardContent, Typography } from "@mui/material";
 import StarRating from "../starRating";
-import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 
 const SearchResultItem = ({ id, imageUrl, price, title, rating }) => {
@@ -23,81 +20,30 @@ const SearchResultItem = ({ id, imageUrl, price, title, rating }) => {
   };
 
   return (
-    <>
-      <Card className="searchResultItem" sx={{ minWidth: 300, minHeight: 500 }}>
-        <Link
-          to={`/item/${id}`}
-          className="link"
-          elevation={3}
-          style={{ textDecoration: "none", color: "inherit" }}
-        >
-          <CardMedia
-            component="img"
-            className="cardImage"
-            image={imageUrl}
-            alt={title}
-          />
-        </Link>
-        <CardContent>
-          <Link
-            to={`/item/${id}`}
-            className="link"
-            style={{ textDecoration: "none", color: "inherit" }}
+    <div className="border rounded-lg shadow-md overflow-hidden">
+      <Link to={`/item/${id}`} className="no-underline text-inherit">
+        <img src={imageUrl} alt={title} className="w-full h-64 object-cover" />
+      </Link>
+      <div className="p-4">
+        <h2 className="text-lg font-bold">{title}</h2>
+        <StarRating rating={rating} />
+        <p className="text-gray-500 mt-1">Rating</p>
+        <div className="flex justify-between items-center mt-4">
+          <span className="text-xl font-semibold">
+            {Number(price).toLocaleString("en-US", {
+              style: "currency",
+              currency: "USD",
+            })}
+          </span>
+          <button
+            className="px-4 py-2 border rounded-md text-secondary hover:bg-gray-100"
+            onClick={handleAddToCart}
           >
-            <Typography
-              fontFamily={"Montserrat"}
-              gutterBottom
-              variant="h"
-              component="div"
-              sx={{ overflow: "hidden" }}
-            >
-              {title}
-            </Typography>
-
-            <StarRating rating={rating} />
-            <Typography
-              variant="body2"
-              color="text.secondary"
-              fontFamily={"Montserrat"}
-            >
-              Rating
-            </Typography>
-          </Link>
-
-          <div className="buttons">
-            <Link
-              to={`/item/${id}`}
-              style={{ textDecoration: "none", color: "inherit" }}
-            >
-              <Typography
-                variant="h6"
-                color="#000000"
-                fontFamily={"Montserrat"}
-              >
-                <strong>
-                  {Number(price).toLocaleString("en-US", {
-                    style: "currency",
-                    currency: "USD",
-                  })}
-                </strong>
-              </Typography>
-            </Link>
-            <Button
-              size="small"
-              variant="outlined"
-              onClick={handleAddToCart}
-              sx={{
-                fontFamily: "Montserrat, sans-serif",
-                borderRadius: "0.5rem",
-                color: "secondary",
-              }}
-            >
-              Add to Cart
-            </Button>
-          </div>
-        </CardContent>
-      </Card>
-    </>
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
   );
 };
 

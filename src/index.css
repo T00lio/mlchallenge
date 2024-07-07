@@ -1,9 +1,6 @@
-.container {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  grid-template-columns: 1fr;
-  height: 100vh;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 .header {
   background-color: #333;
@@ -14,11 +11,6 @@
   top: 0;
   left: 0;
   z-index: 1000;
-}
-
-.main {
-  background-image: url("https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0");
-  height: auto;
 }
 
 .footer {

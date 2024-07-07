@@ -69,13 +69,7 @@ const Header = () => {
                     <Typography variant="h5">TrendShop</Typography>
                   </RouterLink>
                 </Grid>
-                <Grid
-                  item
-                  sm={4}
-                  xs={4}
-                  alignItems={"center"}
-                  sx={{ margin: "auto" }}
-                >
+                <Grid>
                   <SearchBar />
                 </Grid>
                 {user?.uid ? (
