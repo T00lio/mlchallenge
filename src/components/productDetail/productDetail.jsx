@@ -10,6 +10,7 @@ import Breadcrumbs from "../breadcrumb/Breadcumb.jsx";
 const ProductDetail = ({ data: { product, description }, categories }) => {
   const { addToCart } = useCart();
   const params = useParams();
+  console.log(params);
 
   const handleAddToCartClick = () => {
     addToCart({
@@ -29,7 +30,11 @@ const ProductDetail = ({ data: { product, description }, categories }) => {
           </Grid>
 
           <Grid item xs={12} sm={8}>
-            <img className="pic" src={product?.pictures?.[0]?.url || ""}></img>
+            <img
+              className="pic"
+              src={product?.pictures?.[0]?.url || ""}
+              alt={product?.title}
+            ></img>
           </Grid>
           <Grid item xs={12} sm={4} className="pdes">
             <Typography

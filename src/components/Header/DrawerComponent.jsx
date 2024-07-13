@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useCart } from "../../context/useCart";
 import { UserAuth } from "../../context/authContext";
-
 import CartModal from "../cartModal/cartModal";
 import {
   Drawer,

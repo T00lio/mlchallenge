@@ -1,3 +1,4 @@
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { SearchContextProvider } from "./context/searchContext";
 import HomePage from "./pages/HomePage";
@@ -12,8 +13,7 @@ import ProtectedRoute from "./utils/ProptectedRoute";
 import CartProvider from "./context/cartContext";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Cart from "./components/cart/index";
-import "./firetest.js";
-import "./styles.css";
+import "./index.css";
 
 const theme = createTheme({
   palette: {

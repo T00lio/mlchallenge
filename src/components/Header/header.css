@@ -1,9 +1,4 @@
 .header {
-  background-color: #ffffff !important;
+  background-color: #fff;
   position: sticky;
-}
-
-.sisoButton {
-  display: flex;
-  align-items: flex-end;
 }

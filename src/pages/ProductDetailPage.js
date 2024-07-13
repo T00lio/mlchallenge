@@ -1,3 +1,4 @@
+import React from "react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { CircularProgress } from "@mui/material";
@@ -54,6 +55,7 @@ const ProductDetailPage = () => {
           <ProductDetail data={data} categories={categories} />
         </>
       )}
+      <Footer />
     </>
   );
 };

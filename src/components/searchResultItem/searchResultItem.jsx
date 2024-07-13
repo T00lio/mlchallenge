@@ -1,10 +1,15 @@
 import React from "react";
 import { useCart } from "../../context/useCart";
-import StarRating from "../starRating";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const SearchResultItem = ({ id, imageUrl, price, title, rating }) => {
   const { addToCart } = useCart();
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/item/${id}`);
+    console.log("clicked");
+  };
 
   const handleAddToCart = () => {
     if (id) {
@@ -14,36 +19,44 @@ const SearchResultItem = ({ id, imageUrl, price, title, rating }) => {
         title: title,
         price: price,
       });
-    } else {
-      console.error("Invalid 'id' value:", id);
     }
   };
 
   return (
-    <div className="border rounded-lg shadow-md overflow-hidden">
-      <Link to={`/item/${id}`} className="no-underline text-inherit">
-        <img src={imageUrl} alt={title} className="w-full h-64 object-cover" />
-      </Link>
-      <div className="p-4">
-        <h2 className="text-lg font-bold">{title}</h2>
-        <StarRating rating={rating} />
-        <p className="text-gray-500 mt-1">Rating</p>
-        <div className="flex justify-between items-center mt-4">
-          <span className="text-xl font-semibold">
+    <>
+      <div
+        to={`/item/${id}`}
+        className="flex flex-col rounded-2xl w-80 h-auto ml-3 mr-3 mb-3 bg-[#ffffff] shadow-xl hover:shadow-indigo-100 hover:scale-105 transition ease-in-out"
+      >
+        <figure className="flex justify-center items-center rounded-xl bg-cover bg-center">
+          <img
+            src={imageUrl}
+            alt={title}
+            className="rounded-t-2xl bg-fit h-72 w-72"
+          ></img>
+        </figure>
+        <div class="flex flex-col p-8">
+          <h5 className="text-l font-bold   text-black pb-4 line-clamp-2 overflow-hidden">
+            {title}
+          </h5>
+          <div className=" text-base   text-[#000000]">
             {Number(price).toLocaleString("en-US", {
               style: "currency",
               currency: "USD",
             })}
-          </span>
-          <button
-            className="px-4 py-2 border rounded-md text-secondary hover:bg-gray-100"
-            onClick={handleAddToCart}
-          >
-            Add to Cart
-          </button>
+          </div>
+
+          <div className="flex justify-start pt-4 font-white">
+            <button
+              onClick={handleClick}
+              className=" border-2 font-black text-white bg-[conic-gradient(at_top_left,_var(--tw-gradient-stops))] from-indigo-700 via-indigo-500 to-indigo-300 p-4 rounded-xl :hover:bg-[#000000] :hover:text-white"
+            >
+              more details
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@babel/plugin-proposal-private-property-in-object": "7.21.11",
-    "@chec/commerce.js": "^2.8.0",
+    "@chec/commerce.js": "^1.0.0",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
@@ -13,20 +13,23 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@mui/icons-material": "^5.14.6",
     "@mui/material": "^5.14.8",
+    "@tailwindcss/line-clamp": "^0.4.4",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "autoprefixer": "^10.4.19",
     "axios": "^1.4.0",
     "bootstrap": "^5.3.1",
     "firebase": "^10.1.0",
     "lodash": "^4.17.21",
+    "postcss": "^8.4.39",
     "react": "^17.0.0 || ^18.0.0",
     "react-bootstrap": "^2.8.0",
     "react-dom": "^17.0.0 || ^18.0.0",
     "react-fontawesome": "^1.7.1",
     "react-router-dom": "^6.14.1",
     "reactstrap": "^9.2.0",
-    "shadcn-ui": "^0.8.0",
+    "shadcn-ui": "^0.2.3",
     "web-vitals": "^2.1.4"
   },
   "peerDependencies": {
@@ -52,8 +55,12 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.24.8",
+    "@babel/preset-env": "^7.24.8",
+    "@babel/preset-react": "^7.24.7",
+    "@iconify/tailwind": "^1.1.1",
+    "babel-loader": "^9.1.3",
     "react-scripts": "^5.0.1",
-    "tailwindcss": "^3.4.4",
-    "typescript": "^5.5.3"
+    "tailwindcss": "^3.4.4"
   }
 }

@@ -1,20 +1,8 @@
 import React, { useState } from "react";
+import { MENU_ITEMS } from "../../constants/index";
 import { Link as RouterLink } from "react-router-dom";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import {
-  AppBar,
-  Toolbar,
-  Badge,
-  IconButton,
-  Link,
-  Button,
-  Typography,
-  Grid,
-  Hidden,
-  Box,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
+
 import {
   AccountCircle as AccountCircleIcon,
   Menu as MenuIcon,
@@ -30,121 +18,62 @@ const Header = () => {
   const [openCartModal, setOpenCartModal] = useState(false);
   const { user, logout } = UserAuth();
   const { cartItems } = useCart();
-  const theme = useTheme();
+
   const handleOpenCartModal = () => setOpenCartModal(true);
   const handleCloseCartModal = () => setOpenCartModal(false);
-  const isMatch = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
-    <section>
-      <AppBar
-        sx={{ backgroundColor: "#ffffff", placeContent: "space-between" }}
-      >
-        <Toolbar>
-          {isMatch ? (
-            <>
-              <Box display={"flex"}>
-                <DrawerComponent />
-                <SearchBar />
-              </Box>
-            </>
-          ) : (
-            <>
-              <Hidden mdUp>
-                <IconButton onClick={handleCloseCartModal}>
-                  <MenuIcon />
-                </IconButton>
-              </Hidden>
-              <Grid
-                container
-                spacing={1}
-                height={"6.75rem"}
-                alignItems={"center"}
+    <>
+      <header className="w-screen text-black bg-white">
+        <nav className="relative p-3 justify-between container-xl">
+          <div className="flex items-center justify-between h-16">
+            <div className="flex items-start">
+              <a
+                href="/"
+                className="text-slate-700 text-2xl font-bold no-underline"
               >
-                <Grid item sm={2} md={2}>
-                  <RouterLink
-                    to={"/"}
-                    style={{ textDecoration: "none", color: "black" }}
+                TopShop
+              </a>
+            </div>
+            <div>
+              <SearchBar />
+            </div>
+            <nav className="hidden md:block">
+              <div className="mr-auto flex items-end space-x-4">
+                {MENU_ITEMS.map((item, index) => (
+                  <a
+                    key={`${item.id}+${index}`}
+                    to={item.url}
+                    className="text-gray-900 px-3 py-2 text-lg font-medium no-underline"
                   >
-                    <Typography variant="h5">TrendShop</Typography>
-                  </RouterLink>
-                </Grid>
-                <Grid>
-                  <SearchBar />
-                </Grid>
-                {user?.uid ? (
-                  <Hidden mdDown>
-                    <Box
-                      item
-                      mt={1}
-                      sm={3}
-                      xs={1}
-                      display={"flex"}
-                      sx={{ marginLeft: "auto" }}
-                    >
-                      <Button
-                        sx={{ marginLeft: "1" }}
-                        onClick={handleOpenCartModal}
-                        variant="text"
-                        startIcon={<ShoppingCartOutlinedIcon color="primary" />}
-                      >
-                        <Badge
-                          badgeContent={cartItems.length}
-                          margin={1}
-                          color="error"
-                          size="small"
-                          anchorOrigin={{
-                            vertical: "top",
-                            horizontal: "right",
-                          }}
-                        >
-                          <Typography variant="p">
-                            {cartItems.length > 0 ? "Cart" : "Empty Cart"}
-                          </Typography>
-                        </Badge>
-                      </Button>
-
-                      <Button
-                        sx={{ marginLeft: "1" }}
-                        onClick={logout}
-                        variant="text"
-                        size="small"
-                        startIcon={<AccountCircleIcon color="primary" />}
-                      >
-                        <Typography
-                          fontFamily={"Montserrat"}
-                          variant="p"
-                          display={"inline"}
-                        >
-                          signed in
-                        </Typography>
-                      </Button>
-                    </Box>
-                  </Hidden>
-                ) : (
-                  <Hidden mdDown>
-                    <Box
-                      item
-                      mt={1}
-                      display={"flex"}
-                      sx={{ marginLeft: "auto" }}
-                    >
-                      <Link href="/login">
-                        <Button variant="outlined" sx={{ color: "#000000" }}>
-                          <Typography>Log in</Typography>
-                        </Button>
-                      </Link>
-                    </Box>
-                  </Hidden>
-                )}{" "}
-              </Grid>
-            </>
-          )}
-        </Toolbar>
-      </AppBar>
+                    {item.title}
+                  </a>
+                ))}
+              </div>
+            </nav>
+            <div className="-mr-2 flex md:hidden">
+              <button className="text-gray-900 inline-flex items-center justify-center p-2 rounded-md focus:outline-none">
+                <svg
+                  className="h-6 w-6"
+                  stroke="currentColor"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 6h16M4 12h16m-7 6h7"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </nav>
+      </header>
 
       <CartModal open={openCartModal} onClose={handleCloseCartModal} />
-    </section>
+    </>
   );
 };
 

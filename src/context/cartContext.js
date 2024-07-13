@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from "react";
+import React from "react";
 import { UserAuth } from "./authContext";
 import { db } from "../firebase";
 import { doc, onSnapshot, updateDoc } from "firebase/firestore";
@@ -20,7 +21,10 @@ export const CartProvider = ({ children }) => {
   const [snackBarInfo, setSnackBarInfo] = useState(null);
 
   useEffect(() => {
-    if (user?.uid) {
+    if (!user || !user.uid) {
+      return null;
+    }
+    if (user.uid) {
       const unsubscribe = onSnapshot(
         doc(db, "shoppingCart", user.uid),
         (snapshot) => {
