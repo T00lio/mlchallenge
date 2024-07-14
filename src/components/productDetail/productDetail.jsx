@@ -22,7 +22,7 @@ const ProductDetail = ({ data: { product, description }, categories }) => {
   };
 
   return (
-    <Container className="pdGrid">
+    <div className="container-xl">
       <div className="pd">
         <Grid container>
           <Grid item xs={12} sm={12} className="breadcrumb">
@@ -95,7 +95,7 @@ const ProductDetail = ({ data: { product, description }, categories }) => {
           </Grid>
         </Grid>
       </div>
-    </Container>
+    </div>
   );
 };
 

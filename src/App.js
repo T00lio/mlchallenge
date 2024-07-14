@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+
 import { SearchContextProvider } from "./context/searchContext";
 import HomePage from "./pages/HomePage";
 import ResultPage from "./pages/ResultPage";

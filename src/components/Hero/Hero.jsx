@@ -1,72 +1,59 @@
 import React from "react";
 import "../../index.css";
 import SearchBar from "../searchBar";
-import HeroImg from "../../assets/images/landing/landing.avif";
-import { MENU_ITEMS } from "../../constants/index";
+import AlternateHeader from "./AlternateHeader";
 
 function Hero() {
+  const scrollToNext = () => {
+    if (window.scrollY >= 0) {
+      window.scrollTo(0, window.innerHeight);
+    }
+  };
   return (
     <>
-      <section
-        className="w-dvw h-dvh flex flex-col content-between bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `url(${HeroImg})`,
-        }}
-      >
-        <nav className="relative p-3 justify-between container-xl top-0">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-start">
-              <a
-                href="/"
-                className="text-white text-2xl font-bold no-underline"
-              >
-                TopShop
-              </a>
-            </div>
+      <section className="w-dvw h-dvh flex flex-col content-between bg-cover bg-right bg-no-repeat bg-gradient-to-r from-indigo-700 via-indigo-500 to-indigo-300 ">
+        <AlternateHeader />
 
-            <nav className="hidden md:block">
-              <div className="mr-auto flex items-end space-x-4">
-                {MENU_ITEMS.map((item, index) => (
-                  <a
-                    key={`${item.id}+${index}`}
-                    to={item.url}
-                    className="text-white px-3 py-2 text-lg font-medium no-underline"
-                  >
-                    {item.title}
-                  </a>
-                ))}
+        <div className="container p-4 h-full ">
+          <div className="flex flex-col">
+            <div className=" p-5 rounded-xl">
+              <h1 className="hero-clamp tracking-wide bg-gradient-to-r from-neutral-300 to-stone-400 bg-clip-text text-transparent group-hover:bg-gradient-to-r group-hover:from-cyan-900 group-hover:via-violet-600 group-hover:to-slate-300 group-hover:bg-clip-text group-hover:text-transparent">
+                TopShop
+              </h1>
+              <div className=" rounded-2xl absolute">
+                <div className="p-4">
+                  <h1 className="w-1/2 text-pretty font-extralight text-white rounded-2xl p-4 bg-indigo-500/25 relative">
+                    Your one 🛑 shop for all your needs,{" "}
+                    <a className="font-black text-slate-300 hover:text-slate-50">
+                      BEGIN
+                    </a>{" "}
+                    your shopping experience now!
+                  </h1>
+                  <span className="p-4">
+                    <SearchBar />
+                  </span>
+                </div>
               </div>
-            </nav>
-            <div className="-mr-2 flex md:hidden">
-              <button className="text-gray-900 inline-flex items-center justify-center p-2 rounded-md focus:outline-none">
-                <svg
-                  className="h-6 w-6"
-                  stroke="currentColor"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h16m-7 6h7"
-                  />
-                </svg>
-              </button>
             </div>
           </div>
-        </nav>
-        <div className="container p-4 content-end ">
-          <div className="flex flex-col">
-            <div className="bg-slate-700/75 p-5 rounded-xl">
-              <h1 className="hero-clamp extra-wide">TopShop</h1>
-              <h1 className="text-pretty font-extralight text-stone-100 pb-4">
-                Your one 🛑 shop for all your needs, BEGIN your shopping
-                experience now{" "}
-              </h1>
-
-              <SearchBar />
-            </div>
+          <div
+            className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+            onClick={scrollToNext}
+          >
+            <svg
+              className="w-8 h-8 animate-bounce text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M19 9l-7 7-7-7"
+              ></path>
+            </svg>
           </div>
         </div>
       </section>
