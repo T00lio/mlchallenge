@@ -35,7 +35,7 @@ const SearchResultItem = ({ id, imageUrl, price, title, rating }) => {
             className="rounded-t-2xl bg-fit h-72 w-72"
           ></img>
         </figure>
-        <div class="flex flex-col p-8">
+        <div className="flex flex-col p-8">
           <h5 className="text-l font-bold   text-black pb-4 line-clamp-2 overflow-hidden">
             {title}
           </h5>
@@ -49,7 +49,7 @@ const SearchResultItem = ({ id, imageUrl, price, title, rating }) => {
           <div className="flex justify-start pt-4 font-white">
             <button
               onClick={handleClick}
-              className=" border-2 font-black text-white bg-[conic-gradient(at_top_left,_var(--tw-gradient-stops))] from-indigo-700 via-indigo-500 to-indigo-300 p-4 rounded-xl :hover:bg-[#000000] :hover:text-white"
+              className="border-2 font-black text-white bg-[conic-gradient(at_top_left,_var(--tw-gradient-stops))] from-indigo-700 via-indigo-500 to-indigo-300 p-4 rounded-xl :hover:bg-[#000000] :hover:text-white"
             >
               more details
             </button>

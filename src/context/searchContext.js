@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { createContext } from "react";
+import { getData } from "../utils/httpsClient";
 import React from "react";
 
 export const SearchContext = createContext();
@@ -12,6 +13,7 @@ export const SearchContextProvider = ({ children }) => {
   const [searchQuery, setSearchQuery] = useState(
     localStorage.getItem("searchQuery")
   );
+  const [highQuality, setHighQuality] = useState({});
 
   useEffect(() => {
     localStorage.setItem("queryResult", JSON.stringify(queryResult));
@@ -20,6 +22,13 @@ export const SearchContextProvider = ({ children }) => {
   useEffect(() => {
     localStorage.getItem("searchQuery");
   }, [searchQuery]);
+
+  const getHighQuality = async (queryResult) => {
+    queryResult.map(async (item) => {
+      const data = await getData(`items/${item.id}`);
+      setHighQuality(data);
+    });
+  };
 
   return (
     <SearchContext.Provider

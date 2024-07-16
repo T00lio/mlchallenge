@@ -1,9 +1,62 @@
-import React from "react";
+import { Link } from "react-router-dom";
+import { getData } from "../../utils/httpsClient";
+import { categories } from "./categories-data.js";
+import { SearchContext } from "../../context/searchContext.js";
+import { useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import "./categories.css";
 
-export default function categories() {
+export default function Categories() {
+  const { setSearchQuery, setQueryResult } = useContext(SearchContext);
+  const storedSearchQuery = localStorage.getItem("searchQuery");
+  const searchQuery = storedSearchQuery ? storedSearchQuery : "";
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (searchQuery) {
+      setSearchQuery(searchQuery);
+      navigate("/items");
+    }
+  });
+
+  const handleCategoryClick = async (category) => {
+    setSearchQuery(category.name);
+    const data = await getData(`sites/MLA/search?q=${category.name}`);
+    setQueryResult(data?.results);
+    navigate("/items");
+  };
+
   return (
-    <div>
-      <h1>categories</h1>
-    </div>
+    <section className="bg-slate-100 h-auto">
+      <div className="container-xl p-14">
+        <h1 className="font-black text-4xl">Shop by categories</h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+          {categories.map((category, index) => (
+            <div
+              key={`${index}+${category.id}`}
+              className="relative overflow-hidden rounded-lg group"
+            >
+              <Link
+                onClick={() => handleCategoryClick(category)}
+                className="absolute inset-0 z-10"
+                prefetch={false}
+              >
+                <span className="sr-only">{category.name}</span>
+              </Link>
+              <img
+                src={category.image}
+                alt={category.name}
+                width={400}
+                height={300}
+                className="object-cover w-full h-52 md:w-full md:h-auto group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="absolute inset-0 flex items-center justify-center bg-black/70 text-lime-500 font-black text-2xl opacity-0 group-hover:opacity-100 transition-opacity">
+                {category.name}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }

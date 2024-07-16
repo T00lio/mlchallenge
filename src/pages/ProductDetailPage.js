@@ -35,28 +35,33 @@ const ProductDetailPage = () => {
   }, [params.id]);
 
   return (
-    <>
-      <Header />
-
-      {isLoading ? (
-        <div
-          className="loader"
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            height: "100vh",
-          }}
-        >
-          <CircularProgress size={160} color="secondary" />
-        </div>
-      ) : (
-        <>
-          <ProductDetail data={data} categories={categories} />
-        </>
-      )}
-      <Footer />
-    </>
+    <div className="min-h-screen flex flex-col">
+      <header className="flex flex-row">
+        <Header />
+      </header>
+      <main className="flex-row p-4 bg-gray-100 mt-28">
+        {isLoading ? (
+          <div
+            className="loader"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "100vh",
+            }}
+          >
+            <CircularProgress size={160} color="secondary" />
+          </div>
+        ) : (
+          <>
+            <ProductDetail data={data} categories={categories} />
+          </>
+        )}
+      </main>
+      <footer className="bg-gray-800 text-white text-center p-4 relative">
+        <Footer />
+      </footer>
+    </div>
   );
 };
 

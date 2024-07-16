@@ -1,0 +1,92 @@
+/* Tailwind CSS classes already included in the component */
+
+.group:hover .group-hover\:scale-105 {
+  transform: scale(1.05);
+}
+
+.group:hover .group-hover\:opacity-100 {
+  opacity: 1;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.inset-0 {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.z-10 {
+  z-index: 10;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
+.object-cover {
+  object-fit: cover;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.h-52 {
+  height: 13rem;
+}
+
+.md\:w-full {
+  width: 100%;
+}
+
+.md\:h-auto {
+  height: auto;
+}
+
+.transition-transform {
+  transition-property: transform;
+}
+
+.duration-300 {
+  transition-duration: 300ms;
+}
+
+.bg-black\/70 {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.text-lime-500 {
+  color: #84cc16;
+}
+
+.font-black {
+  font-weight: 900;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+}
+
+.opacity-0 {
+  opacity: 0;
+}
+
+.transition-opacity {
+  transition-property: opacity;
+}
