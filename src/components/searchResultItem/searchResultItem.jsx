@@ -2,13 +2,12 @@ import React from "react";
 import { useCart } from "../../context/useCart";
 import { useNavigate } from "react-router-dom";
 
-const SearchResultItem = ({ id, imageUrl, price, title, rating }) => {
+const SearchResultItem = ({ id, imageUrl, price, title }) => {
   const { addToCart } = useCart();
   const navigate = useNavigate();
 
   const handleClick = () => {
     navigate(`/item/${id}`);
-    console.log("clicked");
   };
 
   const handleAddToCart = () => {

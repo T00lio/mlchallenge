@@ -3,6 +3,7 @@ import SearchResultItem from "../searchResultItem/searchResultItem";
 import Pagination from "../Pagination/Pagination";
 import { useSearchContext } from "../../context/searchContext";
 import { useLocation } from "react-router-dom";
+
 import "../../index.css";
 
 const SearchResult = () => {
@@ -26,6 +27,15 @@ const SearchResult = () => {
       setLoading(false);
     }
   }, [currentPage, paginationLength]);
+
+  // useEffect(() => {
+  //   if (records && records.length > 0) {
+  //     const fetchImages = async () => {
+  //       const updatedRecords = await fetchHQImages(records);
+  //     };
+  //     fetchImages();
+  //   }
+  // }, [records]);
 
   return (
     <section className="search">
@@ -68,7 +78,7 @@ const SearchResult = () => {
             <li key={result.id} style={{ listStyle: "none" }}>
               <SearchResultItem
                 id={result.id}
-                imageUrl={result.thumbnail}
+                imageUrl={result.imageUrl}
                 price={result.price}
                 title={result.title}
                 rating={3}

@@ -8,7 +8,7 @@ import "./categories.css";
 
 export default function Categories() {
   const { setSearchQuery, setQueryResult } = useContext(SearchContext);
-  const storedSearchQuery = localStorage.getItem("searchQuery");
+  const storedSearchQuery = sessionStorage.getItem("searchQuery");
   const searchQuery = storedSearchQuery ? storedSearchQuery : "";
   const navigate = useNavigate();
 

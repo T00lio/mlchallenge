@@ -31,7 +31,6 @@ const SearchBar = () => {
     const data = await getData(`sites/MLA/search?q=${localSearchQuery}`);
     setQueryResult(data?.results);
     navigate("/items");
-
     setIsLoading(false);
     setIsModalOpen(false); // Close the modal after search
   };
@@ -90,7 +89,7 @@ const SearchBar = () => {
             onClick={handleSearchClick}
           >
             {isLoading ? (
-              <CircularProgress sx={{ color: "white", size: 10 }} />
+              <CircularProgress sx={{ color: "white" }} />
             ) : (
               <SearchIcon sx={{ color: "white" }} />
             )}
