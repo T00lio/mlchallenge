@@ -17,7 +17,7 @@ export default function Categories() {
       setSearchQuery(searchQuery);
       navigate("/items");
     }
-  });
+  }, [searchQuery, setSearchQuery, navigate]);
 
   const handleCategoryClick = async (category) => {
     setSearchQuery(category.name);
@@ -38,8 +38,7 @@ export default function Categories() {
             >
               <Link
                 onClick={() => handleCategoryClick(category)}
-                className="absolute inset-0 z-10"
-                prefetch={false}
+                className="absolute inset-0 z-10 cursor-pointer"
               >
                 <span className="sr-only">{category.name}</span>
               </Link>
@@ -50,7 +49,7 @@ export default function Categories() {
                 height={300}
                 className="object-cover w-full h-52 md:w-full md:h-auto group-hover:scale-105 transition-transform duration-300"
               />
-              <div className="absolute inset-0 flex items-center justify-center bg-black/70 text-lime-500 font-black text-2xl opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="absolute inset-0 flex items-center justify-center bg-black/70 text-white font-black text-2xl opacity-0 group-hover:opacity-100 transition-opacity">
                 {category.name}
               </div>
             </div>

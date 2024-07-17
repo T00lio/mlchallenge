@@ -20,9 +20,9 @@ function Hero() {
               <h1 className="hero-clamp tracking-wide bg-gradient-to-r from-neutral-300 to-stone-400 bg-clip-text text-transparent group-hover:bg-gradient-to-r group-hover:from-cyan-900 group-hover:via-violet-600 group-hover:to-slate-300 group-hover:bg-clip-text group-hover:text-transparent">
                 TopShop
               </h1>
-              <div className=" rounded-2xl absolute">
-                <div className="p-4">
-                  <h1 className="w-1/2 text-pretty font-extralight text-white rounded-2xl p-4 bg-indigo-500/25 relative">
+              <div className=" rounded-2xl absolute justify-center items-center">
+                <div className="p-4 flex-wrap w-3/4 md:[p-0 w-full]">
+                  <h1 className="text-pretty font-extralight text-white rounded-2xl p-4 bg-indigo-500/25 relative ml-auto">
                     Your one 🛑 shop for all your needs,{" "}
                     <a className="font-black text-slate-300 hover:text-slate-50">
                       BEGIN

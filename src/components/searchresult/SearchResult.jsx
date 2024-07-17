@@ -28,15 +28,6 @@ const SearchResult = () => {
     }
   }, [currentPage, paginationLength]);
 
-  // useEffect(() => {
-  //   if (records && records.length > 0) {
-  //     const fetchImages = async () => {
-  //       const updatedRecords = await fetchHQImages(records);
-  //     };
-  //     fetchImages();
-  //   }
-  // }, [records]);
-
   return (
     <section className="search">
       <div className="container-xl">
