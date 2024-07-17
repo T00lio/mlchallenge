@@ -1,5 +1,5 @@
 import React from "react";
-import "../../index.css";
+import "./Hero.css";
 import SearchBar from "../searchBar";
 import AlternateHeader from "./AlternateHeader";
 
@@ -11,7 +11,7 @@ function Hero() {
   };
   return (
     <>
-      <section className="w-dvw h-dvh flex flex-col content-between bg-cover bg-right bg-no-repeat bg-gradient-to-r from-indigo-700 via-indigo-500 to-indigo-300 ">
+      <section className="w-dvw h-dvh flex flex-col content-between bg-cover bg-right bg-no-repeat bg-gradient-to-r from-indigo-700 via-indigo-500 to-indigo-300 hero-bg ">
         <AlternateHeader />
 
         <div className="container p-4 h-full ">
@@ -24,7 +24,7 @@ function Hero() {
                 <div className="p-4 flex-wrap w-3/4 md:[p-0 w-full]">
                   <h1 className="text-pretty font-extralight text-white rounded-2xl p-4 bg-indigo-500/25 relative ml-auto">
                     Your one 🛑 shop for all your needs,{" "}
-                    <a className="font-black text-slate-300 hover:text-slate-50">
+                    <a className="font-black text-slate-300 hover:text-lime-100">
                       BEGIN
                     </a>{" "}
                     your shopping experience now!

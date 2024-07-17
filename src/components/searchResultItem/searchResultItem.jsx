@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 const SearchResultItem = ({ id, imageUrl, price, title }) => {
   const { addToCart } = useCart();
   const navigate = useNavigate();
+  console.log(id, imageUrl, price, title);
 
   const handleClick = () => {
     navigate(`/item/${id}`);

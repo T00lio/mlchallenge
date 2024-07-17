@@ -3,7 +3,6 @@ import SearchResultItem from "../searchResultItem/searchResultItem";
 import Pagination from "../Pagination/Pagination";
 import { useSearchContext } from "../../context/searchContext";
 import { useLocation } from "react-router-dom";
-
 import "../../index.css";
 
 const SearchResult = () => {
@@ -69,7 +68,7 @@ const SearchResult = () => {
             <li key={result.id} style={{ listStyle: "none" }}>
               <SearchResultItem
                 id={result.id}
-                imageUrl={result.imageUrl}
+                imageUrl={result.thumbnail}
                 price={result.price}
                 title={result.title}
                 rating={3}
