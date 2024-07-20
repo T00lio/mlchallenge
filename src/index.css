@@ -90,3 +90,49 @@ header {
     font-size: 4rem;
   }
 }
+
+Keyframes for the cart animation @keyframes slideIn {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOut {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Apply hover effect for the credit card */
+.svg1:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Initial styles for the cart animation */
+.svg2 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100px;
+  animation: slideIn 1s forwards;
+  z-index: -1;
+}
+
+.svg1 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100px;
+  z-index: 1;
+}
+
+.hidden {
+  animation: slideOut 1s forwards;
+}
