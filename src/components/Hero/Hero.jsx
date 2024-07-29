@@ -1,4 +1,5 @@
 import React from "react";
+import BG from "../../assets/images/landing/3d/bg.mp4";
 import "./Hero.css";
 import SearchBar from "../searchBar";
 import AlternateHeader from "./AlternateHeader";
@@ -11,16 +12,18 @@ function Hero() {
   };
   return (
     <>
-      <section className="w-dvw h-dvh flex flex-col content-between bg-cover bg-right bg-no-repeat bg-gradient-to-r from-indigo-700 via-indigo-500 to-indigo-300 hero-bg ">
+      <section
+        style={{ backgroundImage: { BG } }}
+        className="w-dvw h-dvh flex flex-col content-between bg-cover bg-right bg-no-repeat hero-bg "
+      >
         <AlternateHeader />
-
         <div className="container p-4 h-full ">
-          <div className="flex flex-col">
+          <div className="flex">
             <div className=" p-5 rounded-xl">
               <h1 className="hero-clamp tracking-wide bg-gradient-to-r from-neutral-300 to-stone-400 bg-clip-text text-transparent group-hover:bg-gradient-to-r group-hover:from-cyan-900 group-hover:via-violet-600 group-hover:to-slate-300 group-hover:bg-clip-text group-hover:text-transparent">
                 TopShop
               </h1>
-              <div className=" rounded-2xl absolute justify-center items-center">
+              <div className="rounded-2xl absolute justify-center items-center">
                 <div className="p-4 flex-wrap w-3/4 md:[p-0 w-full]">
                   <h1 className="text-pretty font-extralight text-white rounded-2xl p-4 bg-indigo-500/25 relative ml-auto">
                     Your one 🛑 shop for all your needs,{" "}
