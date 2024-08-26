@@ -1,5 +1,5 @@
 import React from "react";
-import BG from "../../assets/images/landing/3d/bg.mp4";
+import BG from "../../assets/images/landing/3d/top.png";
 import "./Hero.css";
 import SearchBar from "../searchBar";
 import AlternateHeader from "./AlternateHeader";
@@ -13,7 +13,7 @@ function Hero() {
   return (
     <>
       <section
-        style={{ backgroundImage: { BG } }}
+        style={{ backgroundImage: `url( ${BG} )` }}
         className="w-dvw h-dvh flex flex-col content-between bg-cover bg-right bg-no-repeat hero-bg "
       >
         <AlternateHeader />
