@@ -20,7 +20,7 @@ function CTA() {
             />
             <button
               type="submit"
-              className="inline-flex h-12 w-full items-center justify-center rounded-md bg-secondary px-6 py-2 text-sm font-medium text-secondary-foreground transition-colors hover:bg-secondary/90 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 sm:w-auto"
+              className="inline-flex h-12 w-full items-center justify-center rounded-md bg-indigo-200 px-6 py-2 text-sm font-medium text-secondary-foreground transition-colors hover:bg-indigo-400 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 sm:w-auto"
             >
               Subscribe
             </button>

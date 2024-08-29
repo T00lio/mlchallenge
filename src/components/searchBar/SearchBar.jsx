@@ -90,9 +90,7 @@ const SearchBar = () => {
             onKeyDown={handleKeyDown}
           />
           <button
-            className={`bg-gradient-to-r from-indigo-700 via-indigo-500 to-indigo-300 rounded-r-full p-3 ${
-              isClicked ? "animate-click" : ""
-            }`}
+            className="bg-gradient-to-r from-indigo-700 via-indigo-500 to-indigo-300 rounded-r-full p-3"
             onClick={handleSearchClick}
           >
             {isLoading ? (
