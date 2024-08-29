@@ -1,5 +1,3 @@
-import React from "react";
-
 function CTA() {
   return (
     <section className="bg-gradient-to-r from-indigo-700 via-indigo-500 to-indigo-300 py-24">
