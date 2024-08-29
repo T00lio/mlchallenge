@@ -29,14 +29,14 @@ function Hero() {
             </h1>
             <div className="rounded-2xl flex flex-col items-center">
               <div className="p-4 w-3/4 md:w-full">
-                <h1 className="text-pretty font-extralight text-white rounded-2xl p-4 bg-muted relative">
+                <h1 className="text-pretty font-extralight text-white rounded-2xl p-4 relative">
                   Your one 🛑 shop for all your needs,{" "}
                   <a className="font-black text-slate-300 hover:text-lime-400 transition-colors">
                     BEGIN
                   </a>{" "}
                   your shopping experience now!
                 </h1>
-                <span className="p-4">
+                <span className="p-4 flex justify-center">
                   <SearchBar />
                 </span>
               </div>

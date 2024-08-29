@@ -1,6 +1,30 @@
-import React from "react";
-
+import { useState } from "react";
+import { addDoc } from "@firebase/firestore";
+import { validateEmail } from "../../utils/validateEmail";
 function CTA() {
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (validateEmail(email)) {
+      try {
+        const emailCollection = collection(db, "subscribedEmails");
+        await addDoc(emailCollection, {
+          email: email,
+          timestamp: new Date(),
+        });
+        setMessage("Thank you for subscribing!");
+        setEmail(""); // Clear input after submission
+      } catch (error) {
+        console.error("Error adding document: ", error);
+        setMessage("Error: Could not submit email.");
+      }
+    } else {
+      setMessage("Please enter a valid email address.");
+    }
+  };
+
   return (
     <section className="bg-gradient-to-r from-indigo-700 via-indigo-500 to-indigo-300 py-24">
       <div className="container mx-auto px-4 md:px-6">
@@ -12,7 +36,10 @@ function CTA() {
             Subscribe to our newsletter and be the first to know about our
             exclusive deals and new product launches.
           </p>
-          <form className="mt-10 grid flex-col items-center gap-4 sm:flex-row">
+          <form
+            className="mt-10 grid flex-col items-center gap-4 sm:flex-row"
+            onSubmit={handleSubmit}
+          >
             <input
               type="email"
               placeholder="Enter your email"
@@ -20,7 +47,7 @@ function CTA() {
             />
             <button
               type="submit"
-              className="inline-flex h-12 w-full items-center justify-center rounded-md bg-secondary px-6 py-2 text-sm font-medium text-secondary-foreground transition-colors hover:bg-secondary/90 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 sm:w-auto"
+              className="inline-flex h-12 w-full items-center justify-center rounded-md bg-indigo-200 px-6 py-2 text-sm font-medium text-secondary-foreground transition-colors hover:bg-indigo-400 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 sm:w-auto"
             >
               Subscribe
             </button>
