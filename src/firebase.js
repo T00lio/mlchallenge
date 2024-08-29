@@ -38,4 +38,4 @@ export const auth = getAuth(app);
 
 // Get users collection data
 export const usersCollectionRef = collection(db, "users");
-export const emailCollection = collection(db, "emails");
+export const emailCollection = collection(db, "email");

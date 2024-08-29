@@ -1,28 +1,23 @@
-import { addDoc, collection } from "@firebase/firestore";
-import { emailCollection } from "../../firebase";
 import { useState } from "react";
-
+import { addDoc } from "@firebase/firestore";
+import { validateEmail } from "../../utils/validateEmail";
 function CTA() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const validateEmail = (email) => {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(String(email).toLowerCase());
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (validateEmail(email)) {
       try {
+        const emailCollection = collection(db, "subscribedEmails");
         await addDoc(emailCollection, {
           email: email,
           timestamp: new Date(),
         });
-        console.log(email);
         setMessage("Thank you for subscribing!");
-        setEmail("");
+        setEmail(""); // Clear input after submission
       } catch (error) {
+        console.error("Error adding document: ", error);
         setMessage("Error: Could not submit email.");
       }
     } else {
