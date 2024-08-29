@@ -1,12 +1,14 @@
 import { useState } from "react";
-import { addDoc } from "@firebase/firestore";
+import { addDoc, collection } from "@firebase/firestore";
 import { validateEmail } from "../../utils/validateEmail";
+
 function CTA() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (validateEmail(email)) {
       try {
         const emailCollection = collection(db, "subscribedEmails");
@@ -42,6 +44,8 @@ function CTA() {
           >
             <input
               type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
               className="w-75 justify-self-center max-w-md rounded-md border-transparent bg-primary-foreground px-4 py-3 text-primary shadow-sm focus:border-primary focus:ring-primary sm:flex-1"
             />
