@@ -49,9 +49,6 @@ export default function Categories() {
                 height={300}
                 className="object-cover w-full h-52 md:w-full md:h-auto group-hover:scale-105 transition-transform duration-300"
               />
-              <div className="absolute inset-0 flex items-center justify-center bg-black/70 text-white font-black text-2xl opacity-0 group-hover:opacity-100 transition-opacity">
-                {category.name}
-              </div>
             </div>
           ))}
         </div>

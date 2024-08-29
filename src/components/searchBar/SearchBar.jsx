@@ -11,6 +11,7 @@ const SearchBar = () => {
   const [localSearchQuery, setLocalSearchQuery] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isClicked, setIsClicked] = useState(false); // New state for animation
 
   const navigate = useNavigate();
   const handleSearchChange = (event) => {
@@ -27,6 +28,8 @@ const SearchBar = () => {
 
   const handleSearchClick = async () => {
     setIsLoading(true);
+    setIsClicked(true); // Trigger animation
+    setTimeout(() => setIsClicked(false), 300); // Reset animation after it completes
     setSearchQuery(localSearchQuery); // Store the search query in context
     const data = await getData(`sites/MLA/search?q=${localSearchQuery}`);
     setQueryResult(data?.results);
@@ -60,7 +63,9 @@ const SearchBar = () => {
         />
         <Link to="/items">
           <button
-            className="bg-gradient-to-r from-indigo-700 via-indigo-500 to-indigo-300 rounded-r-full p-3"
+            className={`bg-gradient-to-r from-indigo-700 via-indigo-500 to-indigo-300 rounded-r-full p-3 ${
+              isClicked ? "animate-click" : ""
+            }`}
             onClick={handleSearchClick}
           >
             {isLoading ? (
@@ -85,7 +90,9 @@ const SearchBar = () => {
             onKeyDown={handleKeyDown}
           />
           <button
-            className="bg-gradient-to-r from-indigo-700 via-indigo-500 to-indigo-300 rounded-r-full p-3"
+            className={`bg-gradient-to-r from-indigo-700 via-indigo-500 to-indigo-300 rounded-r-full p-3 ${
+              isClicked ? "animate-click" : ""
+            }`}
             onClick={handleSearchClick}
           >
             {isLoading ? (
